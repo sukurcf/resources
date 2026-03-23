@@ -424,7 +424,33 @@
 
 <div class="page-header">
   <h1>GitHub Copilot <span>Workflow</span> Cheatsheet</h1>
-  <div class="subtitle">Chat · Completions · Agents · Skills · MCP · Hooks · Customization · 2026 Edition</div>
+  <div style="margin-top: 8px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;">
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z" fill="#007ACC"/></svg>
+      VS Code</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M2.462 5.835h1.478v1.478H2.462V5.835zm.37 11.373h4.558v.912H2.832v-.912z" fill="white"/><path d="M0 1.23h24v21.54H0V1.23z" fill="none"/><rect x="1" y="2.23" width="22" height="19.54" rx="2" fill="none" stroke="#FF6C37" stroke-width="1.5"/><path d="M2.462 5.835h1.478v1.478H2.462z" fill="white"/><path d="M2.832 17.208h4.558v.912H2.832z" fill="white"/><path d="M4.31 7.313l1.046-1.046 3.66 3.66-1.046 1.046z" fill="#FF6C37"/><path d="M10.117 3.677l1.17-.585 5.265 10.855-1.171.585z" fill="#FF6C37"/></svg>
+      JetBrains</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M17.583.063a1.5 1.5 0 0 0-1.032.392L7.05 9.573 2.9 6.573a1 1 0 0 0-1.3.1L.2 8.074a1 1 0 0 0 0 1.4l3.5 3.5-3.5 3.5a1 1 0 0 0 0 1.4l1.4 1.4a1 1 0 0 0 1.3.1l4.15-3 9.5 9.1a1.5 1.5 0 0 0 1.033.392 1.5 1.5 0 0 0 .517-.063l4.9-1.9a1.5 1.5 0 0 0 1-1.4V2.463a1.5 1.5 0 0 0-1-1.4l-4.9-1.9a1.5 1.5 0 0 0-.517-.1z" fill="#68217A"/><path d="M17.583.063L7.05 9.573 2.9 6.573l-1.4 1.4a1 1 0 0 0 0 1.4l3.5 3.5-3.5 3.5a1 1 0 0 0 0 1.4l1.4 1.4 4.15-3 9.533 9.1V.063z" fill="#9B4F96" opacity=".6"/><path d="M18 5.5v13l-7.178-6.5L18 5.5z" fill="#FFF"/></svg>
+      Visual Studio</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5.5" fill="#147EFB"/><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="white" stroke-width="2.5" stroke-linecap="round"/><rect x="4.5" y="16" width="4.5" height="4.5" rx="1" fill="white" opacity=".9"/></svg>
+      Xcode</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#2C2255"/><path d="M5 12c3-5 11-5 14 0c-3 5-11 5-14 0z" fill="#F7941E" opacity=".9"/><circle cx="12" cy="12" r="2.5" fill="#2C2255"/></svg>
+      Eclipse</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M2.214 4.954v13.615L7.655 24V4.492L12.077.46 10.553 0 7.655 2.857 4.186 0 2.214 1.03l3.87 3.462-3.87.462z" fill="#57A143"/><path d="M21.786 4.954v13.615L16.345 24V4.492L11.923.46 13.447 0l2.898 2.857L19.814 0l1.972 1.03-3.87 3.462 3.87.462z" fill="#4B8B3B"/></svg>
+      Vim/Neovim</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      GitHub.com</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M2 4h20v16H2V4zm2 2v12h16V6H4zm2 2h12v1H6V8zm0 3h12v1H6v-1zm0 3h8v1H6v-1z"/></svg>
+      CLI</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">📱 Mobile</span>
+  </div>
   <div style="margin-top: 8px; font-size: 11px; opacity: 0.85;">Created by <a href="https://www.linkedin.com/in/sukumar-p/" target="_blank" style="color: #FAEBD7; text-decoration: underline;">Sukumar P</a> using GitHub Copilot in VS Code</div>
 </div>
 
@@ -1381,6 +1407,597 @@ Use factory mocks for fixtures</code></div>
         <span class="src-title">📚 Sources:</span>
         <a href="https://docs.github.com/en/copilot" target="_blank">GitHub Copilot Docs</a> &middot;
         <a href="https://github.blog/changelog/label/copilot" target="_blank">Changelog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 22. THIRD-PARTY CODING AGENTS ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">22</span>
+      <h3>Third-Party Coding Agents</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Use Anthropic Claude and OpenAI Codex as autonomous coding agents alongside Copilot's built-in agent. Assign GitHub issues or prompts — they create branches, implement changes, and open PRs for review.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Supported Agents</div>
+          <table class="ref-table">
+            <tr><th>Agent</th><th>Provider</th><th>Status</th></tr>
+            <tr><td><strong>Claude</strong></td><td>Anthropic</td><td><span class="tag tag-purple">Preview</span></td></tr>
+            <tr><td><strong>Codex</strong></td><td>OpenAI</td><td><span class="tag tag-purple">Preview</span></td></tr>
+            <tr><td><strong>Copilot</strong></td><td>GitHub</td><td><span class="tag tag-green">GA</span></td></tr>
+          </table>
+          <div class="mini-heading">Where to Use</div>
+          <ul class="dot-list">
+            <li><strong>Agents tab</strong> — github.com/copilot/agents</li>
+            <li><strong>Issues</strong> — assign the agent to an issue</li>
+            <li><strong>PRs</strong> — mention <code class="inline">@AGENT_NAME</code> in a comment</li>
+            <li><strong>VS Code</strong> — new session → select agent type</li>
+            <li><strong>GitHub Mobile</strong> — start agent session from Home</li>
+          </ul>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">How It Works</div>
+          <div class="flow-row">
+            <span class="flow-box">Assign Issue / Prompt</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Agent Plans &amp; Codes</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Opens PR</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">You Review</span>
+          </div>
+          <div class="mini-heading">Cost &amp; Billing</div>
+          <ul class="dot-list">
+            <li>Consumes <strong>GitHub Actions minutes</strong> + <strong>1 premium request per session</strong></li>
+            <li>Uses same security protections as Copilot coding agent</li>
+            <li>Same repo access permissions as built-in agent</li>
+          </ul>
+          <div class="mini-heading">Enable for Your Org</div>
+          <ul class="dot-list">
+            <li>Org Settings → Copilot → Coding agent → Partner agents</li>
+            <li>Available on Pro, Pro+, Business, and Enterprise plans</li>
+            <li>Org admins toggle each agent independently</li>
+          </ul>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Third-party agents are in <strong>public preview</strong>. Policies apply to cloud agents only — local agents in VS Code cannot be disabled.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Compare agent output</strong> — assign the same issue to Claude, Codex, and Copilot → compare the three PRs and merge the best one</div>
+        <div class="use-case"><strong>Parallel workstreams</strong> — assign backend refactor to Codex while Claude handles frontend tests — both open PRs simultaneously</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/concepts/agents/about-third-party-agents" target="_blank">GitHub Docs — Third-Party Agents</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/agents/anthropic-claude" target="_blank">Anthropic Claude</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/agents/openai-codex" target="_blank">OpenAI Codex</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 23. BROWSER AGENT TOOLS ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">23</span>
+      <h3>Browser Agent Tools</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Agents can open, interact with, and screenshot web pages in VS Code's integrated browser — enabling autonomous build → test → debug → fix loops for web apps without leaving the editor.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Available Tools</div>
+          <table class="ref-table">
+            <tr><th>Tool</th><th>Action</th></tr>
+            <tr><td><code>openBrowserPage</code></td><td>Open a URL in integrated browser</td></tr>
+            <tr><td><code>navigatePage</code></td><td>Navigate to a different URL</td></tr>
+            <tr><td><code>readPage</code></td><td>Read page content &amp; structure</td></tr>
+            <tr><td><code>screenshotPage</code></td><td>Take a screenshot for visual review</td></tr>
+            <tr><td><code>clickElement</code></td><td>Click a page element</td></tr>
+            <tr><td><code>hoverElement</code></td><td>Hover over an element</td></tr>
+            <tr><td><code>dragElement</code></td><td>Drag and drop elements</td></tr>
+            <tr><td><code>typeInPage</code></td><td>Type text into inputs</td></tr>
+            <tr><td><code>handleDialog</code></td><td>Accept/dismiss browser dialogs</td></tr>
+            <tr><td><code>runPlaywrightCode</code></td><td>Run custom Playwright automation</td></tr>
+          </table>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Enable Browser Tools</div>
+          <ul class="dot-list">
+            <li>Set <code class="inline">workbench.browser.enableChatTools</code> to <code class="inline">true</code></li>
+            <li>Open Chat → Agent mode → Tools picker</li>
+            <li>Enable all tools under <strong>Built-in &gt; Browser</strong></li>
+          </ul>
+          <div class="mini-heading">Autonomous Dev Loop</div>
+          <div class="flow-row">
+            <span class="flow-box">Build App</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Open in Browser</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Test &amp; Interact</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Fix Issues</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Validate</span>
+          </div>
+          <div class="mini-heading">Sharing Pages</div>
+          <ul class="dot-list">
+            <li><strong>Agent-opened</strong> pages use isolated ephemeral sessions (no shared cookies)</li>
+            <li><strong>Share with Agent</strong> button — share your pages (uses your session/cookies)</li>
+            <li>Visual indicator shows when a page is shared</li>
+          </ul>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Browser agent tools are <strong>experimental</strong> and may change in future releases.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Form validation testing</strong> — "Build a contact form, open it in the browser, test all validation rules and fix any issues" <em>(full loop)</em></div>
+        <div class="use-case"><strong>Responsive layout check</strong> — "Screenshot this page at 320px, 768px, and 1440px widths and verify the layout is correct"</div>
+        <div class="use-case"><strong>Accessibility audit</strong> — "Check this page for missing alt text, heading hierarchy, keyboard nav, and color contrast issues"</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/guides/browser-agent-testing-guide" target="_blank">VS Code Docs — Browser Agent Testing</a> &middot;
+        <a href="https://code.visualstudio.com/docs/debugtest/integrated-browser" target="_blank">Integrated Browser</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 24. CHECKPOINTS & SESSION FORKING ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">24</span>
+      <h3>Checkpoints &amp; Session Forking</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> VS Code auto-snapshots your workspace before each agent action. Restore to any previous state, redo undone changes, edit &amp; resend earlier prompts, or fork a conversation to explore an alternative approach — all without losing work.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Checkpoints</div>
+          <ul class="dot-list">
+            <li>Enable: <code class="inline">chat.checkpoints.enabled</code></li>
+            <li>Auto-created before each chat request</li>
+            <li>Hover chat request → <strong>Restore Checkpoint</strong></li>
+            <li>Reverts <em>all</em> file changes made after that point</li>
+            <li><strong>Redo</strong> button appears after restore — undo mistakes</li>
+          </ul>
+          <div class="mini-heading">View File Changes</div>
+          <ul class="dot-list">
+            <li>Enable: <code class="inline">chat.checkpoints.showFileChanges</code></li>
+            <li>Shows modified files + lines added/removed per request</li>
+            <li>Helps decide which checkpoint to restore to</li>
+          </ul>
+          <div class="callout callout-tip">
+            <strong>💡</strong> Checkpoints complement Git but don't replace it. They're for quick iteration within a session — use Git for permanent version control.
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Edit Previous Requests</div>
+          <ul class="dot-list">
+            <li>Click any previous chat request to edit it</li>
+            <li>Reverts changes from that request + all later ones</li>
+            <li>Resends as a new request with your edits</li>
+            <li>Configure: <code class="inline">chat.editRequests</code></li>
+          </ul>
+          <div class="mini-heading">Fork from Checkpoint</div>
+          <ul class="dot-list">
+            <li>Hover chat request → <strong>Fork Conversation</strong></li>
+            <li>Creates new independent session from that point</li>
+            <li>Original conversation preserved</li>
+            <li>Explore alternative approaches side by side</li>
+          </ul>
+          <div class="mini-heading">Workflow</div>
+          <div class="flow-row">
+            <span class="flow-box">Agent Acts</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Review Output</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">✅ Keep / 🔄 Restore / 🍴 Fork</span>
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Safe experimentation</strong> — let the agent try a risky refactor, restore checkpoint if it breaks tests, fork to try an alternative</div>
+        <div class="use-case"><strong>Prompt refinement</strong> — edit a vague prompt 3 requests back → agent re-runs with better instructions, previous bad output is undone</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/chat/chat-checkpoints" target="_blank">VS Code Docs — Checkpoints</a> &middot;
+        <a href="https://code.visualstudio.com/docs/copilot/chat/chat-sessions" target="_blank">Chat Sessions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 25. AGENT SESSIONS, HANDOFFS & ORCHESTRATION ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">25</span>
+      <h3>Agent Sessions, Handoffs &amp; Orchestration</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Run multiple agent sessions in parallel across local, background (CLI), and cloud environments. Hand off tasks between agent types with full context carry-over. Manage everything from a unified sessions view.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Agent Types</div>
+          <table class="ref-table">
+            <tr><th>Type</th><th>Runs</th><th>Best For</th></tr>
+            <tr><td><strong>Local</strong></td><td>VS Code (interactive)</td><td>Brainstorm, debug, browse</td></tr>
+            <tr><td><strong>Copilot CLI</strong></td><td>Background on machine</td><td>Well-defined tasks, POCs</td></tr>
+            <tr><td><strong>Cloud</strong></td><td>Remote infra</td><td>PRs, team collaboration</td></tr>
+            <tr><td><strong>Third-party</strong></td><td>Claude / Codex</td><td>Provider-specific models</td></tr>
+          </table>
+          <div class="mini-heading">Handoff Flow</div>
+          <div class="flow-row">
+            <span class="flow-box">Plan (Local)</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Implement (CLI)</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">PR (Cloud)</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-box">Review</span>
+          </div>
+          <ul class="dot-list" style="margin-top: 6px;">
+            <li>Select different agent type from session dropdown</li>
+            <li>Full conversation history carries over</li>
+            <li>Original session archived after handoff</li>
+            <li><code class="inline">/delegate</code> in CLI → sends to cloud agent</li>
+          </ul>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Sessions View</div>
+          <ul class="dot-list">
+            <li>Unified list of all sessions (local, CLI, cloud)</li>
+            <li><strong>Compact</strong> or <strong>Side-by-side</strong> layout modes</li>
+            <li>Shows status, type, and file change stats</li>
+            <li>Archive / unarchive completed sessions</li>
+            <li>Grouped by time (Today, Last Week, etc.)</li>
+          </ul>
+          <div class="mini-heading">Agent Status Indicator</div>
+          <ul class="dot-list">
+            <li>Badge in command center title bar <span class="tag tag-purple">Experimental</span></li>
+            <li>Shows unread messages + in-progress count</li>
+            <li>Enable: <code class="inline">chat.agentsControl.enabled</code></li>
+          </ul>
+          <div class="mini-heading">Parallel Sessions</div>
+          <ul class="dot-list">
+            <li>Create multiple sessions via <strong>+</strong> button</li>
+            <li>Each session: independent context window</li>
+            <li>Run different tasks simultaneously</li>
+            <li>Assign TODOs: right-click code → assign to agent</li>
+          </ul>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Plan → Build → Ship</strong> — Plan agent designs architecture, hand off to CLI for implementation, then cloud agent opens the PR for team review</div>
+        <div class="use-case"><strong>Parallel features</strong> — run 3 local sessions: one for API endpoints, one for UI components, one for tests — all working simultaneously</div>
+        <div class="use-case"><strong>TODO delegation</strong> — add <code class="inline">// TODO: add input validation</code> in code → right-click → assign to Copilot coding agent → agent creates a PR</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/agents/overview" target="_blank">VS Code Docs — Agents Overview</a> &middot;
+        <a href="https://code.visualstudio.com/docs/copilot/chat/chat-sessions" target="_blank">Chat Sessions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 26. PROMPT ENGINEERING & CONTEXT ENGINEERING ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">26</span>
+      <h3>Prompt &amp; Context Engineering</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Proven techniques for writing effective prompts and providing the right context. The quality of Copilot's output depends directly on how well you communicate — be specific, break tasks down, include expected output, and choose the right interaction mode.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Writing Effective Prompts</div>
+          <ul class="dot-list">
+            <li><strong>Be specific</strong> — state language, framework, expected I/O</li>
+            <li><strong>Break down complex tasks</strong> — smaller steps = better results</li>
+            <li><strong>Include expected output</strong> — test cases, acceptance criteria</li>
+            <li><strong>Avoid vague prompts</strong> — "make this better" → "reduce time complexity"</li>
+            <li><strong>Iterate with follow-ups</strong> — refine, don't rewrite the whole prompt</li>
+            <li><strong>Ask AI to ask questions</strong> — "ask me clarifying questions before starting"</li>
+            <li><strong>Course-correct early</strong> — steer mid-request if heading wrong way</li>
+          </ul>
+          <div class="mini-heading">Prompt Example</div>
+          <div class="code-block"><code>Write a TypeScript function that validates
+email addresses. Return true for valid,
+false otherwise. Don't use regex.
+Example: validateEmail("user@example.com")
+  → true
+Example: validateEmail("invalid") → false</code></div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Providing Context</div>
+          <ul class="dot-list">
+            <li>Agent auto-searches workspace — usually no need for <code class="inline">#codebase</code></li>
+            <li>Reference specific files: <code class="inline">#file</code>, <code class="inline">#folder</code>, <code class="inline">#symbol</code></li>
+            <li><code class="inline">#fetch</code> — pull info from web pages / docs</li>
+            <li>Attach images / screenshots for visual context</li>
+            <li>Use integrated browser to select page elements</li>
+          </ul>
+          <div class="mini-heading">Pick the Right Mode</div>
+          <table class="ref-table">
+            <tr><th>Mode</th><th>When to Use</th></tr>
+            <tr><td><strong>Inline suggestions</strong></td><td>In-flow coding, boilerplate</td></tr>
+            <tr><td><strong>Ask</strong></td><td>Questions, brainstorm, explore</td></tr>
+            <tr><td><strong>Inline chat</strong></td><td>Targeted in-place edits</td></tr>
+            <tr><td><strong>Agent</strong></td><td>Multi-file autonomous changes</td></tr>
+            <tr><td><strong>Plan</strong></td><td>Architecture, migration strategy</td></tr>
+            <tr><td><strong>Smart actions</strong></td><td>One-click commit msg, fix, rename</td></tr>
+          </table>
+          <div class="mini-heading">Session Hygiene</div>
+          <ul class="dot-list">
+            <li>New session for unrelated tasks — avoid context pollution</li>
+            <li>Use subagents for isolated research</li>
+            <li>Run parallel sessions for independent work</li>
+          </ul>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>High-quality output</strong> — "Implement a rate limiter using token bucket. Write tests that verify: 10 req/s allowed, 11th rejected, refills after 1s. Run the tests."</div>
+        <div class="use-case"><strong>Plan first</strong> — use Plan agent to design architecture → review → hand off to Agent mode for implementation with tests as verification</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/prompt-crafting" target="_blank">VS Code Docs — Best Practices</a> &middot;
+        <a href="https://code.visualstudio.com/docs/copilot/guides/context-engineering-guide" target="_blank">Context Engineering Guide</a> &middot;
+        <a href="https://docs.github.com/en/copilot/copilot-chat-cookbook" target="_blank">Prompt Cookbook</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 27. SMART ACTIONS ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">27</span>
+      <h3>Smart Actions</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> One-click AI-powered actions built into VS Code — no prompt needed. Generate commit messages, rename symbols intelligently, fix diagnostics, and search semantically. Available via right-click, lightbulb, or keyboard shortcuts.</div>
+      <div class="mini-heading">Available Actions</div>
+      <table class="ref-table">
+        <tr><th>Action</th><th>Where</th></tr>
+        <tr><td><strong>Generate Commit Message</strong></td><td>Source Control panel</td></tr>
+        <tr><td><strong>Rename Symbol</strong></td><td>F2 on any symbol</td></tr>
+        <tr><td><strong>Fix with Copilot</strong></td><td>Lightbulb on errors/warnings</td></tr>
+        <tr><td><strong>Fix Test Failure</strong></td><td>Test Explorer failed tests</td></tr>
+        <tr><td><strong>Generate Docs</strong></td><td>Right-click → Generate Code</td></tr>
+        <tr><td><strong>Semantic Search</strong></td><td>Search view (meaning, not keywords)</td></tr>
+        <tr><td><strong>Generate PR Summary</strong></td><td>PR description field</td></tr>
+      </table>
+      <div class="mini-heading">How to Access</div>
+      <ul class="dot-list">
+        <li><strong>Lightbulb (⌘.)</strong> — hover over error → AI fix suggestion</li>
+        <li><strong>Right-click</strong> → Generate Code menu</li>
+        <li><strong>Context menus</strong> in Source Control, Test Explorer</li>
+        <li>No prompt required — Copilot infers from context</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Instant commit messages</strong> — click ✨ in Source Control → Copilot analyzes diff and generates a Conventional Commit message</div>
+        <div class="use-case"><strong>Smart rename</strong> — F2 on <code class="inline">processData</code> → Copilot suggests <code class="inline">transformUserPayload</code> based on function body semantics</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/copilot-smart-actions" target="_blank">VS Code Docs — Smart Actions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 28. BYOK — BRING YOUR OWN KEY ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">28</span>
+      <h3>BYOK — Bring Your Own Key</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Use your own API keys to access hundreds of models beyond the built-in ones — including local models via Ollama or AI Toolkit. Bypass rate limits, experiment with cutting-edge models, and use your own compute.</div>
+      <div class="mini-heading">Benefits</div>
+      <ul class="dot-list">
+        <li><strong>Model choice</strong> — access models not available built-in</li>
+        <li><strong>Experimentation</strong> — try new models or features early</li>
+        <li><strong>Local compute</strong> — run models on your machine (Ollama)</li>
+        <li><strong>Greater control</strong> — bypass standard rate limits</li>
+      </ul>
+      <div class="mini-heading">How to Add</div>
+      <ul class="dot-list">
+        <li>Model picker → <strong>Manage Models</strong> → <strong>Add Models</strong></li>
+        <li>Select built-in provider or install extension</li>
+        <li>Enter API key / endpoint URL</li>
+        <li>Or: <code class="inline">Chat: Manage Language Models</code> command</li>
+      </ul>
+      <div class="mini-heading">Options</div>
+      <div class="kv-row"><span class="kv-key">Built-in providers</span><span class="kv-desc">OpenAI, Anthropic, Google, etc.</span></div>
+      <div class="kv-row"><span class="kv-key">Extensions</span><span class="kv-desc">AI Toolkit, Foundry Local</span></div>
+      <div class="kv-row"><span class="kv-key">Local models</span><span class="kv-desc">Ollama, custom OpenAI-compat</span></div>
+      <div class="callout callout-warn">
+        <strong>⚠️</strong> BYOK is for <strong>Pro/Pro+ individual plans only</strong>. Not yet available for Business/Enterprise. Still requires Copilot service &amp; internet for embeddings and indexing.
+      </div>
+      <div class="callout callout-tip">
+        <strong>💡</strong> BYOK models need <strong>tool calling support</strong> to work in Agent mode. No responsible AI filtering on BYOK model output.
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Run local Ollama</strong> — deploy Phi-4 locally, add via Manage Models → use in chat with zero API cost and full privacy</div>
+        <div class="use-case"><strong>Cutting-edge models</strong> — add your Anthropic key to try Claude's latest release before it appears in the built-in list</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/language-models" target="_blank">VS Code Docs — Language Models</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 29. PRIVACY, SECURITY & TRUST ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">29</span>
+      <h3>Privacy, Security &amp; Trust</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> How GitHub protects your data — code is not used for training (Business/Enterprise), prompts are not retained, responsible AI filters run pre- and post-model, and IP indemnity covers Copilot-generated code.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Data Handling</div>
+          <table class="ref-table">
+            <tr><th>What</th><th>Behavior</th></tr>
+            <tr><td>Prompts &amp; suggestions</td><td>Not retained after response delivered</td></tr>
+            <tr><td>Training on your code</td><td><strong>No</strong> (Business/Enterprise)</td></tr>
+            <tr><td>Telemetry opt-out</td><td>Individual users can opt out</td></tr>
+            <tr><td>Code snippets</td><td>Encrypted in transit &amp; at rest</td></tr>
+          </table>
+          <div class="mini-heading">Responsible AI Filters</div>
+          <ul class="dot-list">
+            <li><strong>Pre-model</strong> — content exclusion, harmful prompt detection</li>
+            <li><strong>Post-model</strong> — duplicate/public code detection, safety checks</li>
+            <li>Configurable: enable/disable public code matching</li>
+          </ul>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">IP &amp; Compliance</div>
+          <ul class="dot-list">
+            <li><strong>IP indemnity</strong> — GitHub indemnifies Copilot output (Business/Enterprise)</li>
+            <li><strong>SOC 2 Type II</strong> compliant</li>
+            <li><strong>GDPR</strong> compliant — EU data processing</li>
+            <li>Subprocessor list published on Trust Center</li>
+          </ul>
+          <div class="mini-heading">Security Best Practices</div>
+          <ul class="dot-list">
+            <li>Review AI output for vulnerabilities (OWASP Top 10)</li>
+            <li>Don't paste credentials into prompts</li>
+            <li>Use content exclusion for sensitive files</li>
+            <li>Only use MCP servers from trusted sources</li>
+            <li>BYOK: no responsible AI filtering on output</li>
+          </ul>
+          <div class="callout callout-tip">
+            <strong>💡</strong> Enable <strong>public code filter</strong> to block suggestions matching public repositories — reduces IP risk.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Compliance review</strong> — point stakeholders to the Trust Center FAQ for SOC 2, GDPR, and data handling evidence</div>
+        <div class="use-case"><strong>Reduce IP risk</strong> — enable public code filter + content exclusion for proprietary algorithms → dual protection</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://copilot.github.trust.page/faq" target="_blank">GitHub Copilot Trust Center</a> &middot;
+        <a href="https://code.visualstudio.com/docs/copilot/security" target="_blank">VS Code — Copilot Security</a> &middot;
+        <a href="https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features" target="_blank">Responsible Use</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 30. ORG & ENTERPRISE ADMINISTRATION ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">30</span>
+      <h3>Org &amp; Enterprise Administration</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Admin controls for managing Copilot across your organization — assign seats, set policies for features &amp; models, review usage analytics, audit logs, and configure content exclusions at scale.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Policy Management</div>
+          <table class="ref-table">
+            <tr><th>Policy</th><th>Controls</th></tr>
+            <tr><td><strong>Features</strong></td><td>Chat, completions, agents, MCP</td></tr>
+            <tr><td><strong>Models</strong></td><td>Enable/disable premium models</td></tr>
+            <tr><td><strong>Coding agent</strong></td><td>Enable cloud agent + 3rd-party</td></tr>
+            <tr><td><strong>Editor preview</strong></td><td>Opt in to preview features</td></tr>
+            <tr><td><strong>Public code filter</strong></td><td>Block public code matches</td></tr>
+            <tr><td><strong>Content exclusion</strong></td><td>Exclude files/repos from AI</td></tr>
+          </table>
+          <div class="mini-heading">Access Management</div>
+          <ul class="dot-list">
+            <li>Assign Copilot seats per user or team</li>
+            <li>Enterprise owners → org-level access</li>
+            <li>Org owners → member-level access</li>
+            <li>Policies cascade: Enterprise → Org → User</li>
+          </ul>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Usage Analytics</div>
+          <ul class="dot-list">
+            <li>Dashboard: acceptance rates, active users, languages</li>
+            <li>Premium request consumption by user/team</li>
+            <li>Breakdown by feature (chat, completions, agent)</li>
+            <li>Export data via API for custom reporting</li>
+          </ul>
+          <div class="mini-heading">Audit Logs</div>
+          <ul class="dot-list">
+            <li>Track Copilot actions by user</li>
+            <li>Seat assignments, policy changes</li>
+            <li>Available for Business &amp; Enterprise plans</li>
+          </ul>
+          <div class="mini-heading">Settings Path</div>
+          <div class="kv-row"><span class="kv-key">Org</span><span class="kv-desc">Settings → Copilot → Policies / Models</span></div>
+          <div class="kv-row"><span class="kv-key">Enterprise</span><span class="kv-desc">Enterprise Settings → Copilot → Policies</span></div>
+          <div class="callout callout-tip">
+            <strong>💡</strong> Enterprise policies override org settings. If an explicit setting is chosen at enterprise level, orgs cannot change it.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Rollout strategy</strong> — enable Copilot for a pilot team, review usage analytics for 30 days, then expand to the full org</div>
+        <div class="use-case"><strong>Model governance</strong> — disable Opus 4.6 (30× cost) org-wide, allow only 0×–1× models to control premium request spend</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization" target="_blank">GitHub Docs — Org Management</a> &middot;
+        <a href="https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/reviewing-activity-related-to-github-copilot-in-your-organization" target="_blank">Usage &amp; Audit Logs</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 31. SUBAGENTS ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">31</span>
+      <h3>Subagents</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Isolated child agents that run research or execution tasks within a parent agent session. Context stays separate to avoid polluting the main conversation — results are summarized back to the parent.</div>
+      <div class="mini-heading">Built-in Subagents</div>
+      <table class="ref-table">
+        <tr><th>Subagent</th><th>Purpose</th></tr>
+        <tr><td><strong>Explore</strong></td><td>Quick codebase analysis &amp; Q&amp;A</td></tr>
+        <tr><td><strong>Task</strong></td><td>Run tests/builds, return brief summaries</td></tr>
+        <tr><td><strong>Code-review</strong></td><td>Review changes, surface real issues</td></tr>
+      </table>
+      <div class="mini-heading">How They Work</div>
+      <ul class="dot-list">
+        <li>Parent agent spawns subagent for a focused task</li>
+        <li>Subagent runs in <strong>isolated context</strong> — no pollution</li>
+        <li>Returns a single summary message to parent</li>
+        <li>Can run in <strong>parallel</strong> for independent tasks</li>
+        <li>Available in VS Code agent mode &amp; Copilot CLI</li>
+      </ul>
+      <div class="mini-heading">When to Use</div>
+      <ul class="dot-list">
+        <li>Research a topic without cluttering main chat</li>
+        <li>Run tests and get a pass/fail summary</li>
+        <li>Explore multiple approaches in parallel</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Parallel research</strong> — agent spawns 3 Explore subagents to investigate auth, caching, and logging patterns simultaneously</div>
+        <div class="use-case"><strong>Test runner</strong> — Task subagent runs full test suite, returns "2 of 47 tests failed: test_auth, test_cache" — no noisy output in main chat</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/agents/subagents" target="_blank">VS Code Docs — Subagents</a>
       </div>
     </div>
   </div>
