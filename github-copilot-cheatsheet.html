@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Copilot Workflow Cheatsheet — 2026 Edition</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-page:        #FFF8F0;
+      --bg-card:        #FFFFFF;
+      --bg-code:        #1E293B;
+      --bg-header:      #F4A261;
+      --bg-header-dark: #E76F51;
+      --bg-section-num: #E76F51;
+      --text-primary:   #2D2A26;
+      --text-secondary: #5A5550;
+      --text-muted:     #8A8580;
+      --text-code:      #E2E8F0;
+      --text-on-accent: #FFFFFF;
+      --border-card:    #E8DDD0;
+      --border-accent:  #F4A261;
+      --accent-peach:   #F4A261;
+      --accent-salmon:  #E76F51;
+      --accent-cream:   #FAEBD7;
+      --accent-warm:    #F9DCC4;
+      --code-bg-inline: rgba(231,111,81,0.10);
+    }
+
+    body {
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-size: 11.5px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== HEADER ===== */
+    .page-header {
+      background: var(--bg-header-dark);
+      color: var(--text-on-accent);
+      padding: 18px 28px 14px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .page-header h1 span { font-weight: 400; }
+    .page-header .subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* ===== GRID ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 14px 16px;
+      max-width: 1520px;
+      margin: 0 auto;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--bg-card);
+      border-radius: 10px;
+      border: 1px solid var(--border-card);
+      overflow: hidden;
+      break-inside: avoid;
+    }
+    .card.wide { grid-column: span 2; }
+    .card.full { grid-column: span 4; }
+
+    .card-header {
+      background: var(--accent-warm);
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-card);
+    }
+    .section-num {
+      background: var(--bg-section-num);
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .card-header h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+    }
+
+    .card-body {
+      padding: 10px 12px;
+    }
+
+    /* ===== BULLET / DOT ITEMS ===== */
+    .dot-list {
+      list-style: none;
+      padding: 0;
+    }
+    .dot-list li {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 3px;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .dot-list li::before {
+      content: "◉";
+      position: absolute;
+      left: 0;
+      color: var(--accent-salmon);
+      font-size: 7px;
+      top: 3px;
+    }
+
+    /* ===== KEY-VALUE PAIRS ===== */
+    .kv-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 3px;
+      align-items: baseline;
+      font-size: 11px;
+    }
+    .kv-key {
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      background: var(--code-bg-inline);
+      color: var(--accent-salmon);
+      padding: 1px 5px;
+      border-radius: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .kv-desc {
+      color: var(--text-secondary);
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code-block {
+      background: var(--bg-code);
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin: 6px 0;
+      overflow-x: auto;
+    }
+    .code-block code {
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: 10px;
+      color: var(--text-code);
+      line-height: 1.5;
+      white-space: pre;
+    }
+    .code-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== INLINE CODE ===== */
+    code.inline {
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: 10px;
+      background: var(--code-bg-inline);
+      color: var(--accent-salmon);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    /* ===== TABLES ===== */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      margin: 4px 0;
+    }
+    .ref-table th {
+      background: var(--accent-warm);
+      font-weight: 700;
+      text-align: left;
+      padding: 4px 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid var(--border-card);
+    }
+    .ref-table td {
+      padding: 3px 8px;
+      border-bottom: 1px solid #f0e8dd;
+      vertical-align: top;
+    }
+    .ref-table tr:nth-child(even) td {
+      background: #fdf8f3;
+    }
+    .ref-table code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      background: var(--code-bg-inline);
+      color: var(--accent-salmon);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    /* ===== CALLOUTS ===== */
+    .callout {
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin: 6px 0;
+      font-size: 10.5px;
+      line-height: 1.4;
+    }
+    .callout-tip {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+    }
+    .callout-warn {
+      background: #fffbeb;
+      border-left: 3px solid #f59e0b;
+    }
+    .callout-info {
+      background: #eff6ff;
+      border-left: 3px solid #3b82f6;
+    }
+
+    /* ===== FILE TREE ===== */
+    .file-tree {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: #fdf8f3;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 4px 0;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .file-tree .indent { color: var(--text-muted); }
+    .file-tree .folder { color: var(--accent-salmon); font-weight: 600; }
+    .file-tree .file { color: var(--text-secondary); }
+
+    /* ===== SECTION DIVIDERS ===== */
+    .mini-heading {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent-salmon);
+      margin: 8px 0 4px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--accent-cream);
+    }
+    .mini-heading:first-child { margin-top: 0; }
+
+    /* ===== TAG/BADGE ===== */
+    .tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 2px;
+    }
+    .tag-blue { background: #dbeafe; color: #1d4ed8; }
+    .tag-green { background: #d1fae5; color: #065f46; }
+    .tag-amber { background: #fef3c7; color: #92400e; }
+    .tag-red { background: #fee2e2; color: #991b1b; }
+    .tag-purple { background: #ede9fe; color: #5b21b6; }
+
+    /* ===== USE CASES ===== */
+    .use-cases {
+      background: #fef9f3;
+      border: 1px dashed var(--accent-peach);
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin-top: 6px;
+    }
+    .use-cases .uc-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent-salmon);
+      margin-bottom: 3px;
+    }
+    .use-case {
+      font-size: 10.5px;
+      line-height: 1.4;
+      margin-bottom: 2px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .use-case::before {
+      content: "▸";
+      position: absolute;
+      left: 2px;
+      color: var(--accent-salmon);
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .use-case em {
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* ===== FLOW DIAGRAM ===== */
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 4px 0;
+      flex-wrap: wrap;
+    }
+    .flow-box {
+      background: var(--accent-warm);
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .flow-arrow {
+      color: var(--accent-salmon);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* ===== SOURCE LINKS ===== */
+    .sources {
+      margin-top: 6px;
+      padding-top: 4px;
+      border-top: 1px dashed var(--border-card);
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .sources .src-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 2px;
+    }
+    .sources a {
+      color: var(--accent-salmon);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .sources a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== FOOTER ===== */
+    .page-footer {
+      text-align: center;
+      padding: 10px 20px 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 2px solid var(--accent-cream);
+    }
+    .page-footer strong {
+      color: var(--text-primary);
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      body { background: white; }
+      .page-header { background: var(--bg-header-dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+      .card-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .section-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .code-block { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .ref-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .flow-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .file-tree { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .ref-table tr:nth-child(even) td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .grid { gap: 8px; padding: 8px; }
+    }
+
+    @media (max-width: 1200px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .card.full { grid-column: span 3; }
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .card.wide { grid-column: span 2; }
+      .card.full { grid-column: span 2; }
+    }
+    @media (max-width: 650px) {
+      .grid { grid-template-columns: 1fr; }
+      .card.wide, .card.full { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>GitHub Copilot <span>Workflow</span> Cheatsheet</h1>
+  <div class="subtitle">Chat · Completions · Agents · Skills · MCP · Hooks · Customization · 2026 Edition</div>
+  <div style="margin-top: 8px; font-size: 11px; opacity: 0.85;">Created by <a href="https://www.linkedin.com/in/sukumar-p/" target="_blank" style="color: #FAEBD7; text-decoration: underline;">Sukumar P</a> using GitHub Copilot in VS Code</div>
+</div>
+
+<div class="grid">
+
+  <!-- ====== 1. COPILOT ARCHITECTURE ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">1</span>
+      <h3>Copilot Architecture &amp; Flow</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> How your prompt flows through Copilot — context is gathered, routed via a proxy to the AI model, filtered for safety, and returned as a response.</div>
+      <div class="flow-row">
+        <span class="flow-box">User Prompt</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-box">Context Gathering</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-box">Proxy Service</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-box">Model</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-box">Response</span>
+      </div>
+      <div class="mini-heading">Key Stages</div>
+      <ul class="dot-list">
+        <li><strong>Context gathering</strong> — workspace files, open tabs, selections, instructions</li>
+        <li><strong>Proxy service</strong> — routes to chosen model, applies filters</li>
+        <li><strong>Pre-model filters</strong> — responsible AI, content exclusion</li>
+        <li><strong>Post-model filters</strong> — duplicate code detection, safety</li>
+        <li><strong>Model selection</strong> — user picks model or auto-select</li>
+      </ul>
+      <div class="mini-heading">Installation</div>
+      <div class="code-block"><code>ext install GitHub.copilot
+ext install GitHub.copilot-chat</code></div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Debug unexpected output</strong> — understand why Copilot gave a wrong answer <em>(check if context was gathered correctly)</em></div>
+        <div class="use-case"><strong>Explain to stakeholders</strong> — describe how code never leaves the proxy pipeline <em>(security/compliance reviews)</em></div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features" target="_blank">GitHub Docs — Copilot Features</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 2. CHAT EXPERIENCE ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">2</span>
+      <h3>Chat Experience</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> The conversational AI panel in VS Code. Use slash commands, context variables (#), and participants (@) to give Copilot precise context for better answers.</div>
+      <div class="mini-heading">Slash Commands</div>
+      <table class="ref-table">
+        <tr><th>Command</th><th>Action</th><th>Command</th><th>Action</th></tr>
+        <tr><td><code>/explain</code></td><td>Explain selected code</td><td><code>/fix</code></td><td>Fix problems in code</td></tr>
+        <tr><td><code>/tests</code></td><td>Generate unit tests</td><td><code>/new</code></td><td>Scaffold new project</td></tr>
+        <tr><td><code>/clear</code></td><td>New chat session</td><td><code>/help</code></td><td>Copilot quick reference</td></tr>
+        <tr><td><code>/delegate</code></td><td>Send to coding agent</td><td><code>/search</code></td><td>Workspace search</td></tr>
+        <tr><td><code>/init</code></td><td>Generate instructions</td><td><code>/compact</code></td><td>Compress context</td></tr>
+      </table>
+
+      <div style="display: flex; gap: 12px; margin-top: 6px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Context Variables (#)</div>
+          <div class="kv-row"><span class="kv-key">#file</span><span class="kv-desc">Include file content</span></div>
+          <div class="kv-row"><span class="kv-key">#selection</span><span class="kv-desc">Selected text</span></div>
+          <div class="kv-row"><span class="kv-key">#codebase</span><span class="kv-desc">Full workspace context</span></div>
+          <div class="kv-row"><span class="kv-key">#problems</span><span class="kv-desc">Error/warning diagnostics</span></div>
+          <div class="kv-row"><span class="kv-key">#changes</span><span class="kv-desc">Git changes (diff)</span></div>
+          <div class="kv-row"><span class="kv-key">#fetch</span><span class="kv-desc">Fetch a web page</span></div>
+          <div class="kv-row"><span class="kv-key">#terminalLastCommand</span><span class="kv-desc">Last terminal output</span></div>
+          <div class="kv-row"><span class="kv-key">#block #class #function</span><span class="kv-desc">Code scope</span></div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Chat Participants (@)</div>
+          <div class="kv-row"><span class="kv-key">@workspace</span><span class="kv-desc">Project structure &amp; code</span></div>
+          <div class="kv-row"><span class="kv-key">@vscode</span><span class="kv-desc">VS Code commands &amp; features</span></div>
+          <div class="kv-row"><span class="kv-key">@terminal</span><span class="kv-desc">Terminal shell context</span></div>
+          <div class="kv-row"><span class="kv-key">@github</span><span class="kv-desc">GitHub-specific skills</span></div>
+          <div class="kv-row"><span class="kv-key">@azure</span><span class="kv-desc">Azure services help</span></div>
+          <div class="mini-heading" style="margin-top: 8px;">Voice Chat</div>
+          <ul class="dot-list">
+            <li>Install <code class="inline">ms-vscode.vscode-speech</code></li>
+            <li>Dictate prompts hands-free</li>
+          </ul>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong><code class="inline">/explain</code> + <code class="inline">#file</code></strong> — "Explain the auth flow in #file:auth.ts" <em>(onboard to unfamiliar code)</em></div>
+        <div class="use-case"><strong><code class="inline">/fix</code> + <code class="inline">#problems</code></strong> — "Fix all errors in #problems" <em>(resolve build failures in one prompt)</em></div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat" target="_blank">VS Code Docs — Copilot Chat</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 3. CODE COMPLETIONS ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">3</span>
+      <h3>Code Completions</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Real-time ghost text suggestions as you type. Copilot predicts your next lines of code based on context — accept with Tab, dismiss with Esc.</div>
+      <ul class="dot-list">
+        <li>Ghost text inline suggestions as you type</li>
+        <li><strong>Tab</strong> to accept, <strong>Esc</strong> to dismiss</li>
+        <li><strong>Alt+]</strong> / <strong>Alt+[</strong> cycle alternatives</li>
+        <li><strong>Ctrl+→</strong> accept word by word</li>
+      </ul>
+      <div class="mini-heading">Enable / Disable</div>
+      <ul class="dot-list">
+        <li>Toggle from Copilot icon in status bar</li>
+        <li>Disable for specific languages in settings</li>
+        <li><strong>Snooze</strong> — temporarily pause suggestions</li>
+      </ul>
+      <div class="mini-heading">Completions Model</div>
+      <ul class="dot-list">
+        <li>Change model in settings for inline suggestions</li>
+        <li>Premium models consume premium requests</li>
+        <li>Free plan: 2,000 completions/month</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Write a function from a comment</strong> — type <code class="inline">// fetch user by email</code>, Copilot generates the implementation</div>
+        <div class="use-case"><strong>Auto-complete test cases</strong> — write one <code class="inline">it("should...")</code> block and Tab through the rest</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/ai-powered-suggestions" target="_blank">VS Code Docs — AI Suggestions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 4. NEXT EDIT SUGGESTION (NES) ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">4</span>
+      <h3>Next Edit Suggestions (NES)</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info">
+        <strong>What:</strong> Predicts your <em>next edit</em> based on recent changes, not just cursor position. Jumps you to the right location and suggests the change — great for repetitive multi-location refactors.
+      </div>
+      <div class="mini-heading">How It Works</div>
+      <ul class="dot-list">
+        <li>Monitors your editing patterns across files</li>
+        <li>Suggests edits at locations you haven't navigated to yet</li>
+        <li>Shows arrow indicator → jump to suggested edit</li>
+        <li><strong>Tab</strong> to accept, <strong>Tab</strong> again to jump to next</li>
+      </ul>
+      <div class="mini-heading">Why Use It</div>
+      <ul class="dot-list">
+        <li>Rename variables across multiple locations</li>
+        <li>Apply consistent pattern changes</li>
+        <li>Add missing imports after using a new API</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Rename <code class="inline">userId</code> → <code class="inline">accountId</code></strong> — change one occurrence, NES finds and fixes the rest across files</div>
+        <div class="use-case"><strong>Add error handling</strong> — wrap one function in try/catch, NES suggests the same for similar functions</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/ai-powered-suggestions#_next-edit-suggestions" target="_blank">VS Code Docs — Next Edit Suggestions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 5. INLINE CHAT ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">5</span>
+      <h3>Inline Chat</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Chat with Copilot directly inside your editor or terminal without switching to the sidebar. Get targeted code edits, command generation, and image-to-code conversion in context.</div>
+      <div class="mini-heading">In Editor</div>
+      <ul class="dot-list">
+        <li><strong>⌘I</strong> (Mac) / <strong>Ctrl+I</strong> (Win) — open inline chat</li>
+        <li>Select code first for targeted edits</li>
+        <li>Supports context vars &amp; model selection</li>
+        <li>Preview diff before accepting</li>
+      </ul>
+      <div class="mini-heading">In Terminal</div>
+      <ul class="dot-list">
+        <li><strong>⌘I</strong> in terminal — generate commands</li>
+        <li>Copilot understands shell context</li>
+        <li>Generates and explains terminal commands</li>
+      </ul>
+      <div class="mini-heading">Vision Input</div>
+      <ul class="dot-list">
+        <li>Attach images to chat prompts</li>
+        <li>Enable in Copilot settings</li>
+        <li>UI mockups → code generation</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Refactor selected code</strong> — select a function, ⌘I → "Extract this into a custom hook" <em>(targeted in-place edit)</em></div>
+        <div class="use-case"><strong>Generate shell commands</strong> — ⌘I in terminal → "Find all .log files larger than 100MB and delete them"</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/chat/inline-chat" target="_blank">VS Code Docs — Inline Chat</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 6. MODEL SELECTION & PREMIUM ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">6</span>
+      <h3>Model Selection &amp; Premium Requests</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Choose from 20+ AI models. Each model has a premium request multiplier — included models (GPT-4.1, GPT-4o, GPT-5 mini) cost 0×, while advanced models cost 1×–30×. Manage your monthly budget accordingly.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Model Multipliers (Paid Plans)</div>
+          <table class="ref-table">
+            <tr><th>Model</th><th>Rate</th></tr>
+            <tr><td>GPT-4.1 / GPT-4o / GPT-5 mini</td><td><span class="tag tag-green">0× included</span></td></tr>
+            <tr><td>Raptor mini</td><td><span class="tag tag-green">0× included</span></td></tr>
+            <tr><td>Grok Code Fast 1</td><td><span class="tag tag-blue">0.25×</span></td></tr>
+            <tr><td>Claude Haiku 4.5 / Gemini 3 Flash</td><td><span class="tag tag-blue">0.33×</span></td></tr>
+            <tr><td>GPT-5.1-Codex-Mini / GPT-5.4 mini</td><td><span class="tag tag-blue">0.33×</span></td></tr>
+            <tr><td>Sonnet 4 / 4.5 / 4.6</td><td><span class="tag tag-amber">1×</span></td></tr>
+            <tr><td>Gemini 2.5 Pro / 3 Pro / 3.1 Pro</td><td><span class="tag tag-amber">1×</span></td></tr>
+            <tr><td>GPT-5.1 / 5.2 / 5.4 + Codex variants</td><td><span class="tag tag-amber">1×</span></td></tr>
+            <tr><td>Claude Opus 4.5 / 4.6</td><td><span class="tag tag-red">3×</span></td></tr>
+            <tr><td>Opus 4.6 fast mode (preview)</td><td><span class="tag tag-red">30×</span></td></tr>
+          </table>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Plans &amp; Allowances</div>
+          <table class="ref-table">
+            <tr><th>Plan</th><th>Included</th></tr>
+            <tr><td>Free</td><td>2K completions + 50 premium/mo</td></tr>
+            <tr><td>Pro / Student</td><td>Unlimited + premium allowance</td></tr>
+            <tr><td>Pro+</td><td>Unlimited + higher premium</td></tr>
+            <tr><td>Business</td><td>Unlimited + org premium pool</td></tr>
+            <tr><td>Enterprise</td><td>Unlimited + enterprise premium</td></tr>
+          </table>
+          <div class="callout callout-tip" style="margin-top: 6px;">
+            <strong>💡</strong> Auto model selection gives 10% multiplier discount on paid plans.
+          </div>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Unused requests don't carry over. Counters reset on 1st of each month (UTC).
+          </div>
+          <div class="callout callout-info" style="margin-top: 4px;">
+            <strong>📌</strong> Models are frequently added and deprecated. Multipliers may change. Check <a href="https://docs.github.com/en/copilot/get-started/plans#models" style="color: var(--accent-salmon);">official docs</a> for the latest model list.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Save budget on simple tasks</strong> — use GPT-4.1 (0×) for boilerplate, switch to Sonnet 4.6 (1×) for complex refactors</div>
+        <div class="use-case"><strong>Architecture decisions</strong> — use Opus 4.6 (3×) for design reviews where quality matters more than cost</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/about-github-copilot/subscription-plans-for-github-copilot" target="_blank">GitHub Docs — Plans &amp; Models</a> &middot;
+        <a href="https://docs.github.com/en/copilot/get-started/plans#models" target="_blank">Model Availability by Plan</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 7. CUSTOM INSTRUCTIONS ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">7</span>
+      <h3>Custom Instructions</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Markdown files that automatically inject your coding standards, conventions, and project context into every Copilot request — no need to repeat yourself in prompts.</div>
+      <div class="mini-heading">Always-On Files</div>
+      <div class="kv-row"><span class="kv-key">copilot-instructions.md</span><span class="kv-desc">.github/ folder</span></div>
+      <div class="kv-row"><span class="kv-key">AGENTS.md</span><span class="kv-desc">Root or subfolders</span></div>
+      <div class="kv-row"><span class="kv-key">CLAUDE.md</span><span class="kv-desc">Root, .claude/, ~/</span></div>
+      <div class="mini-heading">Priority (High → Low)</div>
+      <ul class="dot-list">
+        <li><strong>1.</strong> Personal (user-level)</li>
+        <li><strong>2.</strong> Repository (.github/ or AGENTS.md)</li>
+        <li><strong>3.</strong> Organization</li>
+      </ul>
+      <div class="mini-heading">For Specific Tasks</div>
+      <div class="kv-row"><span class="kv-key">Code review</span><span class="kv-desc">reviewSelection.instructions</span></div>
+      <div class="kv-row"><span class="kv-key">Commits</span><span class="kv-desc">commitMessageGeneration</span></div>
+      <div class="kv-row"><span class="kv-key">PR descriptions</span><span class="kv-desc">pullRequestDescription</span></div>
+      <div class="mini-heading">Generate Instructions</div>
+      <ul class="dot-list">
+        <li><code class="inline">/init</code> — auto-generate for workspace</li>
+        <li><code class="inline">/create-instruction</code> — AI-assisted</li>
+        <li>Chat debug view → verify loaded files</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Enforce coding style</strong> — add "Always use single quotes and 2-space indentation" to copilot-instructions.md</div>
+        <div class="use-case"><strong>Standardize commit messages</strong> — set commitMessageGeneration instructions to follow Conventional Commits format</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions" target="_blank">VS Code Docs — Custom Instructions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 8. INSTRUCTIONS.MD FILES ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">8</span>
+      <h3>Instructions.md Files</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info">
+        <strong>What:</strong> Targeted instruction files (<code class="inline">.instructions.md</code>) that apply <em>conditionally</em> based on file glob patterns or semantic matching — e.g., Python rules only for <code class="inline">*.py</code> files.
+      </div>
+      <div class="mini-heading">Format</div>
+      <div class="code-block"><code>---
+name: 'Python Standards'
+description: 'Python conventions'
+applyTo: '**/*.py'
+---
+# Python coding standards
+- Follow PEP 8 style guide
+- Use type hints for all functions</code></div>
+      <div class="mini-heading">Locations</div>
+      <div class="kv-row"><span class="kv-key">Workspace</span><span class="kv-desc">.github/instructions/</span></div>
+      <div class="kv-row"><span class="kv-key">Claude fmt</span><span class="kv-desc">.claude/rules/</span></div>
+      <div class="kv-row"><span class="kv-key">User</span><span class="kv-desc">~/.copilot/instructions/</span></div>
+      <div class="callout callout-tip">
+        <strong>💡</strong> Type <code class="inline">/instructions</code> in chat to open Configure menu.
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Python-only rules</strong> — create <code class="inline">python.instructions.md</code> with <code class="inline">applyTo: '**/*.py'</code> for PEP 8, type hints, docstrings</div>
+        <div class="use-case"><strong>React testing patterns</strong> — create <code class="inline">react-tests.instructions.md</code> with <code class="inline">applyTo: '**/*.test.tsx'</code> for RTL best practices</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions#_use-instructionsmd-files" target="_blank">VS Code Docs — Instructions Files</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 9. REUSABLE PROMPT FILES ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">9</span>
+      <h3>Reusable Prompt Files</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Saved prompt templates (<code class="inline">.prompt.md</code>) you invoke as slash commands. Encode frequent tasks like scaffolding components or running reviews — type <code class="inline">/prompt-name</code> instead of re-writing the prompt.</div>
+      <ul class="dot-list">
+        <li>Encode common tasks as <code class="inline">.prompt.md</code> files</li>
+        <li>Invoke via <code class="inline">/prompt-name</code> in chat</li>
+        <li>Workspace: <code class="inline">.github/prompts/</code></li>
+        <li>User: profile <code class="inline">prompts/</code> folder</li>
+      </ul>
+      <div class="mini-heading">Format</div>
+      <div class="code-block"><code>---
+description: 'Create React form'
+agent: agent
+tools: ['editFiles', 'search']
+model: GPT-5.2
+---
+Generate a React form component
+with validation for ${input:fields}</code></div>
+      <div class="mini-heading">Quick Commands</div>
+      <div class="kv-row"><span class="kv-key">/create-prompt</span><span class="kv-desc">AI-generate a prompt file</span></div>
+      <div class="kv-row"><span class="kv-key">/prompts</span><span class="kv-desc">Configure prompt files</span></div>
+      <div class="callout callout-tip">
+        <strong>💡</strong> Reference instructions via Markdown links. Use <code class="inline">${selection}</code> for flexibility.
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>One-command API scaffold</strong> — <code class="inline">/create-api</code> generates REST endpoint with controller, service, tests, and OpenAPI spec</div>
+        <div class="use-case"><strong>Standardized code review</strong> — <code class="inline">/review-pr</code> checks for security, performance, and accessibility issues every time</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/prompt-files" target="_blank">VS Code Docs — Prompt Files</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 10. CHAT MODES & AGENTS ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">10</span>
+      <h3>Chat Modes &amp; Custom Agents</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Agents are specialized AI personas with their own tools, instructions, and model. Create a security reviewer, planner, or any role — each with restricted tool access and handoffs to other agents.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Built-in Modes</div>
+          <table class="ref-table">
+            <tr><th>Mode</th><th>Purpose</th></tr>
+            <tr><td><strong>Ask</strong></td><td>Read-only Q&amp;A, no code changes</td></tr>
+            <tr><td><strong>Edit</strong></td><td>Direct code edits</td></tr>
+            <tr><td><strong>Agent</strong></td><td>Autonomous tool use + edits</td></tr>
+            <tr><td><strong>Plan</strong></td><td>Create plan before implementation</td></tr>
+          </table>
+          <div class="mini-heading">Custom Agent File (.agent.md)</div>
+          <div class="code-block"><code>---
+description: 'Security reviewer'
+tools: ['search', 'readFile']
+model: Claude Sonnet 4.6
+handoffs:
+  - label: Fix issues
+    agent: implementation
+---
+Review code for OWASP Top 10...</code></div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Agent Frontmatter Fields</div>
+          <div class="kv-row"><span class="kv-key">description</span><span class="kv-desc">Shown as placeholder text</span></div>
+          <div class="kv-row"><span class="kv-key">tools</span><span class="kv-desc">List of available tools</span></div>
+          <div class="kv-row"><span class="kv-key">agents</span><span class="kv-desc">Allowed subagents (* = all)</span></div>
+          <div class="kv-row"><span class="kv-key">model</span><span class="kv-desc">AI model (string or priority list)</span></div>
+          <div class="kv-row"><span class="kv-key">handoffs</span><span class="kv-desc">Sequential workflow transitions</span></div>
+          <div class="kv-row"><span class="kv-key">target</span><span class="kv-desc">vscode or github-copilot</span></div>
+          <div class="kv-row"><span class="kv-key">mcp-servers</span><span class="kv-desc">MCP server configs</span></div>
+          <div class="kv-row"><span class="kv-key">hooks</span><span class="kv-desc">Agent-scoped hooks (Preview)</span></div>
+          <div class="mini-heading">Locations</div>
+          <div class="kv-row"><span class="kv-key">Workspace</span><span class="kv-desc">.github/agents/</span></div>
+          <div class="kv-row"><span class="kv-key">Claude fmt</span><span class="kv-desc">.claude/agents/</span></div>
+          <div class="kv-row"><span class="kv-key">User</span><span class="kv-desc">~/.copilot/agents/</span></div>
+          <div class="callout callout-tip">
+            <strong>💡</strong> Type <code class="inline">/agents</code> or <code class="inline">/create-agent</code> in chat to manage agents.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Security review agent</strong> — read-only tools (<code class="inline">search</code>, <code class="inline">readFile</code>), scans for OWASP Top 10, hands off to "fix" agent</div>
+        <div class="use-case"><strong>Plan → Implement workflow</strong> — Plan agent creates a spec, handoff button sends it to Agent mode for coding</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/custom-agents" target="_blank">VS Code Docs — Custom Agents</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 11. SKILLS ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">11</span>
+      <h3>Skills (Agent Superpowers)</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info">
+        <strong>What:</strong> Portable folders of instructions, scripts &amp; resources that Copilot auto-loads when relevant. Unlike instructions (guidelines), skills teach <em>capabilities</em> — testing workflows, deployment recipes, etc. Open standard across VS Code, CLI &amp; coding agent.
+      </div>
+      <div class="mini-heading">SKILL.md Format</div>
+      <div class="code-block"><code>---
+name: webapp-testing
+description: 'Run and debug
+  web app integration tests'
+---
+# Testing Workflow
+Use describe + it + AAA pattern
+Use factory mocks for fixtures</code></div>
+      <div class="mini-heading">Locations</div>
+      <div class="kv-row"><span class="kv-key">Project</span><span class="kv-desc">.github/skills/&lt;name&gt;/</span></div>
+      <div class="kv-row"><span class="kv-key">Personal</span><span class="kv-desc">~/.copilot/skills/&lt;name&gt;/</span></div>
+      <div class="mini-heading">Key Features</div>
+      <ul class="dot-list">
+        <li>Invoke via <code class="inline">/skill-name</code> in chat</li>
+        <li><code class="inline">/create-skill</code> — AI-generate a skill</li>
+        <li>Works across VS Code, CLI &amp; coding agent</li>
+        <li>Open standard: agentskills.io</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Testing skill</strong> — SKILL.md + test templates + fixture scripts → Copilot auto-loads when you ask "help me test"</div>
+        <div class="use-case"><strong>Deployment skill</strong> — SKILL.md + deploy scripts + Dockerfile → <code class="inline">/deploy</code> runs the full pipeline</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/agent-skills" target="_blank">VS Code Docs — Skills</a> &middot;
+        <a href="https://agentskills.io" target="_blank">agentskills.io</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 12. MCP ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">12</span>
+      <h3>MCP — Model Context Protocol</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> An open standard that connects Copilot to external tools &amp; services (databases, APIs, browsers). MCP servers expose tools, data resources, and prompt templates that the AI can use during conversations.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">mcp.json (.vscode/mcp.json)</div>
+          <div class="code-block"><code>{
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y",
+        "@microsoft/mcp-server-playwright"]
+    }
+  }
+}</code></div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">MCP Capabilities</div>
+          <table class="ref-table">
+            <tr><th>Capability</th><th>Description</th></tr>
+            <tr><td><strong>Tools</strong></td><td>Execute operations (file, DB, API)</td></tr>
+            <tr><td><strong>Resources</strong></td><td>Read-only context (Add Context → MCP Resources)</td></tr>
+            <tr><td><strong>Prompts</strong></td><td>Templates via <code>/server.prompt</code></td></tr>
+            <tr><td><strong>MCP Apps</strong></td><td>Interactive UI in chat</td></tr>
+            <tr><td><strong>Sampling</strong></td><td>Server-initiated model calls</td></tr>
+            <tr><td><strong>Elicitation</strong></td><td>Server asks user for input</td></tr>
+          </table>
+          <div class="mini-heading">Key Servers</div>
+          <div class="kv-row"><span class="kv-key">github-mcp-server</span><span class="kv-desc">GitHub APIs</span></div>
+          <div class="kv-row"><span class="kv-key">Playwright</span><span class="kv-desc">Browser automation</span></div>
+          <div class="kv-row"><span class="kv-key">Sandbox</span><span class="kv-desc">macOS/Linux: sandboxEnabled</span></div>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Only use MCP servers from trusted sources. Review configs before starting.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Query a database</strong> — add a Postgres MCP server → ask Copilot "show me users who signed up this week"</div>
+        <div class="use-case"><strong>Browser testing</strong> — add Playwright MCP server → "go to our staging site and screenshot the login page"</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers" target="_blank">VS Code Docs — MCP Servers</a> &middot;
+        <a href="https://modelcontextprotocol.io" target="_blank">modelcontextprotocol.io</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 13. HOOKS ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">13</span>
+      <h3>Hooks — Lifecycle Automation</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Deterministic shell commands that run at specific agent lifecycle points. Unlike instructions (suggestions), hooks <em>guarantee</em> execution — block dangerous commands, auto-format after edits, log tool usage, enforce security policies.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Hook Events</div>
+          <table class="ref-table">
+            <tr><th>Event</th><th>When</th></tr>
+            <tr><td><code>SessionStart</code></td><td>First prompt of new session</td></tr>
+            <tr><td><code>UserPromptSubmit</code></td><td>User submits a prompt</td></tr>
+            <tr><td><code>PreToolUse</code></td><td>Before tool invocation</td></tr>
+            <tr><td><code>PostToolUse</code></td><td>After tool completes</td></tr>
+            <tr><td><code>PreCompact</code></td><td>Before context compaction</td></tr>
+            <tr><td><code>SubagentStart/Stop</code></td><td>Subagent lifecycle</td></tr>
+            <tr><td><code>Stop</code></td><td>Agent session ends</td></tr>
+          </table>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Hook Config (.github/hooks/*.json)</div>
+          <div class="code-block"><code>{
+  "hooks": {
+    "PostToolUse": [{
+      "type": "command",
+      "command": "npx prettier --write \"$TOOL_INPUT_FILE_PATH\""
+    }]
+  }
+}</code></div>
+          <div class="mini-heading">Exit Codes</div>
+          <div class="kv-row"><span class="kv-key">0</span><span class="kv-desc">Success → parse stdout JSON</span></div>
+          <div class="kv-row"><span class="kv-key">2</span><span class="kv-desc">Block → stop &amp; show error</span></div>
+          <div class="kv-row"><span class="kv-key">Other</span><span class="kv-desc">Warning → continue</span></div>
+          <div class="mini-heading">PreToolUse Output</div>
+          <div class="kv-row"><span class="kv-key">permissionDecision</span><span class="kv-desc">"allow" | "deny" | "ask"</span></div>
+          <div class="callout callout-tip">
+            <strong>💡</strong> Use <code class="inline">/hooks</code> or <code class="inline">/create-hook</code> in chat to configure hooks.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Auto-format on save</strong> — PostToolUse hook runs <code class="inline">prettier --write</code> on every file the agent edits</div>
+        <div class="use-case"><strong>Block destructive commands</strong> — PreToolUse hook denies <code class="inline">rm -rf</code> and <code class="inline">DROP TABLE</code> with exit code 2</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/hooks" target="_blank">VS Code Docs — Agent Hooks</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 14. COPILOT ON GITHUB.COM ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">14</span>
+      <h3>Copilot on GitHub.com</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Copilot features on github.com — the cloud coding agent creates PRs autonomously, Copilot reviews code, generates PR summaries, helps with issues, and runs Autofix for security vulnerabilities.</div>
+      <div class="mini-heading">Coding Agent</div>
+      <ul class="dot-list">
+        <li>Delegate tasks from VS Code, CLI, or github.com</li>
+        <li>Use <code class="inline">/delegate</code> in chat or @cli in terminal</li>
+        <li>Creates PRs autonomously in cloud</li>
+        <li>Uses premium requests (1× per session × model)</li>
+        <li>Follow up with steering comments</li>
+      </ul>
+      <div class="mini-heading">PR &amp; Issue Features</div>
+      <ul class="dot-list">
+        <li><strong>PR Summary</strong> — auto-generate descriptions</li>
+        <li><strong>Code Review</strong> — assign Copilot as reviewer</li>
+        <li><strong>Issue helper</strong> — create/update issues with Copilot</li>
+        <li><strong>Autofix</strong> — code scanning security fixes</li>
+      </ul>
+      <div class="mini-heading">Customize Agent Environment</div>
+      <ul class="dot-list">
+        <li>Custom Dockerfile, devcontainer</li>
+        <li>MCP servers for coding agent</li>
+        <li>Pre/post scripts, dependencies</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Delegate a feature</strong> — <code class="inline">/delegate</code> + link to GitHub issue → agent creates a branch, implements, and opens a PR</div>
+        <div class="use-case"><strong>Auto-review PRs</strong> — assign Copilot as reviewer on every PR → catches bugs, style issues, and security flaws</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/using-github-copilot/coding-agent" target="_blank">GitHub Docs — Coding Agent</a> &middot;
+        <a href="https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review" target="_blank">Code Review</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 15. COPILOT CLI ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">15</span>
+      <h3>Copilot CLI — Terminal AI Agent</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> A full AI coding agent in your terminal — interactive conversations, autonomous task execution, plan mode, custom agents, MCP, hooks, skills, and memory. Default model: Claude Sonnet 4.5.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Slash Commands</div>
+          <table class="ref-table">
+            <tr><th>Command</th><th>Action</th></tr>
+            <tr><td><code>/model</code></td><td>Switch AI model</td></tr>
+            <tr><td><code>/compact</code></td><td>Compress conversation context</td></tr>
+            <tr><td><code>/context</code></td><td>View token usage breakdown</td></tr>
+            <tr><td><code>/usage</code></td><td>Session stats (premium reqs, duration, LOC)</td></tr>
+            <tr><td><code>/agent</code></td><td>Select a custom agent</td></tr>
+            <tr><td><code>/mcp</code></td><td>List MCP servers; <code>/mcp add</code> to add</td></tr>
+            <tr><td><code>/resume</code></td><td>Resume a previous session</td></tr>
+            <tr><td><code>/add-dir</code></td><td>Trust an additional directory</td></tr>
+            <tr><td><code>/cwd</code> / <code>/cd</code></td><td>Change working directory</td></tr>
+            <tr><td><code>/login</code></td><td>Authenticate with GitHub</td></tr>
+            <tr><td><code>/feedback</code></td><td>Submit feedback, bugs, features</td></tr>
+            <tr><td><code>/allow-all</code></td><td>Auto-approve all tools this session</td></tr>
+          </table>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Keyboard &amp; Syntax</div>
+          <table class="ref-table">
+            <tr><th>Key / Syntax</th><th>Action</th></tr>
+            <tr><td><strong>Shift+Tab</strong></td><td>Toggle Ask / Plan mode</td></tr>
+            <tr><td><strong>Ctrl+T</strong></td><td>Show/hide model reasoning</td></tr>
+            <tr><td><strong>Esc</strong></td><td>Stop current operation</td></tr>
+            <tr><td><code>@path/to/file</code></td><td>Include file as context</td></tr>
+            <tr><td><code>!git status</code></td><td>Run shell command directly</td></tr>
+          </table>
+          <div class="mini-heading">Command-Line Flags</div>
+          <div class="kv-row"><span class="kv-key">-p "prompt"</span><span class="kv-desc">Programmatic single-prompt mode</span></div>
+          <div class="kv-row"><span class="kv-key">--continue</span><span class="kv-desc">Resume most recent session</span></div>
+          <div class="kv-row"><span class="kv-key">--resume</span><span class="kv-desc">Pick a session to resume</span></div>
+          <div class="kv-row"><span class="kv-key">--agent=name</span><span class="kv-desc">Use a specific custom agent</span></div>
+          <div class="kv-row"><span class="kv-key">--allow-all-tools</span><span class="kv-desc">Auto-approve all tools</span></div>
+          <div class="kv-row"><span class="kv-key">--allow-tool='shell(git)'</span><span class="kv-desc">Allow specific tool</span></div>
+          <div class="kv-row"><span class="kv-key">--deny-tool='shell(rm)'</span><span class="kv-desc">Block specific tool</span></div>
+          <div class="kv-row"><span class="kv-key">--model name</span><span class="kv-desc">Set model from CLI</span></div>
+          <div class="mini-heading">Built-in Subagents</div>
+          <div class="kv-row"><span class="kv-key">Explore</span><span class="kv-desc">Quick codebase analysis</span></div>
+          <div class="kv-row"><span class="kv-key">Task</span><span class="kv-desc">Run tests/builds, brief summaries</span></div>
+          <div class="kv-row"><span class="kv-key">Code-review</span><span class="kv-desc">Review changes, surface real issues</span></div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Headless automation</strong> — <code class="inline">copilot -p "Run tests, fix failures, commit" --allow-all-tools</code> in CI/CD</div>
+        <div class="use-case"><strong>Resume cloud agent</strong> — <code class="inline">/resume</code> to pull a coding agent session from github.com into your terminal</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli" target="_blank">GitHub Docs — Copilot CLI</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 16. SPACES & SPARK ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">16</span>
+      <h3>Spaces &amp; Spark</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> <strong>Spaces</strong> — curated knowledge collections for project context. <strong>Spark</strong> — natural language to micro web apps.</div>
+      <ul class="dot-list">
+        <li>Curate knowledge for project context</li>
+        <li>Attach docs, code, files to a space</li>
+        <li>Access at github.com/copilot/spaces</li>
+        <li>Uses premium requests (1× model rate)</li>
+      </ul>
+      <div class="mini-heading">Copilot Spark</div>
+      <ul class="dot-list">
+        <li>Natural language → micro web apps</li>
+        <li>4 premium requests per prompt</li>
+        <li>Access at github.com/spark</li>
+      </ul>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>CLI: bulk file ops</strong> — <code class="inline">copilot -p "Rename all .jpeg files to .jpg recursively"</code> with <code class="inline">--allow-tool='shell'</code></div>
+        <div class="use-case"><strong>Spark: quick prototype</strong> — "Build a dashboard showing my GitHub repo stats" → live web app in seconds</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/using-github-copilot/copilot-spaces/about-organizing-and-sharing-context-with-copilot-spaces" target="_blank">GitHub Docs — Spaces</a> &middot;
+        <a href="https://docs.github.com/en/copilot/tutorials/spark/build-apps-with-spark" target="_blank">Copilot Spark</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 17. TOOLSETS ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">17</span>
+      <h3>Toolsets</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> A collection of tools you reference as a single entity in prompts, prompt files, and custom agents. Organize related tools and enable/disable them as a group.</div>
+      <ul class="dot-list">
+        <li>Define in <code class="inline">.jsonc</code> files via <code class="inline">Chat: Configure Tool Sets</code></li>
+        <li>Reference in prompts: <code class="inline">#toolset-name</code></li>
+        <li>Reference in agents: <code class="inline">tools: ['my-toolset']</code></li>
+        <li>Built-in sets: <code class="inline">#edit</code>, <code class="inline">#search</code></li>
+      </ul>
+      <div class="mini-heading">Tool Set File (.jsonc)</div>
+      <div class="code-block"><code>{
+  "reader": {
+    "tools": ["search/changes", "search/codebase",
+              "read/problems", "search/usages"],
+    "description": "Tools for reading context",
+    "icon": "book"
+  }
+}</code></div>
+      <div class="mini-heading">Properties</div>
+      <div class="kv-row"><span class="kv-key">tools</span><span class="kv-desc">Array of tool names (built-in, MCP, extension)</span></div>
+      <div class="kv-row"><span class="kv-key">description</span><span class="kv-desc">Shown in tools picker</span></div>
+      <div class="kv-row"><span class="kv-key">icon</span><span class="kv-desc">Product icon (see Icon Reference)</span></div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Read-only toolset</strong> — group <code class="inline">search</code>, <code class="inline">readFile</code>, <code class="inline">grep</code> into a <code class="inline">#reader</code> set for safe auditing</div>
+        <div class="use-case"><strong>Quick reference</strong> — type <code class="inline">#reader</code> in prompt to enable all read tools at once</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/agents/agent-tools#_group-tools-with-tool-sets" target="_blank">VS Code Docs — Tool Sets</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 18. CONTENT EXCLUSION ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">18</span>
+      <h3>Content Exclusion</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Organization-level rules that prevent specific files, folders, or repositories from being sent to the AI model — enforcing compliance and protecting sensitive code.</div>
+      <ul class="dot-list">
+        <li>Exclude files/repos from Copilot at org level</li>
+        <li>Prevents content from being sent to model</li>
+        <li>Configurable in GitHub org settings</li>
+        <li>Supports glob patterns for paths</li>
+        <li>Applies to completions, chat, and agents</li>
+      </ul>
+      <div class="mini-heading">Common Exclusions</div>
+      <div class="kv-row"><span class="kv-key">.env / .env.*</span><span class="kv-desc">Environment variables &amp; secrets</span></div>
+      <div class="kv-row"><span class="kv-key">**/secrets/**</span><span class="kv-desc">Secret files &amp; credentials</span></div>
+      <div class="kv-row"><span class="kv-key">**/keys/**</span><span class="kv-desc">API keys &amp; certificates</span></div>
+      <div class="kv-row"><span class="kv-key">internal-repo</span><span class="kv-desc">Entire private repositories</span></div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Exclude secrets</strong> — content exclusion rule blocks <code class="inline">.env</code>, <code class="inline">**/secrets/**</code> from being sent to AI</div>
+        <div class="use-case"><strong>Compliance</strong> — exclude regulated codebases (HIPAA, PCI) from AI processing at the org level</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/excluding-content-from-github-copilot" target="_blank">GitHub Docs — Content Exclusion</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 19. SPEC-DRIVEN DEVELOPMENT ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">19</span>
+      <h3>Spec-Driven Development</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Write a specification first, then let the AI agent implement it. Specs define requirements, acceptance criteria, and architecture — giving agents a clear blueprint instead of ad-hoc prompts.</div>
+      <div class="mini-heading">Popular Frameworks</div>
+      <div class="kv-row"><span class="kv-key">spec-kit</span><span class="kv-desc">GitHub's spec workflow for coding agent</span></div>
+      <div class="kv-row"><span class="kv-key">OpenSpec</span><span class="kv-desc">Fission AI spec framework</span></div>
+      <div class="kv-row"><span class="kv-key">BMAD</span><span class="kv-desc">BMAD methodology</span></div>
+      <div class="kv-row"><span class="kv-key">GSD</span><span class="kv-desc">Get-shit-done framework</span></div>
+      <div class="mini-heading">Workflow</div>
+      <div class="flow-row">
+        <span class="flow-box">Write Spec</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-box">Review &amp; Refine</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-box">Agent Implements</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-box">Validate Output</span>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Feature spec</strong> — write a spec with user stories + acceptance criteria → <code class="inline">/delegate</code> to coding agent for implementation</div>
+        <div class="use-case"><strong>Migration spec</strong> — define the target state, constraints, and rollback plan → agent handles the migration systematically</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://github.com/github/spec-kit" target="_blank">github/spec-kit</a> &middot;
+        <a href="https://github.com/Fission-AI/OpenSpec" target="_blank">OpenSpec</a> &middot;
+        <a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank">BMAD Method</a> &middot;
+        <a href="https://github.com/gsd-build/get-shit-done" target="_blank">GSD</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 20. CUSTOMIZATION FILE STRUCTURE ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="section-num">20</span>
+      <h3>Customization File Structure</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> The recommended project layout for all Copilot customization files — instructions, prompts, agents, skills, hooks, toolsets, and MCP configs in one organized tree.</div>
+      <div class="file-tree">
+<span class="folder">your-project/</span>
+├── <span class="folder">.github/</span>
+│   ├── <span class="file">copilot-instructions.md</span>
+│   ├── <span class="folder">instructions/</span>
+│   │   ├── <span class="file">python.instructions.md</span>
+│   │   └── <span class="file">react.instructions.md</span>
+│   ├── <span class="folder">prompts/</span>
+│   │   └── <span class="file">create-api.prompt.md</span>
+│   ├── <span class="folder">agents/</span>
+│   │   ├── <span class="file">planner.agent.md</span>
+│   │   └── <span class="file">reviewer.agent.md</span>
+│   ├── <span class="folder">skills/</span>
+│   │   └── <span class="folder">testing/</span>
+│   │       └── <span class="file">SKILL.md</span>
+│   ├── <span class="folder">hooks/</span>
+│   │   └── <span class="file">format.json</span>
+│   └── <span class="folder">toolsets/</span>
+├── <span class="folder">.vscode/</span>
+│   └── <span class="file">mcp.json</span>
+├── <span class="file">AGENTS.md</span>
+└── <span class="file">CLAUDE.md</span>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Monorepo setup</strong> — separate <code class="inline">instructions/</code> for frontend (React) and backend (Python) with different <code class="inline">applyTo</code> globs</div>
+        <div class="use-case"><strong>Team shared configs</strong> — commit <code class="inline">.github/</code> folder to Git so all team members get the same Copilot behavior</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/overview" target="_blank">VS Code Docs — Customization Overview</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 21. QUICK REFERENCE ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">21</span>
+      <h3>Quick Reference &amp; Resources</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Essential keyboard shortcuts, AI-powered slash commands for creating customizations, and key links to documentation, changelogs, and community resources.</div>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Chat Shortcuts</div>
+          <table class="ref-table">
+            <tr><th>Shortcut</th><th>Action</th></tr>
+            <tr><td><strong>⌃⌘I</strong> / <strong>Ctrl+Alt+I</strong></td><td>Open Chat panel</td></tr>
+            <tr><td><strong>⌘I</strong> / <strong>Ctrl+I</strong></td><td>Inline chat</td></tr>
+            <tr><td><strong>⌘⇧I</strong></td><td>Toggle secondary sidebar</td></tr>
+            <tr><td><strong>Tab</strong></td><td>Accept suggestion</td></tr>
+            <tr><td><strong>Esc</strong></td><td>Dismiss suggestion</td></tr>
+            <tr><td><strong>Alt+]</strong> / <strong>Alt+[</strong></td><td>Next / prev suggestion</td></tr>
+            <tr><td><strong>Ctrl+→</strong></td><td>Accept word by word</td></tr>
+          </table>
+          <div class="mini-heading">Useful Extensions</div>
+          <div class="kv-row"><span class="kv-key">Awesome Copilot</span><span class="kv-desc">Curated tips &amp; resources · <a href="https://marketplace.visualstudio.com/items?itemName=TimHeuer.awesome-copilot" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">Prompt Boost</span><span class="kv-desc">Enhance your prompts · <a href="https://marketplace.visualstudio.com/items?itemName=chrisdias.promptboost" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">Token Tracker</span><span class="kv-desc">Track Copilot usage · <a href="https://marketplace.visualstudio.com/items?itemName=RobBos.copilot-token-tracker" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">SpecStory</span><span class="kv-desc">Save &amp; search AI chat history · <a href="https://marketplace.visualstudio.com/items?itemName=SpecStory.specstory-vscode" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">HuggingFace</span><span class="kv-desc">HF models in VS Code · <a href="https://marketplace.visualstudio.com/items?itemName=HuggingFace.huggingface-vscode" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Quick Commands</div>
+          <table class="ref-table">
+            <tr><th>Command</th><th>Action</th></tr>
+            <tr><td><code>/init</code></td><td>Generate workspace instructions</td></tr>
+            <tr><td><code>/create-agent</code></td><td>AI-create a custom agent</td></tr>
+            <tr><td><code>/create-skill</code></td><td>AI-create a skill</td></tr>
+            <tr><td><code>/create-prompt</code></td><td>AI-create a prompt file</td></tr>
+            <tr><td><code>/create-instruction</code></td><td>AI-create an instruction</td></tr>
+            <tr><td><code>/create-hook</code></td><td>AI-create a hook config</td></tr>
+            <tr><td><code>/hooks</code></td><td>Configure hooks menu</td></tr>
+          </table>
+          <div class="mini-heading">Key Resources</div>
+          <div class="kv-row"><span class="kv-key">Feature Matrix</span><span class="kv-desc">Copilot feature comparison · <a href="https://copilot-feature-matrix.com" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">MCP Marketplace</span><span class="kv-desc">Discover MCP servers · <a href="https://github.com/modelcontextprotocol/servers" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">Skills Repository</span><span class="kv-desc">Browse agent skills · <a href="https://agentskills.io" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">Changelog</span><span class="kv-desc">Latest Copilot updates · <a href="https://github.blog/changelog/label/copilot" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+          <div class="kv-row"><span class="kv-key">awesome-copilot</span><span class="kv-desc">Community resources · <a href="https://github.com/github/awesome-copilot" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Fast navigation</strong> — memorize ⌃⌘I (open chat) + ⌘I (inline chat) + Tab (accept) for fluid keyboard-only workflow</div>
+        <div class="use-case"><strong>Stay current</strong> — check github.blog/changelog/copilot weekly for new models, features, and API changes</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot" target="_blank">GitHub Copilot Docs</a> &middot;
+        <a href="https://github.blog/changelog/label/copilot" target="_blank">Changelog</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  <strong>Created with GitHub Copilot</strong> · Sources: docs.github.com/copilot · code.visualstudio.com/docs/copilot · modelcontextprotocol.io · March 2026
+</div>
+
+</body>
+</html>
