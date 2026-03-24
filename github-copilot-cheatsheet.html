@@ -3781,6 +3781,95 @@ Example: validateEmail("invalid") → false</code></div>
     </div>
     <div class="card-body">
       <div class="callout callout-info"><strong>What:</strong> How GitHub protects your data — code is not used for training (Business/Enterprise), prompts are not retained, responsible AI filters run pre- and post-model, and IP indemnity covers Copilot-generated code.</div>
+
+      <!-- ===== INFOGRAPHIC ===== -->
+      <svg viewBox="0 0 780 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+        <defs>
+          <linearGradient id="gPr1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+          <linearGradient id="gPr2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#2563EB"/></linearGradient>
+          <linearGradient id="gPr3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient>
+          <linearGradient id="gPr4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
+          <linearGradient id="gPr5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#DC2626"/></linearGradient>
+          <linearGradient id="gPr6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EC4899"/><stop offset="100%" stop-color="#DB2777"/></linearGradient>
+          <filter id="shPr"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
+        </defs>
+
+        <!-- Title -->
+        <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="800" letter-spacing="0.5">DATA PROTECTION — YOUR CODE STAYS YOURS</text>
+
+        <!-- ── Row 1: 3 protection pillars ── -->
+
+        <!-- Pillar 1: No Training -->
+        <rect x="20" y="30" width="230" height="52" rx="10" fill="url(#gPr1)" filter="url(#shPr)"/>
+        <text x="135" y="50" text-anchor="middle" fill="#fff" font-size="16">🔒</text>
+        <text x="135" y="66" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">No Training on Your Code</text>
+        <text x="135" y="78" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Business/Enterprise: code never used for model training</text>
+
+        <!-- Pillar 2: No Retention -->
+        <rect x="262" y="30" width="230" height="52" rx="10" fill="url(#gPr2)" filter="url(#shPr)"/>
+        <text x="377" y="50" text-anchor="middle" fill="#fff" font-size="16">🗑️</text>
+        <text x="377" y="66" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">No Prompt Retention</text>
+        <text x="377" y="78" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Prompts &amp; suggestions discarded after response delivered</text>
+
+        <!-- Pillar 3: IP Indemnity -->
+        <rect x="504" y="30" width="256" height="52" rx="10" fill="url(#gPr3)" filter="url(#shPr)"/>
+        <text x="632" y="50" text-anchor="middle" fill="#fff" font-size="16">⚖️</text>
+        <text x="632" y="66" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">IP Indemnity</text>
+        <text x="632" y="78" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">GitHub indemnifies Copilot output (Business/Enterprise)</text>
+
+        <!-- ── Row 2: Responsible AI pipeline ── -->
+        <text x="390" y="102" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">RESPONSIBLE AI PIPELINE</text>
+
+        <!-- Pre-model -->
+        <rect x="50" y="110" width="140" height="20" rx="5" fill="url(#gPr4)" filter="url(#shPr)"/>
+        <text x="120" y="123" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="7" font-weight="600">🛡️ Pre-Model Filters</text>
+
+        <polygon points="194,118 201,120 194,122" fill="#F4A261"/>
+
+        <!-- Content exclusion -->
+        <rect x="206" y="110" width="120" height="20" rx="5" fill="url(#gPr5)" filter="url(#shPr)"/>
+        <text x="266" y="123" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="7" font-weight="600">🚫 Content Exclusion</text>
+
+        <polygon points="330,118 337,120 330,122" fill="#F4A261"/>
+
+        <!-- AI Model -->
+        <rect x="342" y="110" width="100" height="20" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="0.8"/>
+        <text x="392" y="123" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">🧠 AI Model</text>
+
+        <polygon points="446,118 453,120 446,122" fill="#F4A261"/>
+
+        <!-- Post-model -->
+        <rect x="458" y="110" width="140" height="20" rx="5" fill="url(#gPr6)" filter="url(#shPr)"/>
+        <text x="528" y="123" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="7" font-weight="600">🔍 Post-Model Filters</text>
+
+        <polygon points="602,118 609,120 602,122" fill="#F4A261"/>
+
+        <!-- Public code check -->
+        <rect x="614" y="110" width="140" height="20" rx="5" fill="#0F172A" stroke="#06B6D4" stroke-width="0.8"/>
+        <text x="684" y="123" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="7" font-weight="600">📋 Duplicate Code Check</text>
+
+        <!-- Bottom: compliance badges -->
+        <text x="390" y="146" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="0.5">COMPLIANCE</text>
+
+        <rect x="140" y="150" width="70" height="10" rx="3" fill="#064e3b" stroke="#10B981" stroke-width="0.4"/>
+        <text x="175" y="158" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">SOC 2 Type II</text>
+
+        <rect x="220" y="150" width="50" height="10" rx="3" fill="#0c1e3d" stroke="#3B82F6" stroke-width="0.4"/>
+        <text x="245" y="158" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">GDPR</text>
+
+        <rect x="280" y="150" width="60" height="10" rx="3" fill="#291800" stroke="#F59E0B" stroke-width="0.4"/>
+        <text x="310" y="158" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">Encrypted</text>
+
+        <rect x="350" y="150" width="80" height="10" rx="3" fill="#3B1764" stroke="#8B5CF6" stroke-width="0.4"/>
+        <text x="390" y="158" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">Trust Center</text>
+
+        <rect x="440" y="150" width="90" height="10" rx="3" fill="#2a0d1e" stroke="#EC4899" stroke-width="0.4"/>
+        <text x="485" y="158" text-anchor="middle" fill="#F472B6" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">Public Code Filter</text>
+
+        <rect x="540" y="150" width="90" height="10" rx="3" fill="#2a0a0a" stroke="#EF4444" stroke-width="0.4"/>
+        <text x="585" y="158" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">Telemetry Opt-out</text>
+      </svg>
+
       <div style="display: flex; gap: 12px;">
         <div style="flex: 1;">
           <div class="mini-heading">Data Handling</div>
@@ -4082,6 +4171,821 @@ Example: validateEmail("invalid") → false</code></div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
         <a href="https://code.visualstudio.com/docs/copilot/agents/subagents" target="_blank">VS Code Docs — Subagents</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 31. COPILOT METRICS API ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">31</span>
+      <h3>Copilot Metrics API</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> REST API endpoints that provide aggregated usage metrics for Copilot across your enterprise, organization, or team — acceptance rates, active users, language/editor breakdowns, chat usage, and PR summaries. Build custom dashboards and track ROI.</div>
+
+      <!-- ===== INFOGRAPHIC ===== -->
+      <svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+        <defs>
+          <linearGradient id="gMt1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#2563EB"/></linearGradient>
+          <linearGradient id="gMt2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient>
+          <linearGradient id="gMt3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+          <linearGradient id="gMt4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
+          <linearGradient id="gMt5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EC4899"/><stop offset="100%" stop-color="#DB2777"/></linearGradient>
+          <linearGradient id="gMt6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#0891B2"/></linearGradient>
+          <filter id="shMt"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
+          <marker id="arrMt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F4A261"/></marker>
+        </defs>
+
+        <!-- Title -->
+        <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">COPILOT METRICS API — DATA FLOW &amp; STRUCTURE</text>
+
+        <!-- ── Row 1: API Endpoints ── -->
+        <text x="390" y="38" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">REST API ENDPOINTS</text>
+
+        <!-- Enterprise endpoint -->
+        <rect x="20" y="46" width="220" height="40" rx="10" fill="url(#gMt1)" filter="url(#shMt)"/>
+        <text x="130" y="62" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">🏢 Enterprise Metrics</text>
+        <text x="130" y="78" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="JetBrains Mono,monospace" font-size="7">GET /enterprises/{ent}/copilot/metrics</text>
+
+        <!-- Organization endpoint -->
+        <rect x="250" y="46" width="220" height="40" rx="10" fill="url(#gMt2)" filter="url(#shMt)"/>
+        <text x="360" y="62" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">🏛️ Organization Metrics</text>
+        <text x="360" y="78" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="JetBrains Mono,monospace" font-size="7">GET /orgs/{org}/copilot/metrics</text>
+
+        <!-- Team endpoint -->
+        <rect x="480" y="46" width="280" height="40" rx="10" fill="url(#gMt3)" filter="url(#shMt)"/>
+        <text x="620" y="62" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">👥 Team Metrics</text>
+        <text x="620" y="78" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="JetBrains Mono,monospace" font-size="7">GET /orgs/{org}/team/{team_slug}/copilot/metrics</text>
+
+        <!-- ── Arrows down to response structure ── -->
+        <line x1="130" y1="90" x2="130" y2="100" stroke="#F4A261" stroke-width="1.5"/>
+        <line x1="360" y1="90" x2="360" y2="100" stroke="#F4A261" stroke-width="1.5"/>
+        <line x1="620" y1="90" x2="620" y2="100" stroke="#F4A261" stroke-width="1.5"/>
+        <line x1="130" y1="100" x2="390" y2="110" stroke="#F4A261" stroke-width="1.5"/>
+        <line x1="360" y1="100" x2="390" y2="110" stroke="#F4A261" stroke-width="1.5"/>
+        <line x1="620" y1="100" x2="390" y2="110" stroke="#F4A261" stroke-width="1.5"/>
+        <circle cx="390" cy="110" r="4" fill="#F4A261"/>
+
+        <!-- ── Row 2: Response Structure ── -->
+        <text x="390" y="126" text-anchor="middle" fill="#F8FAFC" font-family="Inter,sans-serif" font-size="9" font-weight="800" letter-spacing="0.5">RESPONSE STRUCTURE (per day)</text>
+
+        <!-- Date + Users box -->
+        <rect x="20" y="134" width="120" height="60" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="0.8"/>
+        <text x="80" y="148" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="8" font-weight="700">📅 Daily Record</text>
+        <text x="80" y="162" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6.5">date: "2026-03-24"</text>
+        <text x="80" y="174" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6.5">total_active_users: 24</text>
+        <text x="80" y="186" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6.5">total_engaged_users: 20</text>
+
+        <!-- 4 metric category boxes -->
+        <!-- Completions -->
+        <rect x="152" y="134" width="148" height="60" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="0.8"/>
+        <text x="226" y="148" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7.5" font-weight="700">⌨️ IDE Code Completions</text>
+        <text x="226" y="162" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_code_suggestions: 745</text>
+        <text x="226" y="174" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_code_acceptances: 376</text>
+        <text x="226" y="186" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_code_lines_accepted: 405</text>
+
+        <!-- IDE Chat -->
+        <rect x="310" y="134" width="148" height="60" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="0.8"/>
+        <text x="384" y="148" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7.5" font-weight="700">💬 IDE Chat</text>
+        <text x="384" y="162" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_chats: 55</text>
+        <text x="384" y="174" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_chat_insertion_events: 23</text>
+        <text x="384" y="186" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_chat_copy_events: 19</text>
+
+        <!-- GitHub.com Chat -->
+        <rect x="468" y="134" width="148" height="60" rx="8" fill="#0F172A" stroke="#EC4899" stroke-width="0.8"/>
+        <text x="542" y="148" text-anchor="middle" fill="#F472B6" font-family="Inter,sans-serif" font-size="7.5" font-weight="700">🌐 GitHub.com Chat</text>
+        <text x="542" y="162" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_engaged_users: 14</text>
+        <text x="542" y="174" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_chats: 38</text>
+        <text x="542" y="186" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">by model breakdown</text>
+
+        <!-- PR Summaries -->
+        <rect x="626" y="134" width="134" height="60" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="0.8"/>
+        <text x="693" y="148" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="7.5" font-weight="700">🔀 PR Summaries</text>
+        <text x="693" y="162" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">total_pr_summaries: 16</text>
+        <text x="693" y="174" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6">by repo breakdown</text>
+        <text x="693" y="186" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">by model breakdown</text>
+
+        <!-- ── Row 3: Dimension breakdowns ── -->
+        <text x="390" y="210" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">BREAKDOWN DIMENSIONS</text>
+
+        <rect x="60" y="218" width="100" height="18" rx="5" fill="#1a2740" stroke="#3B82F6" stroke-width="0.6"/>
+        <text x="110" y="230" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7" font-weight="600">📝 By Language</text>
+
+        <rect x="170" y="218" width="100" height="18" rx="5" fill="#1a2740" stroke="#10B981" stroke-width="0.6"/>
+        <text x="220" y="230" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">🖥️ By Editor</text>
+
+        <rect x="280" y="218" width="100" height="18" rx="5" fill="#1a2740" stroke="#8B5CF6" stroke-width="0.6"/>
+        <text x="330" y="230" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7" font-weight="600">🧠 By Model</text>
+
+        <rect x="390" y="218" width="100" height="18" rx="5" fill="#1a2740" stroke="#F59E0B" stroke-width="0.6"/>
+        <text x="440" y="230" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7" font-weight="600">📁 By Repository</text>
+
+        <rect x="500" y="218" width="100" height="18" rx="5" fill="#1a2740" stroke="#EC4899" stroke-width="0.6"/>
+        <text x="550" y="230" text-anchor="middle" fill="#F472B6" font-family="Inter,sans-serif" font-size="7" font-weight="600">📅 By Day</text>
+
+        <rect x="610" y="218" width="110" height="18" rx="5" fill="#1a2740" stroke="#06B6D4" stroke-width="0.6"/>
+        <text x="665" y="230" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="7" font-weight="600">🏷️ Custom Models</text>
+
+        <!-- Bottom: acceptance rate formula -->
+        <rect x="150" y="244" width="480" height="14" rx="4" fill="#0F172A" stroke="#10B981" stroke-width="0.5"/>
+        <text x="390" y="254" text-anchor="middle" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="7" font-weight="600">acceptance_rate = total_code_acceptances / total_code_suggestions × 100   →   376 / 745 = 50.5%</text>
+      </svg>
+
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">API Endpoints</div>
+          <table class="ref-table">
+            <tr><th>Scope</th><th>Endpoint</th></tr>
+            <tr><td><strong>Enterprise</strong></td><td><code>GET /enterprises/{ent}/copilot/metrics</code></td></tr>
+            <tr><td><strong>Organization</strong></td><td><code>GET /orgs/{org}/copilot/metrics</code></td></tr>
+            <tr><td><strong>Team</strong></td><td><code>GET /orgs/{org}/team/{slug}/copilot/metrics</code></td></tr>
+          </table>
+          <div class="mini-heading">Query Parameters</div>
+          <div class="kv-row"><span class="kv-key">since</span><span class="kv-desc">ISO 8601 date (max 100 days ago)</span></div>
+          <div class="kv-row"><span class="kv-key">until</span><span class="kv-desc">ISO 8601 end date</span></div>
+          <div class="kv-row"><span class="kv-key">page</span><span class="kv-desc">Page number (default: 1)</span></div>
+          <div class="kv-row"><span class="kv-key">per_page</span><span class="kv-desc">Days per page (max 100)</span></div>
+          <div class="mini-heading">cURL Example</div>
+          <div class="code-block"><code>curl -L \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "X-GitHub-Api-Version: 2026-03-10" \
+  https://api.github.com/orgs/my-org/copilot/metrics\
+  ?since=2026-02-01&amp;until=2026-03-01</code></div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Metrics Returned</div>
+          <table class="ref-table">
+            <tr><th>Category</th><th>Key Metrics</th></tr>
+            <tr><td><strong>IDE Completions</strong></td><td>Suggestions, acceptances, lines suggested/accepted — by language, editor, model</td></tr>
+            <tr><td><strong>IDE Chat</strong></td><td>Total chats, insertion events, copy events — by editor, model</td></tr>
+            <tr><td><strong>GitHub.com Chat</strong></td><td>Total chats, engaged users — by model</td></tr>
+            <tr><td><strong>PR Summaries</strong></td><td>Total summaries created — by repo, model</td></tr>
+          </table>
+          <div class="mini-heading">Authentication</div>
+          <div class="kv-row"><span class="kv-key">PAT (classic)</span><span class="kv-desc"><code class="inline">manage_billing:copilot</code>, <code class="inline">read:org</code>, or <code class="inline">read:enterprise</code></span></div>
+          <div class="kv-row"><span class="kv-key">Fine-grained</span><span class="kv-desc">"GitHub Copilot Business" or "Administration" org permissions (read)</span></div>
+          <div class="kv-row"><span class="kv-key">GitHub App</span><span class="kv-desc">User or installation access tokens</span></div>
+          <div class="mini-heading">Requirements</div>
+          <ul class="dot-list">
+            <li>Min <strong>5 members</strong> with active Copilot licenses for data to appear</li>
+            <li>Data processed <strong>once per day</strong> — yesterday is latest available</li>
+            <li>Up to <strong>100 days</strong> of historical data</li>
+            <li>Users must have <strong>telemetry enabled</strong> in their IDE</li>
+            <li>Enable <strong>Copilot Metrics API access policy</strong> in org settings</li>
+          </ul>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> The legacy <code class="inline">/copilot/metrics</code> endpoints are being deprecated. Migrate to the newer <strong>Copilot usage metrics</strong> endpoints for more depth and flexibility.
+          </div>
+        </div>
+      </div>
+      <div class="mini-heading">Response Schema (Simplified)</div>
+      <div class="code-block"><code>[{
+  "date": "2026-03-24",
+  "total_active_users": 24,            // licensed users
+  "total_engaged_users": 20,           // actually used Copilot
+  "copilot_ide_code_completions": {
+    "total_engaged_users": 20,
+    "languages": [{ "name": "python", "total_engaged_users": 10 }, ...],
+    "editors": [{
+      "name": "vscode", "total_engaged_users": 13,
+      "models": [{
+        "name": "default", "languages": [{
+          "name": "python",
+          "total_code_suggestions": 249,  // suggested to user
+          "total_code_acceptances": 123,  // user accepted
+          "total_code_lines_suggested": 225,
+          "total_code_lines_accepted": 135
+        }]
+      }]
+    }]
+  },
+  "copilot_ide_chat": { ... },          // chats, insertions, copies
+  "copilot_dotcom_chat": { ... },       // GitHub.com chat usage
+  "copilot_dotcom_pull_requests": { ... } // PR summaries by repo
+}]</code></div>
+      <div class="mini-heading">Community Tools</div>
+      <div class="kv-row"><span class="kv-key">copilot-metrics-viewer</span><span class="kv-desc">GitHub's official dashboard for visualizing Copilot metrics data</span></div>
+      <div class="kv-row"><span class="kv-key">Custom dashboards</span><span class="kv-desc">Pipe API data to Grafana, Power BI, Looker, or Datadog</span></div>
+      <div class="kv-row"><span class="kv-key">/usage in CLI</span><span class="kv-desc">Quick session stats in Copilot CLI</span></div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>ROI dashboard</strong> — query org metrics daily → calculate acceptance rate per team → report to leadership on AI productivity gains</div>
+        <div class="use-case"><strong>Identify low adoption</strong> — compare active vs engaged users per team → target training for teams with low engagement rates</div>
+        <div class="use-case"><strong>Language coverage</strong> — break down completions by language → discover which stacks benefit most from Copilot</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/rest/copilot/copilot-metrics" target="_blank">GitHub REST API — Copilot Metrics</a> &middot;
+        <a href="https://github.com/github-copilot-resources/copilot-metrics-viewer" target="_blank">copilot-metrics-viewer</a> &middot;
+        <a href="https://docs.github.com/en/copilot/rolling-out-github-copilot-at-scale/analyzing-usage-over-time#using-the-copilot-metrics-api" target="_blank">Usage Analysis Guide</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 32. CODE REFERENCING & ATTRIBUTION ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">32</span>
+      <h3>Code Referencing &amp; Attribution</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> When Copilot suggests code that matches publicly available code on GitHub, it can either <em>block</em> the suggestion or <em>display references</em> — showing the source repository, license type, and a link to the original code. Helps manage intellectual property risk.</div>
+
+      <!-- ===== INFOGRAPHIC ===== -->
+      <svg viewBox="0 0 780 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+        <defs>
+          <linearGradient id="gCr1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient>
+          <linearGradient id="gCr2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#2563EB"/></linearGradient>
+          <linearGradient id="gCr3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#DC2626"/></linearGradient>
+          <linearGradient id="gCr4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+          <linearGradient id="gCr5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
+          <linearGradient id="gCr6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#0891B2"/></linearGradient>
+          <filter id="shCr"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
+          <marker id="arrCr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F4A261"/></marker>
+        </defs>
+
+        <!-- Title -->
+        <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">CODE REFERENCING — HOW PUBLIC CODE MATCHING WORKS</text>
+
+        <!-- ── Row 1: Main flow ── -->
+
+        <!-- Step 1: You accept suggestion -->
+        <rect x="20" y="34" width="130" height="66" rx="12" fill="url(#gCr1)" filter="url(#shCr)"/>
+        <text x="85" y="56" text-anchor="middle" fill="#fff" font-size="18">💬</text>
+        <text x="85" y="72" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Copilot Suggests</text>
+        <text x="85" y="84" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Inline completion or</text>
+        <text x="85" y="94" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">chat response generated</text>
+
+        <!-- Arrow 1→2 -->
+        <line x1="154" y1="67" x2="178" y2="67" stroke="#F4A261" stroke-width="2" marker-end="url(#arrCr)"/>
+
+        <!-- Step 2: Post-model filter compares -->
+        <rect x="182" y="34" width="150" height="66" rx="12" fill="url(#gCr2)" filter="url(#shCr)"/>
+        <text x="257" y="56" text-anchor="middle" fill="#fff" font-size="18">🔍</text>
+        <text x="257" y="72" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Compare ~150 chars</text>
+        <text x="257" y="84" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Post-model filter checks</text>
+        <text x="257" y="94" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">against public GitHub repos</text>
+
+        <!-- Branch point -->
+        <circle cx="362" cy="67" r="6" fill="#F4A261"/>
+        <line x1="336" y1="67" x2="356" y2="67" stroke="#F4A261" stroke-width="2"/>
+        <text x="362" y="70" text-anchor="middle" fill="#1E293B" font-family="Inter,sans-serif" font-size="6" font-weight="800">?</text>
+
+        <!-- ── Branch A: Match found → Block mode ── -->
+        <line x1="368" y1="55" x2="408" y2="42" stroke="#EF4444" stroke-width="1.5"/>
+        <polygon points="408,38 416,42 408,46" fill="#EF4444"/>
+
+        <rect x="420" y="26" width="150" height="38" rx="10" fill="url(#gCr3)" filter="url(#shCr)"/>
+        <text x="495" y="42" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">🚫 Block Mode</text>
+        <text x="495" y="55" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Suggestion hidden from user</text>
+
+        <!-- Result of block -->
+        <line x1="574" y1="45" x2="604" y2="45" stroke="#EF4444" stroke-width="1.5"/>
+        <polygon points="604,41 612,45 604,49" fill="#EF4444"/>
+
+        <rect x="616" y="30" width="144" height="30" rx="8" fill="#2a0a0a" stroke="#EF4444" stroke-width="0.8"/>
+        <text x="688" y="43" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="7" font-weight="600">❌ User never sees match</text>
+        <text x="688" y="53" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">IP risk eliminated</text>
+
+        <!-- ── Branch B: Match found → Allow mode ── -->
+        <line x1="368" y1="79" x2="408" y2="90" stroke="#10B981" stroke-width="1.5"/>
+        <polygon points="408,86 416,90 408,94" fill="#10B981"/>
+
+        <rect x="420" y="72" width="150" height="38" rx="10" fill="url(#gCr4)" filter="url(#shCr)"/>
+        <text x="495" y="88" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">✅ Allow + Reference</text>
+        <text x="495" y="101" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Suggestion shown with attribution</text>
+
+        <!-- Result of allow -->
+        <line x1="574" y1="91" x2="604" y2="91" stroke="#10B981" stroke-width="1.5"/>
+        <polygon points="604,87 612,91 604,95" fill="#10B981"/>
+
+        <rect x="616" y="76" width="144" height="30" rx="8" fill="#052e16" stroke="#10B981" stroke-width="0.8"/>
+        <text x="688" y="89" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7" font-weight="600">📋 License + repo URL shown</text>
+        <text x="688" y="99" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">User reviews &amp; decides</text>
+
+        <!-- ── Row 2: Reference details mockup ── -->
+        <text x="390" y="128" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">WHAT A CODE REFERENCE LOOKS LIKE</text>
+
+        <!-- Inline completion reference (log) -->
+        <rect x="20" y="136" width="360" height="100" rx="10" fill="#0F172A" stroke="#8B5CF6" stroke-width="1"/>
+        <rect x="20" y="136" width="360" height="20" rx="10" fill="#3B1764"/>
+        <rect x="20" y="148" width="360" height="8" fill="#3B1764"/>
+        <text x="200" y="150" text-anchor="middle" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="8" font-weight="700">⌨️ INLINE COMPLETION — Code References Log</text>
+
+        <text x="32" y="170" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">2026-03-24 14:23:55 [info]</text>
+        <text x="32" y="182" fill="#A78BFA" font-family="JetBrains Mono,monospace" font-size="7">Similar code at [Ln 12, Col 4]</text>
+        <text x="32" y="194" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="7">let i = 1; i &lt;= 100; i++) { let output...</text>
+        <text x="32" y="210" fill="#10B981" font-family="JetBrains Mono,monospace" font-size="7.5" font-weight="600">License: MIT</text>
+        <text x="32" y="222" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="7">URL: github.com/octo-org/repo/blob/.../fizz.js</text>
+        <text x="32" y="232" fill="#64748B" font-family="Inter,sans-serif" font-size="6">View: Output → "GitHub Copilot Log (Code References)"</text>
+
+        <!-- Chat reference -->
+        <rect x="400" y="136" width="360" height="100" rx="10" fill="#0F172A" stroke="#3B82F6" stroke-width="1"/>
+        <rect x="400" y="136" width="360" height="20" rx="10" fill="#1E3A5F"/>
+        <rect x="400" y="148" width="360" height="8" fill="#1E3A5F"/>
+        <text x="580" y="150" text-anchor="middle" fill="#93C5FD" font-family="Inter,sans-serif" font-size="8" font-weight="700">💬 CHAT — Inline Reference Banner</text>
+
+        <text x="412" y="170" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8">Copilot generates a code response...</text>
+
+        <!-- Chat bubble response mockup -->
+        <rect x="412" y="178" width="336" height="32" rx="6" fill="#1a2740" stroke="#334155" stroke-width="0.5"/>
+        <text x="424" y="192" fill="#E2E8F0" font-family="JetBrains Mono,monospace" font-size="7">function fizzBuzz() {</text>
+        <text x="424" y="202" fill="#E2E8F0" font-family="JetBrains Mono,monospace" font-size="7">  for (let i = 1; i &lt;= 100; i++) { ...</text>
+
+        <!-- Reference banner -->
+        <rect x="412" y="214" width="336" height="16" rx="4" fill="#064e3b" stroke="#10B981" stroke-width="0.6"/>
+        <text x="580" y="225" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7" font-weight="600">📋 Similar code found with 2 license types — View matches</text>
+
+        <!-- Bottom: configure badges -->
+        <text x="390" y="248" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="7">Configure: <tspan fill="#FBBF24" font-weight="600">Personal Settings</tspan> → Suggestions matching public code → <tspan fill="#10B981" font-weight="600">Allow</tspan> or <tspan fill="#EF4444" font-weight="600">Block</tspan>   |   Org: <tspan fill="#A78BFA" font-weight="600">Copilot Policies</tspan></text>
+      </svg>
+
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Two Modes</div>
+          <table class="ref-table">
+            <tr><th>Mode</th><th>Behavior</th></tr>
+            <tr><td><strong>Block</strong></td><td>Suggestions matching public code (~150 chars) are <strong>hidden</strong> — user never sees them. Eliminates IP risk.</td></tr>
+            <tr><td><strong>Allow</strong></td><td>Suggestions are <strong>shown with references</strong> — source repo URL, license type, and code snippet displayed.</td></tr>
+          </table>
+          <div class="mini-heading">Where References Appear</div>
+          <ul class="dot-list">
+            <li><strong>Inline completions</strong> — Output panel → "GitHub Copilot Log (Code References)"</li>
+            <li><strong>Chat responses</strong> — banner at bottom: "Similar code found — View matches"</li>
+            <li>Click <strong>View matches</strong> → new tab with license, URL, and code snippet</li>
+            <li>Ctrl+click / Cmd+click URL → view full source file on GitHub</li>
+          </ul>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Reference Details</div>
+          <div class="kv-row"><span class="kv-key">License</span><span class="kv-desc">MIT, Apache-2.0, GPL, or "unknown"</span></div>
+          <div class="kv-row"><span class="kv-key">URL</span><span class="kv-desc">Direct link to matching file on GitHub</span></div>
+          <div class="kv-row"><span class="kv-key">Code snippet</span><span class="kv-desc">The matching public code excerpt</span></div>
+          <div class="kv-row"><span class="kv-key">Location</span><span class="kv-desc">Line &amp; column where suggestion was inserted</span></div>
+          <div class="mini-heading">How to Configure</div>
+          <ul class="dot-list">
+            <li><strong>Individual:</strong> Profile → Copilot Settings → "Suggestions matching public code" → Allow or Block</li>
+            <li><strong>Organization:</strong> Org Settings → Copilot → Policies → "Suggestions matching public code"</li>
+            <li><strong>Enterprise:</strong> Enterprise Settings → Copilot → Policies (overrides org setting)</li>
+          </ul>
+          <div class="callout callout-tip">
+            <strong>💡</strong> Verify code referencing works by typing <code class="inline">function fizzBuzz()</code> — a common implementation will match and show references in the log.
+          </div>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Org/enterprise members inherit the organization's policy and cannot override it in personal settings.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>IP-safe development</strong> — enable Block mode enterprise-wide to prevent any public code matches from reaching developers</div>
+        <div class="use-case"><strong>Attribution workflow</strong> — enable Allow mode + review references before committing → add license headers where required</div>
+        <div class="use-case"><strong>Open-source compliance</strong> — check if matched code uses GPL → decide whether to accept or rewrite to avoid copyleft obligations</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/copilot/using-github-copilot/finding-public-code-that-matches-github-copilot-suggestions" target="_blank">GitHub Docs — Finding Matching Code</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/completions/code-referencing" target="_blank">Code Referencing Concepts</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 33. COPILOT AUTOFIX ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">33</span>
+      <h3>Copilot Autofix &amp; Advanced Security</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> AI-powered security remediation built into GitHub's code scanning pipeline. When CodeQL detects a vulnerability in a PR, Copilot Autofix generates a suggested fix with explanation — no Copilot subscription required. Integrates with Advanced Security, Code Scanning, and Dependabot.</div>
+
+      <!-- ===== INFOGRAPHIC ===== -->
+      <svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+        <defs>
+          <linearGradient id="gAf1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#2563EB"/></linearGradient>
+          <linearGradient id="gAf2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#DC2626"/></linearGradient>
+          <linearGradient id="gAf3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient>
+          <linearGradient id="gAf4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+          <linearGradient id="gAf5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
+          <linearGradient id="gAf6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#0891B2"/></linearGradient>
+          <linearGradient id="gAf7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EC4899"/><stop offset="100%" stop-color="#DB2777"/></linearGradient>
+          <filter id="shAf"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
+          <marker id="arrAf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F4A261"/></marker>
+        </defs>
+
+        <!-- Title -->
+        <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">COPILOT AUTOFIX — AUTOMATED SECURITY REMEDIATION</text>
+
+        <!-- ── Row 1: Main pipeline flow ── -->
+        <text x="390" y="38" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">PR SECURITY PIPELINE</text>
+
+        <!-- Step 1: Push / PR -->
+        <rect x="20" y="46" width="100" height="60" rx="12" fill="url(#gAf1)" filter="url(#shAf)"/>
+        <text x="70" y="66" text-anchor="middle" fill="#fff" font-size="16">🔀</text>
+        <text x="70" y="80" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Push / PR</text>
+        <text x="70" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Code changes</text>
+        <text x="70" y="101" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">submitted</text>
+
+        <!-- Arrow -->
+        <line x1="124" y1="76" x2="146" y2="76" stroke="#F4A261" stroke-width="2" marker-end="url(#arrAf)"/>
+
+        <!-- Step 2: CodeQL Scans -->
+        <rect x="150" y="46" width="120" height="60" rx="12" fill="url(#gAf2)" filter="url(#shAf)"/>
+        <text x="210" y="66" text-anchor="middle" fill="#fff" font-size="16">🔍</text>
+        <text x="210" y="80" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">CodeQL Scans</text>
+        <text x="210" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">SARIF analysis finds</text>
+        <text x="210" y="101" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">SQL injection alert</text>
+
+        <!-- Arrow -->
+        <line x1="274" y1="76" x2="296" y2="76" stroke="#F4A261" stroke-width="2" marker-end="url(#arrAf)"/>
+
+        <!-- Step 3: Autofix generates -->
+        <rect x="300" y="46" width="140" height="60" rx="12" fill="url(#gAf3)" filter="url(#shAf)"/>
+        <text x="370" y="66" text-anchor="middle" fill="#fff" font-size="16">🤖</text>
+        <text x="370" y="80" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Autofix Generates</text>
+        <text x="370" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">LLM generates fix +</text>
+        <text x="370" y="101" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">explanation via GPT-5.1</text>
+
+        <!-- Arrow -->
+        <line x1="444" y1="76" x2="466" y2="76" stroke="#F4A261" stroke-width="2" marker-end="url(#arrAf)"/>
+
+        <!-- Step 4: Dev reviews -->
+        <rect x="470" y="46" width="120" height="60" rx="12" fill="url(#gAf4)" filter="url(#shAf)"/>
+        <text x="530" y="66" text-anchor="middle" fill="#fff" font-size="16">👀</text>
+        <text x="530" y="80" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Dev Reviews</text>
+        <text x="530" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Review diff, edit if</text>
+        <text x="530" y="101" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">needed, commit fix</text>
+
+        <!-- Arrow -->
+        <line x1="594" y1="76" x2="616" y2="76" stroke="#F4A261" stroke-width="2" marker-end="url(#arrAf)"/>
+
+        <!-- Step 5: Alert resolved -->
+        <rect x="620" y="46" width="140" height="60" rx="12" fill="url(#gAf5)" filter="url(#shAf)"/>
+        <text x="690" y="66" text-anchor="middle" fill="#fff" font-size="16">✅</text>
+        <text x="690" y="80" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Alert Resolved</text>
+        <text x="690" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Vulnerability fixed,</text>
+        <text x="690" y="101" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">CI passes, PR merges</text>
+
+        <!-- ── Row 2: Three pillars of Advanced Security ── -->
+        <text x="390" y="128" text-anchor="middle" fill="#F8FAFC" font-family="Inter,sans-serif" font-size="9" font-weight="800" letter-spacing="0.5">GITHUB ADVANCED SECURITY — THREE PILLARS + COPILOT</text>
+
+        <!-- Pillar 1: Code Scanning -->
+        <rect x="20" y="138" width="176" height="72" rx="10" fill="#0F172A" stroke="#EF4444" stroke-width="1" filter="url(#shAf)"/>
+        <rect x="20" y="138" width="176" height="20" rx="10" fill="url(#gAf2)"/>
+        <rect x="20" y="150" width="176" height="8" fill="url(#gAf2)"/>
+        <text x="108" y="152" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="8" font-weight="800">🔍 Code Scanning (CodeQL)</text>
+
+        <text x="32" y="172" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="7" font-weight="600">Static analysis for vulnerabilities</text>
+        <text x="32" y="184" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• SQL injection, XSS, path traversal</text>
+        <text x="32" y="194" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• SARIF format alerts on PRs</text>
+        <text x="32" y="204" fill="#10B981" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">→ Autofix generates code patches</text>
+
+        <!-- Pillar 2: Secret Scanning -->
+        <rect x="208" y="138" width="176" height="72" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1" filter="url(#shAf)"/>
+        <rect x="208" y="138" width="176" height="20" rx="10" fill="url(#gAf5)"/>
+        <rect x="208" y="150" width="176" height="8" fill="url(#gAf5)"/>
+        <text x="296" y="152" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="8" font-weight="800">🔑 Secret Scanning</text>
+
+        <text x="220" y="172" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7" font-weight="600">Detects leaked credentials</text>
+        <text x="220" y="184" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• API keys, tokens, passwords</text>
+        <text x="220" y="194" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• Push protection blocks commits</text>
+        <text x="220" y="204" fill="#10B981" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">→ Autofix: AI-generated secret rotation</text>
+
+        <!-- Pillar 3: Dependabot -->
+        <rect x="396" y="138" width="176" height="72" rx="10" fill="#0F172A" stroke="#06B6D4" stroke-width="1" filter="url(#shAf)"/>
+        <rect x="396" y="138" width="176" height="20" rx="10" fill="url(#gAf6)"/>
+        <rect x="396" y="150" width="176" height="8" fill="url(#gAf6)"/>
+        <text x="484" y="152" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="8" font-weight="800">📦 Dependabot</text>
+
+        <text x="408" y="172" fill="#22D3EE" font-family="Inter,sans-serif" font-size="7" font-weight="600">Vulnerable dependency alerts</text>
+        <text x="408" y="184" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• CVE-based advisory matching</text>
+        <text x="408" y="194" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• Auto-PRs to bump versions</text>
+        <text x="408" y="204" fill="#10B981" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">→ Dependency review integration</text>
+
+        <!-- Copilot Autofix hub -->
+        <rect x="584" y="138" width="176" height="72" rx="10" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2" filter="url(#shAf)"/>
+        <rect x="584" y="138" width="176" height="20" rx="10" fill="url(#gAf3)"/>
+        <rect x="584" y="150" width="176" height="8" fill="url(#gAf3)"/>
+        <text x="672" y="152" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="8" font-weight="800">🤖 Copilot Autofix</text>
+
+        <text x="596" y="172" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="7" font-weight="600">AI fix generation for all pillars</text>
+        <text x="596" y="184" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• Code + explanation generated</text>
+        <text x="596" y="194" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• No Copilot subscription needed</text>
+        <text x="596" y="204" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• Enabled by default on CodeQL</text>
+
+        <!-- Connecting lines from pillars to Autofix -->
+        <line x1="196" y1="196" x2="584" y2="170" stroke="#8B5CF6" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.4"/>
+        <line x1="384" y1="190" x2="584" y2="176" stroke="#8B5CF6" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.4"/>
+        <line x1="572" y1="180" x2="584" y2="180" stroke="#8B5CF6" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.4"/>
+
+        <!-- ── Row 3: Supported languages ── -->
+        <text x="390" y="230" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">SUPPORTED LANGUAGES (CodeQL + AUTOFIX)</text>
+
+        <rect x="50" y="238" width="64" height="14" rx="4" fill="#1a2740" stroke="#3B82F6" stroke-width="0.5"/>
+        <text x="82" y="248" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">JavaScript</text>
+
+        <rect x="120" y="238" width="64" height="14" rx="4" fill="#1a2740" stroke="#3B82F6" stroke-width="0.5"/>
+        <text x="152" y="248" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">TypeScript</text>
+
+        <rect x="190" y="238" width="52" height="14" rx="4" fill="#1a2740" stroke="#10B981" stroke-width="0.5"/>
+        <text x="216" y="248" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">Python</text>
+
+        <rect x="248" y="238" width="52" height="14" rx="4" fill="#1a2740" stroke="#F59E0B" stroke-width="0.5"/>
+        <text x="274" y="248" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">Java</text>
+
+        <rect x="306" y="238" width="52" height="14" rx="4" fill="#1a2740" stroke="#8B5CF6" stroke-width="0.5"/>
+        <text x="332" y="248" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">Kotlin</text>
+
+        <rect x="364" y="238" width="36" height="14" rx="4" fill="#1a2740" stroke="#06B6D4" stroke-width="0.5"/>
+        <text x="382" y="248" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">Go</text>
+
+        <rect x="406" y="238" width="36" height="14" rx="4" fill="#1a2740" stroke="#EC4899" stroke-width="0.5"/>
+        <text x="424" y="248" text-anchor="middle" fill="#F472B6" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">C#</text>
+
+        <rect x="448" y="238" width="44" height="14" rx="4" fill="#1a2740" stroke="#EF4444" stroke-width="0.5"/>
+        <text x="470" y="248" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">C/C++</text>
+
+        <rect x="498" y="238" width="46" height="14" rx="4" fill="#1a2740" stroke="#10B981" stroke-width="0.5"/>
+        <text x="521" y="248" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">Ruby</text>
+
+        <rect x="550" y="238" width="46" height="14" rx="4" fill="#1a2740" stroke="#F59E0B" stroke-width="0.5"/>
+        <text x="573" y="248" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">Swift</text>
+
+        <rect x="602" y="238" width="42" height="14" rx="4" fill="#1a2740" stroke="#EF4444" stroke-width="0.5"/>
+        <text x="623" y="248" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">Rust</text>
+
+        <!-- No subscription badge -->
+        <rect x="658" y="238" width="100" height="14" rx="4" fill="#064e3b" stroke="#10B981" stroke-width="0.6"/>
+        <text x="708" y="248" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="6" font-weight="600">🆓 No Copilot sub needed</text>
+
+        <!-- Bottom: where it works -->
+        <text x="390" y="272" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="7">Works on: <tspan fill="#60A5FA" font-weight="600">Public repos (free)</tspan> · <tspan fill="#A78BFA" font-weight="600">Org repos with GitHub Code Security</tspan> · <tspan fill="#FBBF24" font-weight="600">PRs + existing alerts on default branch</tspan></text>
+      </svg>
+
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">How It Works</div>
+          <ul class="dot-list">
+            <li><strong>CodeQL scans PR</strong> → detects security vulnerability (SARIF format)</li>
+            <li><strong>Alert + code context</strong> sent to GPT-5.1 via internal Copilot APIs</li>
+            <li><strong>Fix generated</strong> — code patch + natural language explanation</li>
+            <li><strong>Displayed on PR</strong> — click to view diff, edit, and commit</li>
+            <li>Also available for <strong>existing alerts</strong> on default branch</li>
+          </ul>
+          <div class="mini-heading">Where to Find Autofix</div>
+          <div class="kv-row"><span class="kv-key">PR alerts</span><span class="kv-desc">Code scanning alert → "Generate fix" button</span></div>
+          <div class="kv-row"><span class="kv-key">Security tab</span><span class="kv-desc">Repo → Security → Code scanning alerts</span></div>
+          <div class="kv-row"><span class="kv-key">Security overview</span><span class="kv-desc">Org dashboard → autofix suggestion counts</span></div>
+          <div class="mini-heading">Availability</div>
+          <table class="ref-table">
+            <tr><th>Repo Type</th><th>Autofix Access</th></tr>
+            <tr><td>Public repos</td><td><span class="tag tag-green">Free</span></td></tr>
+            <tr><td>Org repos (GitHub Team + Code Security)</td><td><span class="tag tag-blue">Included</span></td></tr>
+            <tr><td>Enterprise (GHES)</td><td><span class="tag tag-purple">Code Security</span></td></tr>
+          </table>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Advanced Security Integration</div>
+          <table class="ref-table">
+            <tr><th>Feature</th><th>Autofix Role</th></tr>
+            <tr><td><strong>Code Scanning</strong></td><td>Generates code patches for CodeQL alerts (SQL injection, XSS, etc.)</td></tr>
+            <tr><td><strong>Secret Scanning</strong></td><td>AI-assisted secret rotation guidance</td></tr>
+            <tr><td><strong>Dependabot</strong></td><td>Dependency review integration — verify fixes don't add insecure deps</td></tr>
+            <tr><td><strong>Security Overview</strong></td><td>Org-level dashboard of autofix suggestion counts &amp; resolution rates</td></tr>
+          </table>
+          <div class="mini-heading">What Autofix Sends to the LLM</div>
+          <ul class="dot-list">
+            <li>CodeQL alert data (SARIF format)</li>
+            <li>Code snippets around source, sink, &amp; flow path</li>
+            <li>First ~10 lines of each involved file</li>
+            <li>CodeQL query help text</li>
+          </ul>
+          <div class="mini-heading">Configuration</div>
+          <div class="kv-row"><span class="kv-key">Enable/disable</span><span class="kv-desc">Repo / Org / Enterprise settings</span></div>
+          <div class="kv-row"><span class="kv-key">Default</span><span class="kv-desc">Enabled on all CodeQL repos</span></div>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Always verify fixes — Autofix may suggest partial fixes, incorrect locations, or dependency changes. Run CI tests before merging.
+          </div>
+          <div class="callout callout-tip">
+            <strong>💡</strong> Data is <strong>not used for LLM training</strong>. Governed by Advanced Security terms, not Copilot terms.
+          </div>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Fix SQL injection on PR</strong> — CodeQL detects unsanitized input → Autofix generates parameterized query patch → dev reviews diff and commits</div>
+        <div class="use-case"><strong>Remediate backlog</strong> — navigate Security tab → existing alerts on default branch → click "Generate fix" → create a PR with the suggested patch</div>
+        <div class="use-case"><strong>Org-wide metrics</strong> — Security overview dashboard shows total autofix suggestions, acceptance rates, and time-to-fix by team</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/about-autofix-for-codeql-code-scanning" target="_blank">GitHub Docs — Copilot Autofix</a> &middot;
+        <a href="https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/resolving-code-scanning-alerts" target="_blank">Resolving Code Scanning Alerts</a> &middot;
+        <a href="https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/triaging-code-scanning-alerts-in-pull-requests" target="_blank">Triaging PR Alerts</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 34. CHAT DEBUG VIEW ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">34</span>
+      <h3>Chat Debug View &amp; Agent Debug Logs</h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Two complementary debugging tools built into VS Code that let you inspect <em>exactly</em> what Copilot sees — the full system prompt, loaded instructions/skills, context files, tool call I/O, token usage, and raw LLM responses. Essential for debugging why Copilot ignores files, skips tools, or produces unexpected output.</div>
+
+      <!-- ===== INFOGRAPHIC ===== -->
+      <svg viewBox="0 0 780 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+        <defs>
+          <linearGradient id="gDb1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient>
+          <linearGradient id="gDb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#2563EB"/></linearGradient>
+          <linearGradient id="gDb3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+          <linearGradient id="gDb4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
+          <linearGradient id="gDb5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EC4899"/><stop offset="100%" stop-color="#DB2777"/></linearGradient>
+          <linearGradient id="gDb6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#0891B2"/></linearGradient>
+          <linearGradient id="gDb7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#DC2626"/></linearGradient>
+          <filter id="shDb"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
+        </defs>
+
+        <!-- Title -->
+        <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">TWO DEBUGGING TOOLS — SEE EXACTLY WHAT COPILOT SEES</text>
+
+        <!-- ══════ LEFT SIDE: Chat Debug View ══════ -->
+        <rect x="20" y="30" width="360" height="226" rx="12" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2" filter="url(#shDb)"/>
+
+        <!-- Header bar -->
+        <rect x="20" y="30" width="360" height="24" rx="12" fill="url(#gDb1)"/>
+        <rect x="20" y="42" width="360" height="12" fill="url(#gDb1)"/>
+        <text x="200" y="46" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">🔬 CHAT DEBUG VIEW — Raw LLM Data</text>
+
+        <!-- How to open -->
+        <rect x="32" y="60" width="336" height="16" rx="4" fill="#3B1764"/>
+        <text x="200" y="71" text-anchor="middle" fill="#C4B5FD" font-family="JetBrains Mono,monospace" font-size="7">⋯ menu → Show Chat Debug View  or  Developer: Show Chat Debug View</text>
+
+        <!-- Expandable sections mockup -->
+        <text x="32" y="92" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7" font-weight="700">EXPANDABLE SECTIONS PER REQUEST:</text>
+
+        <!-- Section 1: System Prompt -->
+        <rect x="32" y="98" width="336" height="28" rx="5" fill="#1a2740" stroke="#8B5CF6" stroke-width="0.5"/>
+        <text x="42" y="109" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="7" font-weight="700">▸ System Prompt</text>
+        <text x="42" y="120" fill="#64748B" font-family="Inter,sans-serif" font-size="6.5">Full instructions defining AI behavior — verify custom instructions, agent descriptions, skills loaded</text>
+
+        <!-- Section 2: User Prompt -->
+        <rect x="32" y="130" width="336" height="28" rx="5" fill="#1a2740" stroke="#3B82F6" stroke-width="0.5"/>
+        <text x="42" y="141" fill="#93C5FD" font-family="Inter,sans-serif" font-size="7" font-weight="700">▸ User Prompt</text>
+        <text x="42" y="152" fill="#64748B" font-family="Inter,sans-serif" font-size="6.5">Exact text sent to model — confirm #mentions resolved, prompt files expanded, variables filled</text>
+
+        <!-- Section 3: Context -->
+        <rect x="32" y="162" width="336" height="28" rx="5" fill="#1a2740" stroke="#10B981" stroke-width="0.5"/>
+        <text x="42" y="173" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7" font-weight="700">▸ Context</text>
+        <text x="42" y="184" fill="#64748B" font-family="Inter,sans-serif" font-size="6.5">Files, symbols, attachments — check if expected files appear ('#file'), context window full</text>
+
+        <!-- Section 4: Response -->
+        <rect x="32" y="194" width="164" height="28" rx="5" fill="#1a2740" stroke="#F59E0B" stroke-width="0.5"/>
+        <text x="42" y="205" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7" font-weight="700">▸ Response</text>
+        <text x="42" y="216" fill="#64748B" font-family="Inter,sans-serif" font-size="6.5">Raw model output + reasoning</text>
+
+        <!-- Section 5: Tool Responses -->
+        <rect x="204" y="194" width="164" height="28" rx="5" fill="#1a2740" stroke="#EC4899" stroke-width="0.5"/>
+        <text x="214" y="205" fill="#F472B6" font-family="Inter,sans-serif" font-size="7" font-weight="700">▸ Tool Responses</text>
+        <text x="214" y="216" fill="#64748B" font-family="Inter,sans-serif" font-size="6.5">Input/output for each tool call</text>
+
+        <!-- Best for badge -->
+        <rect x="32" y="230" width="336" height="16" rx="4" fill="#064e3b" stroke="#10B981" stroke-width="0.4"/>
+        <text x="200" y="241" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7" font-weight="600">Best for: inspecting exact prompts, verifying context, debugging MCP tool I/O</text>
+
+        <!-- ══════ RIGHT SIDE: Agent Debug Log Panel ══════ -->
+        <rect x="400" y="30" width="360" height="226" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2" filter="url(#shDb)"/>
+
+        <!-- Header bar -->
+        <rect x="400" y="30" width="360" height="24" rx="12" fill="url(#gDb2)"/>
+        <rect x="400" y="42" width="360" height="12" fill="url(#gDb2)"/>
+        <text x="580" y="46" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">📊 AGENT DEBUG LOG — Event Timeline</text>
+
+        <!-- How to open -->
+        <rect x="412" y="60" width="336" height="16" rx="4" fill="#1E3A5F"/>
+        <text x="580" y="71" text-anchor="middle" fill="#93C5FD" font-family="JetBrains Mono,monospace" font-size="7">⚙️ gear → Show Agent Debug Logs  (enable agentDebugLog.enabled)</text>
+
+        <!-- 3 view modes -->
+        <text x="412" y="92" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7" font-weight="700">THREE VIEWS:</text>
+
+        <!-- View 1: Logs -->
+        <rect x="412" y="98" width="108" height="56" rx="6" fill="#1a2740" stroke="#3B82F6" stroke-width="0.6"/>
+        <text x="466" y="114" text-anchor="middle" fill="#60A5FA" font-size="14">📋</text>
+        <text x="466" y="128" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7.5" font-weight="700">Logs</text>
+        <text x="466" y="140" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">Chronological events</text>
+        <text x="466" y="149" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">Filter by type</text>
+
+        <!-- View 2: Summary -->
+        <rect x="526" y="98" width="108" height="56" rx="6" fill="#1a2740" stroke="#F59E0B" stroke-width="0.6"/>
+        <text x="580" y="114" text-anchor="middle" fill="#FBBF24" font-size="14">📊</text>
+        <text x="580" y="128" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7.5" font-weight="700">Summary</text>
+        <text x="580" y="140" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">Token usage, tool count</text>
+        <text x="580" y="149" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">Duration, errors</text>
+
+        <!-- View 3: Flow Chart -->
+        <rect x="640" y="98" width="108" height="56" rx="6" fill="#1a2740" stroke="#10B981" stroke-width="0.6"/>
+        <text x="694" y="114" text-anchor="middle" fill="#34D399" font-size="14">🔀</text>
+        <text x="694" y="128" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7.5" font-weight="700">Flow Chart</text>
+        <text x="694" y="140" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">Agent ↔ subagent</text>
+        <text x="694" y="149" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">Visual orchestration</text>
+
+        <!-- Event types -->
+        <text x="412" y="170" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7" font-weight="700">EVENT TYPES IN LOG:</text>
+
+        <rect x="412" y="176" width="80" height="14" rx="3" fill="#3B1764" stroke="#8B5CF6" stroke-width="0.4"/>
+        <text x="452" y="186" text-anchor="middle" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="6" font-weight="600">LLM Requests</text>
+
+        <rect x="498" y="176" width="70" height="14" rx="3" fill="#1a3320" stroke="#10B981" stroke-width="0.4"/>
+        <text x="533" y="186" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="6" font-weight="600">Tool Calls</text>
+
+        <rect x="574" y="176" width="70" height="14" rx="3" fill="#291800" stroke="#F59E0B" stroke-width="0.4"/>
+        <text x="609" y="186" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="6" font-weight="600">Discovery</text>
+
+        <rect x="650" y="176" width="56" height="14" rx="3" fill="#2a0a0a" stroke="#EF4444" stroke-width="0.4"/>
+        <text x="678" y="186" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="6" font-weight="600">Errors</text>
+
+        <rect x="712" y="176" width="36" height="14" rx="3" fill="#0d2a38" stroke="#06B6D4" stroke-width="0.4"/>
+        <text x="730" y="186" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="6" font-weight="600">All</text>
+
+        <!-- Extra features -->
+        <rect x="412" y="196" width="164" height="26" rx="5" fill="#1a2740" stroke="#EC4899" stroke-width="0.5"/>
+        <text x="494" y="207" text-anchor="middle" fill="#F472B6" font-family="Inter,sans-serif" font-size="7" font-weight="700">✨ Attach to Chat</text>
+        <text x="494" y="217" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">Ask AI about its own session</text>
+
+        <rect x="582" y="196" width="166" height="26" rx="5" fill="#1a2740" stroke="#06B6D4" stroke-width="0.5"/>
+        <text x="665" y="207" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="7" font-weight="700">📤 Export / Import</text>
+        <text x="665" y="217" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="6">OTLP JSON — share sessions</text>
+
+        <!-- Best for badge -->
+        <rect x="412" y="230" width="336" height="16" rx="4" fill="#0c1e3d" stroke="#3B82F6" stroke-width="0.4"/>
+        <text x="580" y="241" text-anchor="middle" fill="#93C5FD" font-family="Inter,sans-serif" font-size="7" font-weight="600">Best for: timeline analysis, token budgets, custom agent/subagent debugging</text>
+
+        <!-- Bottom: /troubleshoot command -->
+        <rect x="100" y="260" width="580" height="8" rx="3" fill="#0F172A"/>
+        <text x="390" y="268" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="7">Quick alternative: <tspan fill="#FBBF24" font-weight="600">/troubleshoot</tspan> + question → AI analyzes its own debug logs <tspan fill="#94A3B8">(e.g. "/troubleshoot list loaded instructions")</tspan></text>
+      </svg>
+
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Chat Debug View (Raw Data)</div>
+          <table class="ref-table">
+            <tr><th>Section</th><th>What It Shows</th></tr>
+            <tr><td><strong>System Prompt</strong></td><td>Full instructions, agent description, loaded skills — verify custom instructions appear</td></tr>
+            <tr><td><strong>User Prompt</strong></td><td>Exact text sent to model — confirm <code>#</code>-mentions resolved to real content</td></tr>
+            <tr><td><strong>Context</strong></td><td>Files, symbols, attachments — check if expected files are included or context window is full</td></tr>
+            <tr><td><strong>Response</strong></td><td>Raw model output including reasoning — understand how model interpreted your request</td></tr>
+            <tr><td><strong>Tool Responses</strong></td><td>Input/output for each tool call — debug MCP servers, verify correct payloads</td></tr>
+          </table>
+          <div class="mini-heading">How to Open</div>
+          <div class="kv-row"><span class="kv-key">Chat Debug View</span><span class="kv-desc">Chat ⋯ menu → Show Chat Debug View</span></div>
+          <div class="kv-row"><span class="kv-key">Command Palette</span><span class="kv-desc">Developer: Show Chat Debug View</span></div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Agent Debug Log Panel <span class="tag tag-purple">Preview</span></div>
+          <table class="ref-table">
+            <tr><th>View</th><th>What It Shows</th></tr>
+            <tr><td><strong>Logs</strong></td><td>Chronological events — LLM requests, tool calls, discovery, errors. Filter by type.</td></tr>
+            <tr><td><strong>Summary</strong></td><td>Aggregate stats — total tool calls, token usage, error count, duration</td></tr>
+            <tr><td><strong>Flow Chart</strong></td><td>Visual agent ↔ subagent interaction graph — pan, zoom, click nodes</td></tr>
+          </table>
+          <div class="mini-heading">How to Open</div>
+          <div class="kv-row"><span class="kv-key">Enable setting</span><span class="kv-desc"><code class="inline">github.copilot.chat.agentDebugLog.enabled</code></span></div>
+          <div class="kv-row"><span class="kv-key">Gear icon</span><span class="kv-desc">Chat ⚙️ → Show Agent Debug Logs</span></div>
+          <div class="kv-row"><span class="kv-key">Command Palette</span><span class="kv-desc">Developer: Open Agent Debug Logs</span></div>
+          <div class="mini-heading">Extra Features</div>
+          <ul class="dot-list">
+            <li><strong>Attach to chat</strong> — sparkle icon → ask AI about its own session</li>
+            <li><strong>Export/Import</strong> — OTLP JSON format, share sessions offline</li>
+            <li><strong>/troubleshoot</strong> — ask AI directly: <code class="inline">/troubleshoot list loaded instructions</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mini-heading">Common Troubleshooting Scenarios</div>
+      <table class="ref-table">
+        <tr><th>Problem</th><th>Where to Look</th><th>What to Check</th></tr>
+        <tr><td>AI ignores workspace files</td><td>Agent Logs → Discovery events + Chat Debug → Context</td><td>Workspace indexed? Files in context window?</td></tr>
+        <tr><td>MCP tool not invoked</td><td>Agent Logs → Tool Calls filter + Chat Debug → System Prompt</td><td>Tool listed in available tools? Server running?</td></tr>
+        <tr><td>Response truncated</td><td>Agent Logs → LLM Requests → token usage</td><td>Context window full? Start a new session.</td></tr>
+        <tr><td>Prompt file not applied</td><td>Agent Logs → Discovery events</td><td>File loaded/skipped? <code>applyTo</code> glob match?</td></tr>
+        <tr><td>Custom instructions missing</td><td>Chat Debug → System Prompt section</td><td>Expand and search for your instruction text</td></tr>
+      </table>
+      <div class="callout callout-tip" style="margin-top: 6px;">
+        <strong>💡</strong> Set log level to <strong>Trace</strong> for maximum detail: Command Palette → <code class="inline">Developer: Set Log Level</code> → select Trace for GitHub Copilot and GitHub Copilot Chat extensions.
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Debug missing instructions</strong> — open Chat Debug View → expand System Prompt → search for your copilot-instructions.md text → confirm it was loaded</div>
+        <div class="use-case"><strong>Optimize token usage</strong> — open Agent Debug Logs → Summary view → check token consumption → identify if context window is being wasted on irrelevant files</div>
+        <div class="use-case"><strong>Debug multi-agent flow</strong> — open Agent Flow Chart → visualize parent → subagent → tool call sequence → identify where the chain breaks</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/copilot/chat/chat-debug-view" target="_blank">VS Code Docs — Debug Chat Interactions</a> &middot;
+        <a href="https://code.visualstudio.com/docs/copilot/troubleshooting" target="_blank">Troubleshoot AI in VS Code</a>
       </div>
     </div>
   </div>
