@@ -451,7 +451,13 @@
       CLI</span>
     <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.15); padding: 3px 9px; border-radius: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;">📱 Mobile</span>
   </div>
-  <div style="margin-top: 8px; font-size: 11px; opacity: 0.85;">Created by <a href="https://www.linkedin.com/in/sukumar-p/" target="_blank" style="color: #FAEBD7; text-decoration: underline;">Sukumar P</a> using GitHub Copilot in VS Code</div>
+  <div style="margin-top: 8px; font-size: 11px; opacity: 0.85;">Created by <a href="https://www.linkedin.com/in/sukumar-p/" target="_blank" style="color: #96054e; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: 0.3px;">Sukumar P</a> using GitHub Copilot in VS Code</div>
+  <div style="margin-top: 6px; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.10); padding: 4px 14px; border-radius: 8px; font-size: 10px; letter-spacing: 0.3px;">
+    <span style="opacity: 0.7;">🕐 Last updated:</span>
+    <strong>25 March 2026 (revised)</strong>
+    <span style="opacity: 0.5;">·</span>
+    <span style="opacity: 0.7;">Sources: GitHub Docs · VS Code Docs · GitHub Blog Changelog</span>
+  </div>
 </div>
 
 <div class="grid">
@@ -624,7 +630,7 @@
           <div class="mini-heading">Installation</div>
           <div class="code-block"><code>ext install GitHub.copilot
 ext install GitHub.copilot-chat</code></div>
-          <div class="callout callout-tip"><strong>💡</strong> Your code is <strong>never stored or used for training</strong> (Business/Enterprise). Prompts are not retained after the response is delivered.</div>
+          <div class="callout callout-tip"><strong>💡</strong> Your code is <strong>never stored or used for training</strong> (all plans). Prompts are not retained after the response is delivered.</div>
         </div>
       </div>
       <div class="use-cases">
@@ -741,8 +747,8 @@ ext install GitHub.copilot-chat</code></div>
         <tr><td><code>/explain</code></td><td>Explain selected code</td><td><code>/fix</code></td><td>Fix problems in code</td></tr>
         <tr><td><code>/tests</code></td><td>Generate unit tests</td><td><code>/new</code></td><td>Scaffold new project</td></tr>
         <tr><td><code>/clear</code></td><td>New chat session</td><td><code>/help</code></td><td>Copilot quick reference</td></tr>
-        <tr><td><code>/delegate</code></td><td>Send to coding agent</td><td><code>/search</code></td><td>Workspace search</td></tr>
-        <tr><td><code>/init</code></td><td>Generate instructions</td><td><code>/compact</code></td><td>Compress context</td></tr>
+        <tr><td><code>/init</code></td><td>Generate instructions</td><td><code>/search</code></td><td>Workspace search</td></tr>
+        <tr><td><code>/delegate</code></td><td>Send to coding agent <span class="tag tag-blue">CLI</span></td><td><code>/compact</code></td><td>Compress context <span class="tag tag-blue">CLI</span></td></tr>
       </table>
 
       <div style="display: flex; gap: 12px; margin-top: 6px;">
@@ -764,7 +770,7 @@ ext install GitHub.copilot-chat</code></div>
           <div class="kv-row"><span class="kv-key">@terminal</span><span class="kv-desc">Terminal shell context</span></div>
           <div class="kv-row"><span class="kv-key">@github</span><span class="kv-desc">GitHub-specific skills</span></div>
           <div class="kv-row"><span class="kv-key">@azure</span><span class="kv-desc">Azure services help</span></div>
-          <div class="mini-heading" style="margin-top: 8px;">Voice Chat</div>
+          <div class="mini-heading" style="margin-top: 8px;">Voice Chat <span class="tag tag-purple">VS Code</span></div>
           <ul class="dot-list">
             <li>Install <code class="inline">ms-vscode.vscode-speech</code></li>
             <li>Dictate prompts hands-free</li>
@@ -1005,12 +1011,12 @@ ext install GitHub.copilot-chat</code></div>
         <!-- Arrow 3→4 -->
         <line x1="498" y1="75" x2="522" y2="75" stroke="#10B981" stroke-width="2" marker-end="url(#arrNg)"/>
 
-        <!-- ── Step 4: Tab to accept ── -->
+        <!-- ── Step 4: Tab to navigate, Tab to accept ── -->
         <rect x="526" y="40" width="120" height="70" rx="12" fill="url(#gApply)" filter="url(#shN)"/>
         <text x="586" y="62" text-anchor="middle" fill="#fff" font-size="18">✅</text>
-        <text x="586" y="78" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">Tab to Accept</text>
-        <text x="586" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7.5">Applies the suggested</text>
-        <text x="586" y="103" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7.5">edit at that location</text>
+        <text x="586" y="78" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">Tab → Tab</text>
+        <text x="586" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7.5">Tab navigates to edit,</text>
+        <text x="586" y="103" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7.5">Tab again accepts it</text>
 
         <!-- Arrow 4→5 -->
         <line x1="650" y1="75" x2="674" y2="75" stroke="#06B6D4" stroke-width="2" marker-end="url(#arrNcy)"/>
@@ -1081,7 +1087,7 @@ ext install GitHub.copilot-chat</code></div>
             <li>Monitors your editing patterns across files</li>
             <li>Suggests edits at locations you haven't navigated to yet</li>
             <li>Shows arrow indicator → jump to suggested edit</li>
-            <li><strong>Tab</strong> to accept, <strong>Tab</strong> again to jump to next</li>
+            <li><strong>Tab</strong> to navigate to edit, <strong>Tab</strong> again to accept</li>
           </ul>
         </div>
         <div style="flex: 1;">
@@ -1370,7 +1376,7 @@ ext install GitHub.copilot-chat</code></div>
             <tr><td>Enterprise</td><td>Unlimited + enterprise premium</td></tr>
           </table>
           <div class="callout callout-tip" style="margin-top: 6px;">
-            <strong>💡</strong> Auto model selection gives 10% multiplier discount on paid plans.
+            <strong>💡</strong> Auto model selection gives 10% multiplier discount and excludes models with multipliers greater than 1×.
           </div>
           <div class="callout callout-warn">
             <strong>⚠️</strong> Unused requests don't carry over. Counters reset on 1st of each month (UTC).
@@ -1418,19 +1424,19 @@ ext install GitHub.copilot-chat</code></div>
         <rect x="220" y="34" width="340" height="32" rx="8" fill="#3B1764" stroke="#8B5CF6" stroke-width="1.2" filter="url(#sh7)"/>
         <text x="240" y="55" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="10" font-weight="800">① PERSONAL</text>
         <text x="390" y="55" fill="#A78BFA" font-family="Inter,sans-serif" font-size="8">Highest priority</text>
-        <text x="540" y="55" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">~/.copilot/instructions/</text>
+        <text x="540" y="55" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">~/.copilot/copilot-instructions.md</text>
 
-        <!-- Layer 2: Repository -->
-        <rect x="220" y="72" width="340" height="32" rx="8" fill="#1E3A5F" stroke="#3B82F6" stroke-width="1.2" filter="url(#sh7)"/>
-        <text x="240" y="93" fill="#93C5FD" font-family="Inter,sans-serif" font-size="10" font-weight="800">② REPOSITORY</text>
-        <text x="402" y="93" fill="#60A5FA" font-family="Inter,sans-serif" font-size="8">Per-project rules</text>
-        <text x="540" y="93" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">.github/copilot-instructions.md</text>
+        <!-- Layer 2: Path-specific -->
+        <rect x="220" y="72" width="340" height="32" rx="8" fill="#291800" stroke="#F59E0B" stroke-width="1.2" filter="url(#sh7)"/>
+        <text x="240" y="93" fill="#FDE68A" font-family="Inter,sans-serif" font-size="10" font-weight="800">② PATH-SPECIFIC</text>
+        <text x="402" y="93" fill="#FBBF24" font-family="Inter,sans-serif" font-size="8">Glob-matched rules</text>
+        <text x="540" y="93" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">.github/instructions/*.instructions.md</text>
 
-        <!-- Layer 3: Organization (lowest) -->
-        <rect x="220" y="110" width="340" height="32" rx="8" fill="#1a3320" stroke="#10B981" stroke-width="1.2" filter="url(#sh7)"/>
-        <text x="240" y="131" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="10" font-weight="800">③ ORGANIZATION</text>
-        <text x="416" y="131" fill="#34D399" font-family="Inter,sans-serif" font-size="8">Lowest priority</text>
-        <text x="540" y="131" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">GitHub org settings</text>
+        <!-- Layer 3: Repository-wide -->
+        <rect x="220" y="110" width="340" height="32" rx="8" fill="#1E3A5F" stroke="#3B82F6" stroke-width="1.2" filter="url(#sh7)"/>
+        <text x="240" y="131" fill="#93C5FD" font-family="Inter,sans-serif" font-size="10" font-weight="800">③ REPOSITORY</text>
+        <text x="416" y="131" fill="#60A5FA" font-family="Inter,sans-serif" font-size="8">Repo-wide rules</text>
+        <text x="540" y="131" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">.github/copilot-instructions.md</text>
 
         <!-- Priority arrow on the left -->
         <line x1="200" y1="42" x2="200" y2="140" stroke="#F4A261" stroke-width="1.5"/>
@@ -1469,13 +1475,14 @@ ext install GitHub.copilot-chat</code></div>
           <div class="mini-heading">Priority (High → Low)</div>
           <ul class="dot-list">
             <li><strong>1.</strong> Personal (user-level)</li>
-            <li><strong>2.</strong> Repository (.github/ or AGENTS.md)</li>
-            <li><strong>3.</strong> Organization</li>
+            <li><strong>2.</strong> Path-specific (.github/instructions/*.instructions.md)</li>
+            <li><strong>3.</strong> Repository-wide (.github/copilot-instructions.md)</li>
+            <li><strong>4.</strong> Agent (AGENTS.md)</li>
+            <li><strong>5.</strong> Organization</li>
           </ul>
           <div class="mini-heading">Generate Instructions</div>
           <ul class="dot-list">
             <li><code class="inline">/init</code> — auto-generate for workspace</li>
-            <li><code class="inline">/create-instruction</code> — AI-assisted</li>
             <li>Chat debug view → verify loaded files</li>
           </ul>
         </div>
@@ -1582,7 +1589,7 @@ applyTo: '**/*.py'
         <div style="flex: 1;">
           <div class="mini-heading">Locations</div>
           <div class="kv-row"><span class="kv-key">Workspace</span><span class="kv-desc">.github/instructions/</span></div>
-          <div class="kv-row"><span class="kv-key">Claude fmt</span><span class="kv-desc">.claude/rules/</span></div>
+          <div class="kv-row"><span class="kv-key">Claude fmt</span><span class="kv-desc">.claude/rules/ <span class="tag tag-amber">Claude-specific</span></span></div>
           <div class="kv-row"><span class="kv-key">User</span><span class="kv-desc">~/.copilot/instructions/</span></div>
           <div class="callout callout-tip">
             <strong>💡</strong> Type <code class="inline">/instructions</code> in chat to open Configure menu.
@@ -1661,7 +1668,7 @@ applyTo: '**/*.py'
         <text x="203" y="122" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="7">model</text>
         <text x="240" y="122" fill="#EC4899" font-family="JetBrains Mono,monospace" font-size="7">---</text>
         <text x="260" y="122" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="7">+ prompt body</text>
-        <text x="24" y="134" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">Variables: ${input:name} · ${selection} · ${file} · Markdown links to instructions</text>
+        <text x="24" y="134" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">Variables: ${input:name} · Markdown links to instructions</text>
       </svg>
 
       <ul class="dot-list">
@@ -1680,10 +1687,10 @@ model: GPT-5.2
 Generate a React form component
 with validation for ${input:fields}</code></div>
       <div class="mini-heading">Quick Commands</div>
-      <div class="kv-row"><span class="kv-key">/create-prompt</span><span class="kv-desc">AI-generate a prompt file</span></div>
+      <div class="kv-row"><span class="kv-key">/create-prompt</span><span class="kv-desc">AI-generate a prompt file <span class="tag tag-purple">VS Code</span></span></div>
       <div class="kv-row"><span class="kv-key">/prompts</span><span class="kv-desc">Configure prompt files</span></div>
       <div class="callout callout-tip">
-        <strong>💡</strong> Reference instructions via Markdown links. Use <code class="inline">${selection}</code> for flexibility.
+        <strong>💡</strong> Reference instructions via Markdown links. Use <code class="inline">${input:name}</code> for user-provided values.
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
@@ -1796,39 +1803,65 @@ with validation for ${input:fields}</code></div>
 description: 'Security reviewer'
 tools: ['search', 'readFile']
 model: Claude Sonnet 4.6
+agents: ['*']
 handoffs:
   - label: Fix issues
     agent: implementation
+    prompt: Fix the issues above.
+    send: false
 ---
 Review code for OWASP Top 10...</code></div>
         </div>
         <div style="flex: 1;">
           <div class="mini-heading">Agent Frontmatter Fields</div>
-          <div class="kv-row"><span class="kv-key">description</span><span class="kv-desc">Shown as placeholder text</span></div>
-          <div class="kv-row"><span class="kv-key">tools</span><span class="kv-desc">List of available tools</span></div>
-          <div class="kv-row"><span class="kv-key">agents</span><span class="kv-desc">Allowed subagents (* = all)</span></div>
-          <div class="kv-row"><span class="kv-key">model</span><span class="kv-desc">AI model (string or priority list)</span></div>
-          <div class="kv-row"><span class="kv-key">handoffs</span><span class="kv-desc">Sequential workflow transitions</span></div>
-          <div class="kv-row"><span class="kv-key">target</span><span class="kv-desc">vscode or github-copilot</span></div>
-          <div class="kv-row"><span class="kv-key">mcp-servers</span><span class="kv-desc">MCP server configs</span></div>
-          <div class="kv-row"><span class="kv-key">hooks</span><span class="kv-desc">Agent-scoped hooks (Preview)</span></div>
-          <div class="mini-heading">Locations</div>
+          <table class="ref-table">
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td><code>description</code></td><td>Shown as placeholder text (required on github.com)</td></tr>
+            <tr><td><code>name</code></td><td>Display name (defaults to filename)</td></tr>
+            <tr><td><code>tools</code></td><td>List of available tools; omit for all tools</td></tr>
+            <tr><td><code>agents</code></td><td>Allowed subagents (<code>*</code> = all, <code>[]</code> = none)</td></tr>
+            <tr><td><code>model</code></td><td>AI model (string or prioritized array)</td></tr>
+            <tr><td><code>handoffs</code></td><td>Sequential workflow transitions (label, agent, prompt, send, model)</td></tr>
+            <tr><td><code>target</code></td><td><code>vscode</code> or <code>github-copilot</code> (omit for both)</td></tr>
+            <tr><td><code>mcp-servers</code></td><td>MCP server configs scoped to this agent</td></tr>
+            <tr><td><code>hooks</code></td><td>Agent-scoped hooks <span class="tag tag-purple">Preview</span></td></tr>
+            <tr><td><code>user-invocable</code></td><td>Show/hide in dropdown (default: true)</td></tr>
+            <tr><td><code>disable-model-invocation</code></td><td>Prevent subagent invocation (default: false)</td></tr>
+            <tr><td><code>argument-hint</code></td><td>Hint text in chat input field</td></tr>
+          </table>
+          <div class="mini-heading">File Locations</div>
           <div class="kv-row"><span class="kv-key">Workspace</span><span class="kv-desc">.github/agents/</span></div>
           <div class="kv-row"><span class="kv-key">Claude fmt</span><span class="kv-desc">.claude/agents/</span></div>
           <div class="kv-row"><span class="kv-key">User</span><span class="kv-desc">~/.copilot/agents/</span></div>
-          <div class="callout callout-tip">
-            <strong>💡</strong> Type <code class="inline">/agents</code> or <code class="inline">/create-agent</code> in chat to manage agents.
-          </div>
+          <div class="kv-row"><span class="kv-key">Org/Enterprise</span><span class="kv-desc">.github-private repo → agents/</span></div>
+        </div>
+      </div>
+      <div style="margin-top: 6px;">
+        <div class="mini-heading">Where Custom Agents Work</div>
+        <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+          <span class="tag tag-blue">VS Code</span>
+          <span class="tag tag-blue">JetBrains</span>
+          <span class="tag tag-blue">Eclipse</span>
+          <span class="tag tag-blue">Xcode</span>
+          <span class="tag tag-green">GitHub.com</span>
+          <span class="tag tag-green">Copilot CLI</span>
+          <span class="tag tag-green">Coding Agent</span>
+          <span class="tag tag-amber">Background &amp; Cloud agents</span>
+        </div>
+        <div class="callout callout-tip">
+          <strong>💡</strong> Type <code class="inline">/agents</code> to configure or <code class="inline">/create-agent</code> to generate with AI. On github.com, use the Agents tab at <code class="inline">github.com/copilot/agents</code> to create and manage agents.
         </div>
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
         <div class="use-case"><strong>Security review agent</strong> — read-only tools (<code class="inline">search</code>, <code class="inline">readFile</code>), scans for OWASP Top 10, hands off to "fix" agent</div>
-        <div class="use-case"><strong>Plan → Implement workflow</strong> — Plan agent creates a spec, handoff button sends it to Agent mode for coding</div>
+        <div class="use-case"><strong>Plan → Implement workflow</strong> — Plan agent creates a spec, handoff button (<code class="inline">send: true</code>) auto-submits to implementation agent</div>
+        <div class="use-case"><strong>Org-wide agent</strong> — create agents in <code class="inline">.github-private</code> repo to share across all repos in your org/enterprise</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://code.visualstudio.com/docs/copilot/customization/custom-agents" target="_blank">VS Code Docs — Custom Agents</a>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/custom-agents" target="_blank">VS Code Docs — Custom Agents</a> &middot;
+        <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents" target="_blank">GitHub Docs — Creating Custom Agents</a>
       </div>
     </div>
   </div>
@@ -2060,7 +2093,7 @@ Use factory mocks for fixtures</code></div>
 
       <div style="display: flex; gap: 12px;">
         <div style="flex: 1;">
-          <div class="mini-heading">mcp.json (.vscode/mcp.json)</div>
+          <div class="mini-heading">mcp.json (.vscode/mcp.json or .github/mcp.json)</div>
           <div class="code-block"><code>{
   "servers": {
     "github": {
@@ -2175,13 +2208,13 @@ Use factory mocks for fixtures</code></div>
         <text x="390" y="110" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">EXIT CODES</text>
 
         <rect x="150" y="118" width="120" height="16" rx="4" fill="#064e3b"/>
-        <text x="210" y="129" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">✅ 0 = Success → continue</text>
+        <text x="210" y="129" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">✅ 0 = Success → parse JSON</text>
 
-        <rect x="280" y="118" width="120" height="16" rx="4" fill="#7F1D1D"/>
-        <text x="340" y="129" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="7" font-weight="600">🚫 2 = Block → stop agent</text>
+        <rect x="280" y="118" width="120" height="16" rx="4" fill="#78350F"/>
+        <text x="340" y="129" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7" font-weight="600">⚠️ Non-zero = Logged &amp; skipped</text>
 
-        <rect x="410" y="118" width="140" height="16" rx="4" fill="#78350F"/>
-        <text x="480" y="129" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7" font-weight="600">⚠️ Other = Warning → continue</text>
+        <rect x="410" y="118" width="180" height="16" rx="4" fill="#3B1764"/>
+        <text x="500" y="129" text-anchor="middle" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="7" font-weight="600">🛡️ Block via JSON: permissionDecision: deny</text>
       </svg>
 
       <div style="display: flex; gap: 12px;">
@@ -2209,20 +2242,19 @@ Use factory mocks for fixtures</code></div>
   }
 }</code></div>
           <div class="mini-heading">Exit Codes</div>
-          <div class="kv-row"><span class="kv-key">0</span><span class="kv-desc">Success → parse stdout JSON</span></div>
-          <div class="kv-row"><span class="kv-key">2</span><span class="kv-desc">Block → stop &amp; show error</span></div>
-          <div class="kv-row"><span class="kv-key">Other</span><span class="kv-desc">Warning → continue</span></div>
-          <div class="mini-heading">PreToolUse Output</div>
-          <div class="kv-row"><span class="kv-key">permissionDecision</span><span class="kv-desc">"allow" | "deny" | "ask"</span></div>
-          <div class="callout callout-tip">
-            <strong>💡</strong> Use <code class="inline">/hooks</code> or <code class="inline">/create-hook</code> in chat to configure hooks.
+          <div class="kv-row"><span class="kv-key">0</span><span class="kv-desc">Success → parse stdout JSON output</span></div>
+          <div class="kv-row"><span class="kv-key">Non-zero</span><span class="kv-desc">Logged &amp; skipped — does not block agent</span></div>
+          <div class="mini-heading">PreToolUse Output (JSON)</div>
+          <div class="kv-row"><span class="kv-key">permissionDecision</span><span class="kv-desc">"deny" blocks the tool call (only <code class="inline">deny</code> is currently processed)</span></div>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Hook failures never block agent execution. Use <code class="inline">permissionDecision: "deny"</code> in JSON output to block specific tool calls.
           </div>
         </div>
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
         <div class="use-case"><strong>Auto-format on save</strong> — PostToolUse hook runs <code class="inline">prettier --write</code> on every file the agent edits</div>
-        <div class="use-case"><strong>Block destructive commands</strong> — PreToolUse hook denies <code class="inline">rm -rf</code> and <code class="inline">DROP TABLE</code> with exit code 2</div>
+        <div class="use-case"><strong>Block destructive commands</strong> — PreToolUse hook outputs <code class="inline">{"permissionDecision": "deny"}</code> for <code class="inline">rm -rf</code> and <code class="inline">DROP TABLE</code></div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
@@ -2322,7 +2354,7 @@ Use factory mocks for fixtures</code></div>
       </ul>
       <div class="mini-heading">Customize Agent Environment</div>
       <ul class="dot-list">
-        <li>Custom Dockerfile, devcontainer</li>
+        <li>Use <code class="inline">copilot-setup-steps.yml</code> (GitHub Actions workflow)</li>
         <li>MCP servers for coding agent</li>
         <li>Pre/post scripts, dependencies</li>
       </ul>
@@ -2447,6 +2479,8 @@ Use factory mocks for fixtures</code></div>
           <div class="kv-row"><span class="kv-key">Explore</span><span class="kv-desc">Quick codebase analysis</span></div>
           <div class="kv-row"><span class="kv-key">Task</span><span class="kv-desc">Run tests/builds, brief summaries</span></div>
           <div class="kv-row"><span class="kv-key">Code-review</span><span class="kv-desc">Review changes, surface real issues</span></div>
+          <div class="kv-row"><span class="kv-key">General-purpose</span><span class="kv-desc">General-purpose subagent</span></div>
+          <div class="kv-row"><span class="kv-key">Research</span><span class="kv-desc">Deep research tasks</span></div>
         </div>
       </div>
       <div class="use-cases">
@@ -2635,7 +2669,7 @@ Use factory mocks for fixtures</code></div>
       <div class="callout callout-info"><strong>What:</strong> Organization-level rules that prevent specific files, folders, or repositories from being sent to the AI model — enforcing compliance and protecting sensitive code.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
-      <svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+      <svg viewBox="0 0 380 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
         <defs>
           <linearGradient id="gCe1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#DC2626"/></linearGradient>
           <filter id="shCe"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
@@ -2675,8 +2709,12 @@ Use factory mocks for fixtures</code></div>
         <rect x="234" y="64" width="136" height="18" rx="5" fill="#0F172A" stroke="#3B82F6" stroke-width="0.6"/>
         <text x="302" y="76" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7" font-weight="600">💬 Chat &amp; Inline Chat</text>
 
-        <rect x="234" y="86" width="136" height="18" rx="5" fill="#0F172A" stroke="#8B5CF6" stroke-width="0.6"/>
-        <text x="302" y="98" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7" font-weight="600">🤖 Agent Mode</text>
+        <rect x="234" y="86" width="136" height="18" rx="5" fill="#2a0a0a" stroke="#EF4444" stroke-width="0.6"/>
+        <text x="302" y="98" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="7" font-weight="600">🚫 NOT: Agent / Edit / CLI</text>
+
+        <!-- Caveat: requires plan badge -->
+        <rect x="234" y="110" width="136" height="14" rx="4" fill="#291800" stroke="#F59E0B" stroke-width="0.5"/>
+        <text x="302" y="120" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">⚠️ Requires Business or Enterprise plan</text>
       </svg>
 
       <ul class="dot-list">
@@ -2684,8 +2722,12 @@ Use factory mocks for fixtures</code></div>
         <li>Prevents content from being sent to model</li>
         <li>Configurable in GitHub org settings</li>
         <li>Supports glob patterns for paths</li>
-        <li>Applies to completions, chat, and agents</li>
+        <li>Applies to completions and chat (Ask mode)</li>
+        <li>Requires <strong>Business or Enterprise</strong> plan</li>
       </ul>
+      <div class="callout callout-warn">
+        <strong>⚠️</strong> Content exclusion is <strong>not supported</strong> in Edit mode, Agent mode, Copilot CLI, or Copilot coding agent. Block mode for code referencing is also not enforced for CLI/coding agent.
+      </div>
       <div class="mini-heading">Common Exclusions</div>
       <div class="kv-row"><span class="kv-key">.env / .env.*</span><span class="kv-desc">Environment variables &amp; secrets</span></div>
       <div class="kv-row"><span class="kv-key">**/secrets/**</span><span class="kv-desc">Secret files &amp; credentials</span></div>
@@ -2707,9 +2749,10 @@ Use factory mocks for fixtures</code></div>
   <div class="card">
     <div class="card-header">
       <span class="section-num">19</span>
-      <h3>Spec-Driven Development</h3>
+      <h3>Spec-Driven Development <span class="tag tag-amber">Community</span></h3>
     </div>
     <div class="card-body">
+      <div class="callout callout-warn"><strong>⚠️ Note:</strong> This section describes <strong>community frameworks</strong>, not official GitHub Copilot features. These methodologies work well with Copilot agents but are maintained by third parties.</div>
       <div class="callout callout-info"><strong>What:</strong> Write a specification first, then let the AI agent implement it. Specs define requirements, acceptance criteria, and architecture — giving agents a clear blueprint instead of ad-hoc prompts.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
@@ -2861,9 +2904,11 @@ Use factory mocks for fixtures</code></div>
 │   │       └── <span class="file">SKILL.md</span>
 │   ├── <span class="folder">hooks/</span>
 │   │   └── <span class="file">format.json</span>
-│   └── <span class="folder">toolsets/</span>
+│   ├── <span class="folder">toolsets/</span>
+│   └── <span class="file">mcp.json</span>
 ├── <span class="folder">.vscode/</span>
 │   └── <span class="file">mcp.json</span>
+├── <span class="file">copilot-setup-steps.yml</span>
 ├── <span class="file">AGENTS.md</span>
 └── <span class="file">CLAUDE.md</span>
       </div>
@@ -2909,17 +2954,13 @@ Use factory mocks for fixtures</code></div>
         <text x="85" y="65" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Claude</text>
         <text x="85" y="77" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="6.5">Anthropic · Preview</text>
 
-        <rect x="162" y="30" width="130" height="56" rx="10" fill="url(#gTp2)" filter="url(#shTp)"/>
-        <!-- GitHub Copilot logo -->
-        <svg x="214" y="36" width="26" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        <text x="227" y="65" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Copilot</text>
-        <text x="227" y="77" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="6.5">GitHub · GA</text>
+        <!-- Copilot is first-party, not listed here -->
 
-        <rect x="304" y="30" width="130" height="56" rx="10" fill="url(#gTp3)" filter="url(#shTp)"/>
+        <rect x="210" y="30" width="130" height="56" rx="10" fill="url(#gTp3)" filter="url(#shTp)"/>
         <!-- OpenAI logo -->
-        <svg x="356" y="36" width="26" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.998 5.998 0 0 0-3.998 2.9 6.047 6.047 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>
-        <text x="369" y="65" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Codex</text>
-        <text x="369" y="77" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="6.5">OpenAI · Preview</text>
+        <svg x="262" y="36" width="26" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.998 5.998 0 0 0-3.998 2.9 6.047 6.047 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>
+        <text x="275" y="65" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Codex</text>
+        <text x="275" y="77" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="6.5">OpenAI · Preview</text>
 
         <!-- ── Right: Workflow ── -->
         <text x="610" y="36" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">WORKFLOW</text>
@@ -2938,7 +2979,7 @@ Use factory mocks for fixtures</code></div>
         <text x="697" y="57" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">🔀 Opens PR</text>
 
         <rect x="460" y="70" width="278" height="16" rx="4" fill="#0F172A" stroke="#F59E0B" stroke-width="0.5"/>
-        <text x="599" y="81" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6.5">Cost: GitHub Actions minutes + 1 premium request per session</text>
+        <text x="599" y="81" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6.5">Cost: 1 premium request per prompt (Actions minutes for native agent only)</text>
 
         <!-- Bottom: Where to use -->
         <text x="390" y="106" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="0.5">AVAILABLE FROM</text>
@@ -2964,13 +3005,13 @@ Use factory mocks for fixtures</code></div>
 
       <div style="display: flex; gap: 12px;">
         <div style="flex: 1;">
-          <div class="mini-heading">Supported Agents</div>
+          <div class="mini-heading">Supported Third-Party Agents</div>
           <table class="ref-table">
             <tr><th>Agent</th><th>Provider</th><th>Status</th></tr>
             <tr><td><strong>Claude</strong></td><td>Anthropic</td><td><span class="tag tag-purple">Preview</span></td></tr>
             <tr><td><strong>Codex</strong></td><td>OpenAI</td><td><span class="tag tag-purple">Preview</span></td></tr>
-            <tr><td><strong>Copilot</strong></td><td>GitHub</td><td><span class="tag tag-green">GA</span></td></tr>
           </table>
+          <div class="callout callout-info" style="margin-top: 4px;"><strong>📌</strong> Copilot coding agent is the <strong>first-party</strong> (native) agent — see Section 14. Third-party agents work alongside it.</div>
           <div class="mini-heading">Where to Use</div>
           <ul class="dot-list">
             <li><strong>Agents tab</strong> — github.com/copilot/agents</li>
@@ -2993,8 +3034,8 @@ Use factory mocks for fixtures</code></div>
           </div>
           <div class="mini-heading">Cost &amp; Billing</div>
           <ul class="dot-list">
-            <li>Consumes <strong>GitHub Actions minutes</strong> + <strong>1 premium request per session</strong></li>
-            <li>Uses same security protections as Copilot coding agent</li>
+            <li>Each prompt consumes <strong>1 premium request</strong></li>
+            <li><strong>GitHub Actions minutes</strong> apply to the native Copilot coding agent, not third-party agents</li>
             <li>Same repo access permissions as built-in agent</li>
           </ul>
           <div class="mini-heading">Enable for Your Org</div>
@@ -3010,7 +3051,7 @@ Use factory mocks for fixtures</code></div>
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
-        <div class="use-case"><strong>Compare agent output</strong> — assign the same issue to Claude, Codex, and Copilot → compare the three PRs and merge the best one</div>
+        <div class="use-case"><strong>Compare agent output</strong> — assign the same issue to Claude and Codex → compare their PRs with Copilot coding agent's PR and merge the best one</div>
         <div class="use-case"><strong>Parallel workstreams</strong> — assign backend refactor to Codex while Claude handles frontend tests — both open PRs simultaneously</div>
       </div>
       <div class="sources">
@@ -3026,10 +3067,10 @@ Use factory mocks for fixtures</code></div>
   <div class="card wide">
     <div class="card-header">
       <span class="section-num">22</span>
-      <h3>Browser Agent Tools</h3>
+      <h3>Browser Agent Tools <span class="tag tag-purple">VS Code Preview</span></h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> Agents can open, interact with, and screenshot web pages in VS Code's integrated browser — enabling autonomous build → test → debug → fix loops for web apps without leaving the editor.</div>
+      <div class="callout callout-info"><strong>What:</strong> Agents can open, interact with, and screenshot web pages in VS Code's integrated browser — enabling autonomous build → test → debug → fix loops for web apps without leaving the editor. <em>This is a VS Code-specific experimental feature.</em></div>
 
       <!-- ===== INFOGRAPHIC ===== -->
       <svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
@@ -3174,7 +3215,7 @@ Use factory mocks for fixtures</code></div>
   <div class="card wide">
     <div class="card-header">
       <span class="section-num">23</span>
-      <h3>Checkpoints &amp; Session Forking</h3>
+      <h3>Checkpoints &amp; Session Forking <span class="tag tag-purple">VS Code Preview</span></h3>
     </div>
     <div class="card-body">
       <div class="callout callout-info"><strong>What:</strong> VS Code auto-snapshots your workspace before each agent action. Restore to any previous state, redo undone changes, edit &amp; resend earlier prompts, or fork a conversation to explore an alternative approach — all without losing work.</div>
@@ -3679,96 +3720,113 @@ Example: validateEmail("invalid") → false</code></div>
   </div>
 
   <!-- ====== 27. BYOK — BRING YOUR OWN KEY ====== -->
-  <div class="card">
+  <div class="card wide">
     <div class="card-header">
       <span class="section-num">27</span>
       <h3>BYOK — Bring Your Own Key</h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> Use your own API keys to access hundreds of models beyond the built-in ones — including local models via Ollama or AI Toolkit. Bypass rate limits, experiment with cutting-edge models, and use your own compute.</div>
+      <div class="callout callout-info"><strong>What:</strong> Use your own API keys to access hundreds of models beyond the built-in ones. Two modes: <strong>Individual BYOK</strong> (Pro/Pro+ users add keys in VS Code) and <strong>Enterprise BYOK</strong> (admins connect keys at org/enterprise level, available since Nov 2025). Both let you bypass rate limits, use custom models, and leverage existing provider contracts.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
-      <svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+      <svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
         <defs>
           <linearGradient id="gBk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
           <linearGradient id="gBk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient>
+          <linearGradient id="gBk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
           <filter id="shBk"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
         </defs>
 
         <!-- Title -->
-        <text x="190" y="16" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="800" letter-spacing="0.5">BYOK — YOUR KEY · YOUR MODELS · YOUR COMPUTE</text>
+        <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">TWO BYOK MODES — INDIVIDUAL + ENTERPRISE</text>
 
-        <!-- Left: Your API Key -->
-        <rect x="12" y="28" width="80" height="50" rx="10" fill="url(#gBk1)" filter="url(#shBk)"/>
-        <text x="52" y="46" text-anchor="middle" fill="#fff" font-size="14">🔑</text>
-        <text x="52" y="60" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="7" font-weight="700">Your API Key</text>
-        <text x="52" y="70" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="5.5">or local endpoint</text>
+        <!-- Left: Individual BYOK -->
+        <rect x="20" y="30" width="340" height="56" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1" filter="url(#shBk)"/>
+        <rect x="20" y="30" width="340" height="20" rx="10" fill="url(#gBk1)"/>
+        <rect x="20" y="42" width="340" height="8" fill="url(#gBk1)"/>
+        <text x="190" y="44" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">🔑 Individual BYOK — Pro / Pro+</text>
 
-        <!-- Arrow -->
-        <polygon points="96,51 103,53 96,55" fill="#F4A261"/>
+        <text x="32" y="64" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">User adds API key in VS Code model picker</text>
+        <text x="32" y="76" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7">Ollama, local models, experimentation · Not available for Business/Enterprise</text>
 
-        <!-- Center: Copilot -->
-        <rect x="108" y="28" width="80" height="50" rx="10" fill="url(#gBk2)" filter="url(#shBk)"/>
-        <text x="148" y="46" text-anchor="middle" fill="#fff" font-size="14">🤖</text>
-        <text x="148" y="60" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="7" font-weight="700">VS Code</text>
-        <text x="148" y="70" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="5.5">Manage Models</text>
+        <!-- Right: Enterprise BYOK -->
+        <rect x="380" y="30" width="380" height="56" rx="10" fill="#0F172A" stroke="#10B981" stroke-width="1" filter="url(#shBk)"/>
+        <rect x="380" y="30" width="380" height="20" rx="10" fill="url(#gBk3)"/>
+        <rect x="380" y="42" width="380" height="8" fill="url(#gBk3)"/>
+        <text x="570" y="44" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">🏢 Enterprise BYOK — Business / Enterprise <tspan fill="#6EE7B7" font-size="7">(Preview)</tspan></text>
 
-        <!-- Arrow -->
-        <polygon points="192,51 199,53 192,55" fill="#F4A261"/>
+        <text x="392" y="64" fill="#34D399" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Admin connects key in org/enterprise settings · Centralized model management</text>
+        <text x="392" y="76" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7">Billed by provider, not GitHub quotas · Streaming &amp; Responses API supported</text>
 
-        <!-- Right: Model options -->
-        <rect x="204" y="26" width="164" height="54" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="0.6"/>
-        <text x="286" y="38" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7" font-weight="700">AVAILABLE PROVIDERS</text>
+        <!-- Bottom: Supported providers row -->
+        <text x="390" y="102" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">SUPPORTED PROVIDERS</text>
 
-        <rect x="212" y="44" width="70" height="12" rx="3" fill="#1a2740" stroke="#3B82F6" stroke-width="0.4"/>
-        <text x="247" y="53" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">OpenAI</text>
+        <rect x="80" y="110" width="70" height="14" rx="4" fill="#1a2740" stroke="#3B82F6" stroke-width="0.5"/>
+        <text x="115" y="120" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7" font-weight="600">OpenAI</text>
 
-        <rect x="288" y="44" width="70" height="12" rx="3" fill="#1a2740" stroke="#8B5CF6" stroke-width="0.4"/>
-        <text x="323" y="53" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">Anthropic</text>
+        <rect x="158" y="110" width="74" height="14" rx="4" fill="#1a2740" stroke="#8B5CF6" stroke-width="0.5"/>
+        <text x="195" y="120" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7" font-weight="600">Anthropic</text>
 
-        <rect x="212" y="60" width="70" height="12" rx="3" fill="#1a2740" stroke="#10B981" stroke-width="0.4"/>
-        <text x="247" y="69" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">Google</text>
+        <rect x="240" y="110" width="80" height="14" rx="4" fill="#1a2740" stroke="#10B981" stroke-width="0.5"/>
+        <text x="280" y="120" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">Google AI Studio</text>
 
-        <rect x="288" y="60" width="70" height="12" rx="3" fill="#1a2740" stroke="#06B6D4" stroke-width="0.4"/>
-        <text x="323" y="69" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">Ollama (local)</text>
+        <rect x="328" y="110" width="76" height="14" rx="4" fill="#1a2740" stroke="#F59E0B" stroke-width="0.5"/>
+        <text x="366" y="120" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7" font-weight="600">MS Foundry</text>
 
-        <!-- Bottom: key notes -->
-        <rect x="12" y="86" width="356" height="18" rx="5" fill="#291800" stroke="#F59E0B" stroke-width="0.5"/>
-        <text x="190" y="98" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="6">⚠️ Pro/Pro+ only · Tool calling needed for Agent mode · No responsible AI filtering on BYOK output</text>
+        <rect x="412" y="110" width="76" height="14" rx="4" fill="#1a2740" stroke="#06B6D4" stroke-width="0.5"/>
+        <text x="450" y="120" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="7" font-weight="600">AWS Bedrock</text>
+
+        <rect x="496" y="110" width="40" height="14" rx="4" fill="#1a2740" stroke="#EC4899" stroke-width="0.5"/>
+        <text x="516" y="120" text-anchor="middle" fill="#F472B6" font-family="Inter,sans-serif" font-size="7" font-weight="600">xAI</text>
+
+        <rect x="544" y="110" width="90" height="14" rx="4" fill="#1a2740" stroke="#EF4444" stroke-width="0.5"/>
+        <text x="589" y="120" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="7" font-weight="600">OpenAI-compatible</text>
+
+        <rect x="642" y="110" width="70" height="14" rx="4" fill="#1a2740" stroke="#06B6D4" stroke-width="0.5"/>
+        <text x="677" y="120" text-anchor="middle" fill="#22D3EE" font-family="Inter,sans-serif" font-size="7" font-weight="600">Ollama (local)</text>
       </svg>
 
-      <div class="mini-heading">Benefits</div>
-      <ul class="dot-list">
-        <li><strong>Model choice</strong> — access models not available built-in</li>
-        <li><strong>Experimentation</strong> — try new models or features early</li>
-        <li><strong>Local compute</strong> — run models on your machine (Ollama)</li>
-        <li><strong>Greater control</strong> — bypass standard rate limits</li>
-      </ul>
-      <div class="mini-heading">How to Add</div>
-      <ul class="dot-list">
-        <li>Model picker → <strong>Manage Models</strong> → <strong>Add Models</strong></li>
-        <li>Select built-in provider or install extension</li>
-        <li>Enter API key / endpoint URL</li>
-        <li>Or: <code class="inline">Chat: Manage Language Models</code> command</li>
-      </ul>
-      <div class="mini-heading">Options</div>
-      <div class="kv-row"><span class="kv-key">Built-in providers</span><span class="kv-desc">OpenAI, Anthropic, Google, etc.</span></div>
-      <div class="kv-row"><span class="kv-key">Extensions</span><span class="kv-desc">AI Toolkit, Foundry Local</span></div>
-      <div class="kv-row"><span class="kv-key">Local models</span><span class="kv-desc">Ollama, custom OpenAI-compat</span></div>
-      <div class="callout callout-warn">
-        <strong>⚠️</strong> BYOK is for <strong>Pro/Pro+ individual plans only</strong>. Not yet available for Business/Enterprise. Still requires Copilot service &amp; internet for embeddings and indexing.
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Individual BYOK (Pro/Pro+)</div>
+          <ul class="dot-list">
+            <li>Model picker → <strong>Manage Models</strong> → select provider → enter key</li>
+            <li>Or: <code class="inline">Chat: Manage Language Models</code> command</li>
+          </ul>
+          <div class="kv-row"><span class="kv-key">Built-in providers</span><span class="kv-desc">OpenAI, Anthropic, Google, etc.</span></div>
+          <div class="kv-row"><span class="kv-key">Extensions</span><span class="kv-desc">AI Toolkit, Foundry Local</span></div>
+          <div class="kv-row"><span class="kv-key">Local models</span><span class="kv-desc">Ollama, custom OpenAI-compat</span></div>
+          <div class="callout callout-info" style="margin-top: 4px;">
+            <strong>📌</strong> Individual BYOK is for <strong>Pro/Pro+ only</strong>. Business/Enterprise users use Enterprise BYOK instead.
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Enterprise BYOK (Business/Enterprise) <span class="tag tag-green">Preview</span></div>
+          <ul class="dot-list">
+            <li>Org/Enterprise settings → connect API key → manage model access</li>
+            <li>Enterprise admins control which orgs can use which models</li>
+          </ul>
+          <div class="kv-row"><span class="kv-key">Providers</span><span class="kv-desc">OpenAI, Anthropic, Google AI Studio, MS Foundry, AWS Bedrock, xAI, OpenAI-compat</span></div>
+          <div class="kv-row"><span class="kv-key">Billing</span><span class="kv-desc">Billed by your provider, not GitHub quotas</span></div>
+          <div class="kv-row"><span class="kv-key">Context window</span><span class="kv-desc">Admins can set max context window</span></div>
+          <div class="kv-row"><span class="kv-key">Streaming</span><span class="kv-desc">Streaming responses supported</span></div>
+          <div class="kv-row"><span class="kv-key">Responses API</span><span class="kv-desc">Supported (since Jan 2026 update)</span></div>
+        </div>
       </div>
-      <div class="callout callout-tip">
-        <strong>💡</strong> BYOK models need <strong>tool calling support</strong> to work in Agent mode. No responsible AI filtering on BYOK model output.
+      <div class="callout callout-tip" style="margin-top: 6px;">
+        <strong>💡</strong> BYOK models need <strong>tool calling support</strong> to work in Agent mode. Enterprise BYOK usage does not count against GitHub Copilot request quotas.
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
-        <div class="use-case"><strong>Run local Ollama</strong> — deploy Phi-4 locally, add via Manage Models → use in chat with zero API cost and full privacy</div>
+        <div class="use-case"><strong>Run local Ollama</strong> — deploy Phi-4 locally, add via Manage Models → use in chat with zero API cost and full privacy (Individual)</div>
+        <div class="use-case"><strong>Enterprise model standardization</strong> — connect org's Azure OpenAI key → all devs use approved models, billed via existing contract (Enterprise)</div>
         <div class="use-case"><strong>Cutting-edge models</strong> — add your Anthropic key to try Claude's latest release before it appears in the built-in list</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://code.visualstudio.com/docs/copilot/customization/language-models" target="_blank">VS Code Docs — Language Models</a>
+        <a href="https://code.visualstudio.com/docs/copilot/customization/language-models" target="_blank">VS Code Docs — Language Models</a> &middot;
+        <a href="https://github.blog/changelog/2025-11-20-enterprise-bring-your-own-key-byok-for-github-copilot-is-now-in-public-preview/" target="_blank">GitHub Blog — Enterprise BYOK</a> &middot;
+        <a href="https://github.blog/changelog/2026-01-15-github-copilot-bring-your-own-key-byok-enhancements/" target="_blank">BYOK Enhancements (Jan 2026)</a>
       </div>
     </div>
   </div>
@@ -3876,7 +3934,7 @@ Example: validateEmail("invalid") → false</code></div>
           <table class="ref-table">
             <tr><th>What</th><th>Behavior</th></tr>
             <tr><td>Prompts &amp; suggestions</td><td>Not retained after response delivered</td></tr>
-            <tr><td>Training on your code</td><td><strong>No</strong> (Business/Enterprise)</td></tr>
+            <tr><td>Training on your code</td><td><strong>No</strong> (all plans — cannot be enabled)</td></tr>
             <tr><td>Telemetry opt-out</td><td>Individual users can opt out</td></tr>
             <tr><td>Code snippets</td><td>Encrypted in transit &amp; at rest</td></tr>
           </table>
@@ -4031,6 +4089,7 @@ Example: validateEmail("invalid") → false</code></div>
             <li>Track Copilot actions by user</li>
             <li>Seat assignments, policy changes</li>
             <li>Available for Business &amp; Enterprise plans</li>
+            <li><strong>180-day retention limit</strong></li>
           </ul>
           <div class="mini-heading">Settings Path</div>
           <div class="kv-row"><span class="kv-key">Org</span><span class="kv-desc">Settings → Copilot → Policies / Models</span></div>
@@ -4148,6 +4207,8 @@ Example: validateEmail("invalid") → false</code></div>
         <tr><td><strong>Explore</strong></td><td>Quick codebase analysis &amp; Q&amp;A</td></tr>
         <tr><td><strong>Task</strong></td><td>Run tests/builds, return brief summaries</td></tr>
         <tr><td><strong>Code-review</strong></td><td>Review changes, surface real issues</td></tr>
+        <tr><td><strong>General-purpose</strong></td><td>General-purpose subagent</td></tr>
+        <tr><td><strong>Research</strong></td><td>Deep research tasks</td></tr>
       </table>
       <div class="mini-heading">How They Work</div>
       <ul class="dot-list">
@@ -4559,7 +4620,7 @@ Example: validateEmail("invalid") → false</code></div>
       <h3>Copilot Autofix &amp; Advanced Security</h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> AI-powered security remediation built into GitHub's code scanning pipeline. When CodeQL detects a vulnerability in a PR, Copilot Autofix generates a suggested fix with explanation — no Copilot subscription required. Integrates with Advanced Security, Code Scanning, and Dependabot.</div>
+      <div class="callout callout-info"><strong>What:</strong> AI-powered security remediation built into GitHub's code scanning pipeline. When CodeQL detects a vulnerability in a PR, Copilot Autofix generates a suggested fix with explanation. Requires <strong>GitHub Code Security</strong> license (free for public repos). Integrates with Advanced Security, Code Scanning, and Dependabot.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
       <svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
@@ -4606,7 +4667,7 @@ Example: validateEmail("invalid") → false</code></div>
         <text x="370" y="66" text-anchor="middle" fill="#fff" font-size="16">🤖</text>
         <text x="370" y="80" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">Autofix Generates</text>
         <text x="370" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">LLM generates fix +</text>
-        <text x="370" y="101" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">explanation via GPT-5.1</text>
+        <text x="370" y="101" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">natural language explanation</text>
 
         <!-- Arrow -->
         <line x1="444" y1="76" x2="466" y2="76" stroke="#F4A261" stroke-width="2" marker-end="url(#arrAf)"/>
@@ -4672,7 +4733,7 @@ Example: validateEmail("invalid") → false</code></div>
 
         <text x="596" y="172" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="7" font-weight="600">AI fix generation for all pillars</text>
         <text x="596" y="184" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• Code + explanation generated</text>
-        <text x="596" y="194" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• No Copilot subscription needed</text>
+        <text x="596" y="194" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• Requires GitHub Code Security</text>
         <text x="596" y="204" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">• Enabled by default on CodeQL</text>
 
         <!-- Connecting lines from pillars to Autofix -->
@@ -4718,7 +4779,7 @@ Example: validateEmail("invalid") → false</code></div>
 
         <!-- No subscription badge -->
         <rect x="658" y="238" width="100" height="14" rx="4" fill="#064e3b" stroke="#10B981" stroke-width="0.6"/>
-        <text x="708" y="248" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="6" font-weight="600">🆓 No Copilot sub needed</text>
+        <text x="708" y="248" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="6" font-weight="600">Requires GitHub Code Security</text>
 
         <!-- Bottom: where it works -->
         <text x="390" y="272" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="7">Works on: <tspan fill="#60A5FA" font-weight="600">Public repos (free)</tspan> · <tspan fill="#A78BFA" font-weight="600">Org repos with GitHub Code Security</tspan> · <tspan fill="#FBBF24" font-weight="600">PRs + existing alerts on default branch</tspan></text>
@@ -4729,7 +4790,7 @@ Example: validateEmail("invalid") → false</code></div>
           <div class="mini-heading">How It Works</div>
           <ul class="dot-list">
             <li><strong>CodeQL scans PR</strong> → detects security vulnerability (SARIF format)</li>
-            <li><strong>Alert + code context</strong> sent to GPT-5.1 via internal Copilot APIs</li>
+            <li><strong>Alert + code context</strong> sent to LLM via internal Copilot APIs</li>
             <li><strong>Fix generated</strong> — code patch + natural language explanation</li>
             <li><strong>Displayed on PR</strong> — click to view diff, edit, and commit</li>
             <li>Also available for <strong>existing alerts</strong> on default branch</li>
@@ -4742,8 +4803,8 @@ Example: validateEmail("invalid") → false</code></div>
           <table class="ref-table">
             <tr><th>Repo Type</th><th>Autofix Access</th></tr>
             <tr><td>Public repos</td><td><span class="tag tag-green">Free</span></td></tr>
-            <tr><td>Org repos (GitHub Team + Code Security)</td><td><span class="tag tag-blue">Included</span></td></tr>
-            <tr><td>Enterprise (GHES)</td><td><span class="tag tag-purple">Code Security</span></td></tr>
+            <tr><td>Org repos (GitHub Code Security)</td><td><span class="tag tag-blue">Included</span></td></tr>
+            <tr><td>Enterprise (GHES + Code Security)</td><td><span class="tag tag-purple">Code Security</span></td></tr>
           </table>
         </div>
         <div style="flex: 1;">
@@ -4792,7 +4853,7 @@ Example: validateEmail("invalid") → false</code></div>
   <div class="card wide">
     <div class="card-header">
       <span class="section-num">34</span>
-      <h3>Chat Debug View &amp; Agent Debug Logs</h3>
+      <h3>Chat Debug View &amp; Agent Debug Logs <span class="tag tag-purple">VS Code</span></h3>
     </div>
     <div class="card-body">
       <div class="callout callout-info"><strong>What:</strong> Two complementary debugging tools built into VS Code that let you inspect <em>exactly</em> what Copilot sees — the full system prompt, loaded instructions/skills, context files, tool call I/O, token usage, and raw LLM responses. Essential for debugging why Copilot ignores files, skips tools, or produces unexpected output.</div>
@@ -5023,12 +5084,12 @@ Example: validateEmail("invalid") → false</code></div>
           <table class="ref-table">
             <tr><th>Command</th><th>Action</th></tr>
             <tr><td><code>/init</code></td><td>Generate workspace instructions</td></tr>
-            <tr><td><code>/create-agent</code></td><td>AI-create a custom agent</td></tr>
-            <tr><td><code>/create-skill</code></td><td>AI-create a skill</td></tr>
-            <tr><td><code>/create-prompt</code></td><td>AI-create a prompt file</td></tr>
-            <tr><td><code>/create-instruction</code></td><td>AI-create an instruction</td></tr>
-            <tr><td><code>/create-hook</code></td><td>AI-create a hook config</td></tr>
-            <tr><td><code>/hooks</code></td><td>Configure hooks menu</td></tr>
+            <tr><td><code>/explain</code></td><td>Explain selected code</td></tr>
+            <tr><td><code>/fix</code></td><td>Fix problems in code</td></tr>
+            <tr><td><code>/tests</code></td><td>Generate unit tests</td></tr>
+            <tr><td><code>/new</code></td><td>Scaffold a new project</td></tr>
+            <tr><td><code>/clear</code></td><td>Start a new chat session</td></tr>
+            <tr><td><code>/help</code></td><td>Copilot quick reference</td></tr>
           </table>
           <div class="mini-heading">Key Resources</div>
           <div class="kv-row"><span class="kv-key">Feature Matrix</span><span class="kv-desc">Copilot feature comparison · <a href="https://copilot-feature-matrix.com" target="_blank" style="color: var(--accent-salmon);">↗ Link</a></span></div>
