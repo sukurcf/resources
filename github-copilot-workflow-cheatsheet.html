@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How GitHub Copilot Works — Complete Architecture &amp; Workflow</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    /* ===== CSS Variables ===== */
+    :root {
+      --color-orange:    #F97316;
+      --color-blue:      #3B82F6;
+      --color-red:       #EF4444;
+      --color-purple:    #8B5CF6;
+      --color-green:     #10B981;
+      --color-pink:      #EC4899;
+      --color-cyan:      #06B6D4;
+      --color-amber:     #F59E0B;
+      --color-lime:      #84CC16;
+      --color-indigo:    #6366F1;
+      --color-teal:      #14B8A6;
+      --color-rose:      #F43F5E;
+
+      --bg-page:         #0B1120;
+      --bg-card:         #131B2E;
+      --bg-card-alt:     #182136;
+      --bg-code:         #0A0F1A;
+      --bg-header:       #060B14;
+      --bg-flow:         #0E1525;
+      --bg-flow-box:     #1A2540;
+
+      --text-primary:    #F1F5F9;
+      --text-secondary:  #CBD5E1;
+      --text-muted:      #94A3B8;
+      --text-code:       #E2E8F0;
+
+      --border-subtle:   rgba(148, 163, 184, 0.12);
+      --shadow-card:     0 4px 24px rgba(0,0,0,0.4);
+      --shadow-glow:     0 0 30px rgba(59,130,246,0.08);
+    }
+
+    [data-theme="light"] {
+      --bg-page:         #F0F4F8;
+      --bg-card:         #FFFFFF;
+      --bg-card-alt:     #F8FAFC;
+      --bg-code:         #F1F5F9;
+      --bg-header:       #1E293B;
+      --bg-flow:         #E8EDF4;
+      --bg-flow-box:     #FFFFFF;
+      --text-primary:    #0F172A;
+      --text-secondary:  #475569;
+      --text-muted:      #64748B;
+      --text-code:       #334155;
+      --border-subtle:   rgba(15, 23, 42, 0.08);
+      --shadow-card:     0 4px 24px rgba(0,0,0,0.08);
+      --shadow-glow:     0 0 30px rgba(59,130,246,0.04);
+    }
+    /* Light theme: fix callout & tag-badge contrast */
+    [data-theme="light"] .callout-tip { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: #065F46; }
+    [data-theme="light"] .callout-warn { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: #92400E; }
+    [data-theme="light"] .callout-info { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color: #1E40AF; }
+    [data-theme="light"] .tag-green { background: rgba(16,185,129,0.12); color: #065F46; }
+    [data-theme="light"] .tag-blue { background: rgba(59,130,246,0.12); color: #1E40AF; }
+    [data-theme="light"] .tag-purple { background: rgba(139,92,246,0.12); color: #5B21B6; }
+    [data-theme="light"] .tag-red { background: rgba(239,68,68,0.12); color: #991B1B; }
+    [data-theme="light"] .tag-amber { background: rgba(245,158,11,0.12); color: #92400E; }
+    [data-theme="light"] .tag-pink { background: rgba(236,72,153,0.12); color: #9D174D; }
+    [data-theme="light"] .tag-cyan { background: rgba(6,182,212,0.12); color: #155E75; }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ===== Header ===== */
+    .page-header {
+      background: var(--bg-header);
+      padding: 32px 24px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 800px 200px at 30% 100%, rgba(59,130,246,0.12), transparent),
+        radial-gradient(ellipse 600px 200px at 70% 100%, rgba(139,92,246,0.10), transparent);
+      pointer-events: none;
+    }
+    .header-content {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #60A5FA;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .page-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: #F8FAFC;
+      margin-bottom: 10px;
+    }
+    .page-title .gradient-text {
+      background: linear-gradient(135deg, #60A5FA, #A78BFA, #F472B6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-subtitle {
+      font-size: 16px;
+      color: #94A3B8;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    .header-meta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: #64748B;
+    }
+    .header-meta span { display: flex; align-items: center; gap: 4px; }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #F8FAFC;
+      transition: all 0.3s;
+      z-index: 10;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.15); }
+
+    /* ===== Main Container ===== */
+    .main-container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* ===== Section Headers ===== */
+    .section-header {
+      text-align: center;
+      margin: 48px 0 28px;
+    }
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+    }
+    .section-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-blue);
+      margin-bottom: 8px;
+    }
+
+    /* ===== MAIN PIPELINE FLOW ===== */
+    .pipeline-section {
+      background: var(--bg-flow);
+      border-radius: 20px;
+      padding: 36px 28px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-glow);
+      margin-bottom: 32px;
+    }
+    .pipeline-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 32px;
+    }
+
+    /* Flow Steps */
+    .flow-steps {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .flow-step {
+      flex: 0 1 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .flow-box {
+      background: var(--bg-flow-box);
+      border-radius: 16px;
+      padding: 20px 16px 16px;
+      text-align: center;
+      width: 100%;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .flow-box:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+    .flow-box.step-1 { border-top: 3px solid var(--color-orange); }
+    .flow-box.step-2 { border-top: 3px solid var(--color-blue); }
+    .flow-box.step-3 { border-top: 3px solid var(--color-red); }
+    .flow-box.step-4 { border-top: 3px solid var(--color-purple); }
+    .flow-box.step-5 { border-top: 3px solid var(--color-green); }
+    .flow-box.step-6 { border-top: 3px solid var(--color-pink); }
+
+    .flow-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+    }
+    .flow-box.step-1 .flow-icon { background: rgba(249,115,22,0.15); }
+    .flow-box.step-2 .flow-icon { background: rgba(59,130,246,0.15); }
+    .flow-box.step-3 .flow-icon { background: rgba(239,68,68,0.15); }
+    .flow-box.step-4 .flow-icon { background: rgba(139,92,246,0.15); }
+    .flow-box.step-5 .flow-icon { background: rgba(16,185,129,0.15); }
+    .flow-box.step-6 .flow-icon { background: rgba(236,72,153,0.15); }
+
+    .flow-label {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 4px 0;
+      color: var(--text-primary);
+    }
+    .flow-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Arrows between steps */
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 36px;
+      font-size: 18px;
+      color: var(--color-amber);
+      align-self: center;
+    }
+
+    /* Response dashed line */
+    .response-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px 0;
+      position: relative;
+    }
+    .response-line::before {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--color-amber) 0px, var(--color-amber) 8px, transparent 8px, transparent 16px);
+    }
+    .response-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-amber);
+      white-space: nowrap;
+      padding: 4px 16px;
+      border-radius: 100px;
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.2);
+    }
+    .response-line::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--color-amber) 0px, var(--color-amber) 8px, transparent 8px, transparent 16px);
+    }
+
+    /* ===== CONTEXT SOURCES & OUTPUT TYPES ===== */
+    .pills-section {
+      margin: 16px 0;
+    }
+    .pills-row-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-flow-box);
+      transition: transform 0.2s;
+    }
+    .pill:hover { transform: translateY(-2px); }
+    .pill-icon {
+      font-size: 16px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+    .pill-text { display: flex; flex-direction: column; }
+    .pill-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .pill-desc { font-size: 10px; font-weight: 400; color: var(--text-muted); }
+
+    /* Pill Colors */
+    .pill.ctx-tabs .pill-icon { background: rgba(16,185,129,0.15); }
+    .pill.ctx-workspace .pill-icon { background: rgba(59,130,246,0.15); }
+    .pill.ctx-instructions .pill-icon { background: rgba(139,92,246,0.15); }
+    .pill.ctx-skills .pill-icon { background: rgba(236,72,153,0.15); }
+    .pill.ctx-mcp .pill-icon { background: rgba(245,158,11,0.15); }
+    .pill.ctx-selection .pill-icon { background: rgba(239,68,68,0.15); }
+    .pill.ctx-web .pill-icon { background: rgba(6,182,212,0.15); }
+
+    .pill.out-inline .pill-icon { background: rgba(99,102,241,0.15); }
+    .pill.out-chat .pill-icon { background: rgba(16,185,129,0.15); }
+    .pill.out-agent .pill-icon { background: rgba(244,63,94,0.15); }
+    .pill.out-edits .pill-icon { background: rgba(59,130,246,0.15); }
+    .pill.out-terminal .pill-icon { background: rgba(249,115,22,0.15); }
+
+    /* ===== DETAIL CARDS GRID ===== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      border-left: 4px solid;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: transform 0.3s;
+      break-inside: avoid;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card.wide { grid-column: span 2; }
+
+    .card-header {
+      padding: 16px 20px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-icon {
+      font-size: 22px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+    .card-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .card-body {
+      padding: 0 20px 20px;
+    }
+
+    /* Card color variants */
+    .card.c-orange { border-left-color: var(--color-orange); }
+    .card.c-orange .card-header { background: linear-gradient(135deg, rgba(249,115,22,0.08), transparent); }
+    .card.c-orange .card-icon { background: rgba(249,115,22,0.15); }
+
+    .card.c-blue { border-left-color: var(--color-blue); }
+    .card.c-blue .card-header { background: linear-gradient(135deg, rgba(59,130,246,0.08), transparent); }
+    .card.c-blue .card-icon { background: rgba(59,130,246,0.15); }
+
+    .card.c-red { border-left-color: var(--color-red); }
+    .card.c-red .card-header { background: linear-gradient(135deg, rgba(239,68,68,0.08), transparent); }
+    .card.c-red .card-icon { background: rgba(239,68,68,0.15); }
+
+    .card.c-purple { border-left-color: var(--color-purple); }
+    .card.c-purple .card-header { background: linear-gradient(135deg, rgba(139,92,246,0.08), transparent); }
+    .card.c-purple .card-icon { background: rgba(139,92,246,0.15); }
+
+    .card.c-green { border-left-color: var(--color-green); }
+    .card.c-green .card-header { background: linear-gradient(135deg, rgba(16,185,129,0.08), transparent); }
+    .card.c-green .card-icon { background: rgba(16,185,129,0.15); }
+
+    .card.c-pink { border-left-color: var(--color-pink); }
+    .card.c-pink .card-header { background: linear-gradient(135deg, rgba(236,72,153,0.08), transparent); }
+    .card.c-pink .card-icon { background: rgba(236,72,153,0.15); }
+
+    .card.c-cyan { border-left-color: var(--color-cyan); }
+    .card.c-cyan .card-header { background: linear-gradient(135deg, rgba(6,182,212,0.08), transparent); }
+    .card.c-cyan .card-icon { background: rgba(6,182,212,0.15); }
+
+    .card.c-amber { border-left-color: var(--color-amber); }
+    .card.c-amber .card-header { background: linear-gradient(135deg, rgba(245,158,11,0.08), transparent); }
+    .card.c-amber .card-icon { background: rgba(245,158,11,0.15); }
+
+    .card.c-indigo { border-left-color: var(--color-indigo); }
+    .card.c-indigo .card-header { background: linear-gradient(135deg, rgba(99,102,241,0.08), transparent); }
+    .card.c-indigo .card-icon { background: rgba(99,102,241,0.15); }
+
+    .card.c-lime { border-left-color: var(--color-lime); }
+    .card.c-lime .card-header { background: linear-gradient(135deg, rgba(132,204,22,0.08), transparent); }
+    .card.c-lime .card-icon { background: rgba(132,204,22,0.15); }
+
+    .card.c-teal { border-left-color: var(--color-teal); }
+    .card.c-teal .card-header { background: linear-gradient(135deg, rgba(20,184,166,0.08), transparent); }
+    .card.c-teal .card-icon { background: rgba(20,184,166,0.15); }
+
+    .card.c-rose { border-left-color: var(--color-rose); }
+    .card.c-rose .card-header { background: linear-gradient(135deg, rgba(244,63,94,0.08), transparent); }
+    .card.c-rose .card-icon { background: rgba(244,63,94,0.15); }
+
+    /* ===== Content Patterns ===== */
+    /* Key-Value Rows */
+    .kv-list { display: flex; flex-direction: column; gap: 6px; }
+    .kv-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--bg-card-alt);
+    }
+    .kv-icon {
+      flex-shrink: 0;
+      font-size: 16px;
+      margin-top: 1px;
+    }
+    .kv-content { flex: 1; }
+    .kv-key {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .kv-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Step rows with numbering */
+    .step-list { display: flex; flex-direction: column; gap: 8px; counter-reset: step-counter; }
+    .step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--bg-card-alt);
+      counter-increment: step-counter;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #FFF;
+    }
+    .step-row .step-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .step-row .step-text strong {
+      color: var(--text-primary);
+    }
+
+    /* Tables */
+    .ref-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 12.5px;
+    }
+    .ref-table thead th {
+      background: var(--bg-card-alt);
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .ref-table tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+    .ref-table tbody tr:last-child td { border-bottom: none; }
+    .ref-table tbody tr:nth-child(even) td { background: var(--bg-card-alt); }
+    .ref-table code {
+      background: rgba(99,102,241,0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11.5px;
+    }
+
+    /* Callouts */
+    .callout {
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      margin-top: 10px;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .callout-tip { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.15); color: #6EE7B7; }
+    .callout-warn { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.15); color: #FCD34D; }
+    .callout-info { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.15); color: #93C5FD; }
+
+    /* Mini flow diagram inside card */
+    .mini-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+    .mini-flow-item {
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-subtle);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .mini-flow-arrow {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding: 0 4px;
+    }
+
+    /* Tag badges */
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 2px 4px 2px 0;
+    }
+    .tag-green { background: rgba(16,185,129,0.12); color: #6EE7B7; }
+    .tag-blue { background: rgba(59,130,246,0.12); color: #93C5FD; }
+    .tag-purple { background: rgba(139,92,246,0.12); color: #C4B5FD; }
+    .tag-red { background: rgba(239,68,68,0.12); color: #FCA5A5; }
+    .tag-amber { background: rgba(245,158,11,0.12); color: #FCD34D; }
+    .tag-pink { background: rgba(236,72,153,0.12); color: #F9A8D4; }
+    .tag-cyan { background: rgba(6,182,212,0.12); color: #67E8F9; }
+
+    /* Features grid inside card */
+    .features-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .feature-mini {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--bg-card-alt);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .feature-mini-icon { font-size: 18px; flex-shrink: 0; }
+    .feature-mini-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .feature-mini-text strong {
+      display: block;
+      font-size: 12.5px;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    /* Code blocks */
+    pre.code-block {
+      background: var(--bg-code);
+      border-radius: 10px;
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-code);
+      margin: 8px 0;
+      border: 1px solid var(--border-subtle);
+      position: relative;
+    }
+    .code-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .code-copy {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 11px;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .code-copy:hover { background: rgba(255,255,255,0.15); color: var(--text-primary); }
+
+    /* Inline code */
+    p code, li code, td code, .kv-desc code, .step-text code, .callout code {
+      background: rgba(99,102,241,0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.88em;
+    }
+
+    /* ===== DETAILED FLOW DIAGRAM ===== */
+    .detailed-flow {
+      background: var(--bg-flow);
+      border-radius: 20px;
+      padding: 32px 24px;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 32px;
+    }
+    .flow-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .flow-layer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .flow-layer-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      min-width: 24px;
+      text-align: center;
+    }
+    .flow-layer-items {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex: 1;
+    }
+    .flow-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: var(--bg-flow-box);
+      border: 1px solid var(--border-subtle);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: transform 0.2s;
+    }
+    .flow-item:hover { transform: scale(1.03); }
+    .flow-item-icon { font-size: 16px; }
+
+    .flow-connector {
+      display: flex;
+      justify-content: center;
+      padding: 4px 0;
+    }
+    .flow-connector-line {
+      width: 2px;
+      height: 20px;
+      background: var(--text-muted);
+      position: relative;
+    }
+    .flow-connector-line::after {
+      content: '▼';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      color: var(--text-muted);
+    }
+
+    /* ===== Models Table Card ===== */
+    .model-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ===== Footer ===== */
+    .page-footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 40px;
+    }
+    .footer-sources {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .footer-sources a {
+      color: var(--color-blue);
+      text-decoration: none;
+    }
+    .footer-sources a:hover { text-decoration: underline; }
+    .footer-credit {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1100px) {
+      .card.wide { grid-column: span 1; }
+    }
+    @media (max-width: 900px) {
+      .flow-steps { flex-direction: column; align-items: center; }
+      .flow-arrow { transform: rotate(90deg); flex: 0 0 24px; }
+      .flow-step { flex: 0 0 auto; width: 260px; }
+      .features-mini-grid { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Print ===== */
+    @media print {
+      body { background: white; color: #1a1a1a; }
+      .page-header { background: #1E293B; }
+      .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+      .theme-toggle { display: none; }
+      .pipeline-section, .detailed-flow { background: #f5f5f5; }
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out both;
+    }
+    .flow-step:nth-child(1) { animation-delay: 0.1s; }
+    .flow-step:nth-child(2) { animation-delay: 0.15s; }
+    .flow-step:nth-child(3) { animation-delay: 0.2s; }
+    .flow-step:nth-child(4) { animation-delay: 0.25s; }
+    .flow-step:nth-child(5) { animation-delay: 0.3s; }
+    .flow-step:nth-child(6) { animation-delay: 0.35s; }
+    .flow-step:nth-child(7) { animation-delay: 0.4s; }
+    .flow-step:nth-child(8) { animation-delay: 0.45s; }
+    .flow-step:nth-child(9) { animation-delay: 0.5s; }
+    .flow-step:nth-child(10) { animation-delay: 0.55s; }
+    .flow-step:nth-child(11) { animation-delay: 0.6s; }
+
+    /* ===== Divider ===== */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌓</button>
+    <div class="header-content">
+      <div class="header-badge">📘 Architecture Deep-Dive</div>
+      <h1 class="page-title">How Your Prompt Flows Through<br/><span class="gradient-text">GitHub Copilot</span></h1>
+      <p class="page-subtitle">Architecture, data flow, context gathering, filters, and AI models powering GitHub Copilot</p>
+      <div style="margin-top:14px;font-size:12px;color:#94A3B8;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
+        Created by <a href="https://www.linkedin.com/in/sukumar-p/" target="_blank" style="color:#60A5FA;text-decoration:none;font-weight:600;">Sukumar P</a> using GitHub Copilot in VS Code
+        <span style="opacity:0.4;">·</span>
+        🕐 Last updated: 28 March 2026
+      </div>
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <!-- ===== SECTION 1: MAIN PIPELINE ===== -->
+    <div class="pipeline-section animate-in">
+      <div class="pipeline-title">End-to-End Request Pipeline</div>
+
+      <div class="flow-steps">
+        <div class="flow-step animate-in">
+          <div class="flow-box step-1">
+            <div class="flow-icon">💬</div>
+            <div class="flow-label">User Prompt</div>
+            <div class="flow-desc">Chat · Inline · CLI<br/>Completions</div>
+          </div>
+        </div>
+        <div class="flow-arrow animate-in">▶</div>
+        <div class="flow-step animate-in">
+          <div class="flow-box step-2">
+            <div class="flow-icon">📂</div>
+            <div class="flow-label">Context Gathering</div>
+            <div class="flow-desc">Open tabs · #file · #codebase<br/>Instructions · Skills</div>
+          </div>
+        </div>
+        <div class="flow-arrow animate-in">▶</div>
+        <div class="flow-step animate-in">
+          <div class="flow-box step-3">
+            <div class="flow-icon">🛡️</div>
+            <div class="flow-label">Pre-Model Filters</div>
+            <div class="flow-desc">Responsible AI<br/>Content Exclusion</div>
+          </div>
+        </div>
+        <div class="flow-arrow animate-in">▶</div>
+        <div class="flow-step animate-in">
+          <div class="flow-box step-4">
+            <div class="flow-icon">🔀</div>
+            <div class="flow-label">Proxy Service</div>
+            <div class="flow-desc">Routes to model<br/>Applies policies</div>
+          </div>
+        </div>
+        <div class="flow-arrow animate-in">▶</div>
+        <div class="flow-step animate-in">
+          <div class="flow-box step-5">
+            <div class="flow-icon">🧠</div>
+            <div class="flow-label">AI Model</div>
+            <div class="flow-desc">GPT · Sonnet · Gemini<br/>Opus · Grok · etc.</div>
+          </div>
+        </div>
+        <div class="flow-arrow animate-in">▶</div>
+        <div class="flow-step animate-in">
+          <div class="flow-box step-6">
+            <div class="flow-icon">🔍</div>
+            <div class="flow-label">Post-Model Filters</div>
+            <div class="flow-desc">Duplicate code check<br/>Safety &amp; quality</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Response line -->
+      <div class="response-line">
+        <span class="response-label">⬅ Response delivered to user</span>
+      </div>
+
+      <!-- Context Sources -->
+      <div class="pills-section">
+        <div class="pills-row-label">Context Sources</div>
+        <div class="pills-row">
+          <div class="pill ctx-tabs">
+            <div class="pill-icon">📄</div>
+            <div class="pill-text"><span class="pill-name">Open Tabs</span><span class="pill-desc">Active editor files</span></div>
+          </div>
+          <div class="pill ctx-workspace">
+            <div class="pill-icon">📁</div>
+            <div class="pill-text"><span class="pill-name">Workspace</span><span class="pill-desc">#codebase search</span></div>
+          </div>
+          <div class="pill ctx-instructions">
+            <div class="pill-icon">📋</div>
+            <div class="pill-text"><span class="pill-name">Instructions</span><span class="pill-desc">.md config files</span></div>
+          </div>
+          <div class="pill ctx-skills">
+            <div class="pill-icon">🧩</div>
+            <div class="pill-text"><span class="pill-name">Skills</span><span class="pill-desc">SKILL.md bundles</span></div>
+          </div>
+          <div class="pill ctx-mcp">
+            <div class="pill-icon">🔧</div>
+            <div class="pill-text"><span class="pill-name">MCP Servers</span><span class="pill-desc">External tools/data</span></div>
+          </div>
+          <div class="pill ctx-selection">
+            <div class="pill-icon">✂️</div>
+            <div class="pill-text"><span class="pill-name">Selection</span><span class="pill-desc">#selection context</span></div>
+          </div>
+          <div class="pill ctx-web">
+            <div class="pill-icon">🌐</div>
+            <div class="pill-text"><span class="pill-name">Web Pages</span><span class="pill-desc">#fetch URL content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output Types -->
+      <div class="pills-section" style="margin-top: 20px;">
+        <div class="pills-row-label">Output Types</div>
+        <div class="pills-row">
+          <div class="pill out-inline">
+            <div class="pill-icon">⌨️</div>
+            <div class="pill-text"><span class="pill-name">Inline Completions</span></div>
+          </div>
+          <div class="pill out-chat">
+            <div class="pill-icon">💬</div>
+            <div class="pill-text"><span class="pill-name">Chat Responses</span></div>
+          </div>
+          <div class="pill out-agent">
+            <div class="pill-icon">🤖</div>
+            <div class="pill-text"><span class="pill-name">Agent Actions</span></div>
+          </div>
+          <div class="pill out-edits">
+            <div class="pill-icon">📝</div>
+            <div class="pill-text"><span class="pill-name">Code Edits</span></div>
+          </div>
+          <div class="pill out-terminal">
+            <div class="pill-icon">🖥️</div>
+            <div class="pill-text"><span class="pill-name">Terminal Commands</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 2: DETAILED CARDS ===== -->
+    <div class="section-header">
+      <span class="section-label">Deep Dive</span>
+      <h2>Every Stage Explained</h2>
+      <p>Detailed breakdown of each step in the Copilot pipeline</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Card 1: User Prompt -->
+      <div class="card c-orange">
+        <div class="card-header">
+          <div class="card-icon">💬</div>
+          <h3>Step 1 — User Prompt</h3>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">The developer triggers Copilot through one of several entry points in their editor or on GitHub.</p>
+          <div class="kv-list">
+            <div class="kv-row">
+              <span class="kv-icon">⌨️</span>
+              <div class="kv-content">
+                <div class="kv-key">Inline Completions</div>
+                <div class="kv-desc">Ghost text appears as you type — powered by Fill-in-the-Middle (FIM) using both prefix and suffix context</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">💬</span>
+              <div class="kv-content">
+                <div class="kv-key">Chat / Ask Mode</div>
+                <div class="kv-desc">Natural language questions in the chat panel — uses <code>#file</code>, <code>#codebase</code>, <code>@workspace</code> for context</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">🤖</span>
+              <div class="kv-content">
+                <div class="kv-key">Agent Mode</div>
+                <div class="kv-desc">Autonomous multi-step editing — Copilot determines which files to change, runs terminal commands, iterates on errors</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">✏️</span>
+              <div class="kv-content">
+                <div class="kv-key">Edit Mode</div>
+                <div class="kv-desc">You choose the files, Copilot proposes edits — more controlled than Agent mode</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">🖥️</span>
+              <div class="kv-content">
+                <div class="kv-key">CLI (gh copilot)</div>
+                <div class="kv-desc">Command-line interface via GitHub CLI — explain commands, suggest fixes, generate shell scripts</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">🌐</span>
+              <div class="kv-content">
+                <div class="kv-key">GitHub.com</div>
+                <div class="kv-desc">PR summaries, code review, issue triage, Copilot Spaces — available directly on the platform</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Context Gathering -->
+      <div class="card c-blue wide">
+        <div class="card-header">
+          <div class="card-icon">📂</div>
+          <h3>Step 2 — Context Gathering (The Prompt Library)</h3>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Algorithms in the Copilot extension extract, prioritize, and assemble context into a structured prompt. This is the "prompt engineering" that happens behind the scenes.</p>
+          
+          <div class="features-mini-grid">
+            <div class="feature-mini">
+              <span class="feature-mini-icon">📄</span>
+              <div class="feature-mini-text">
+                <strong>Current File (Prefix + Suffix)</strong>
+                Code before and after cursor via Fill-in-the-Middle (FIM) paradigm — 10% boost in acceptance rate
+              </div>
+            </div>
+            <div class="feature-mini">
+              <span class="feature-mini-icon">📑</span>
+              <div class="feature-mini-text">
+                <strong>Neighboring Tabs</strong>
+                All open editor tabs are scanned for matching code patterns — 5% boost in acceptance rate
+              </div>
+            </div>
+            <div class="feature-mini">
+              <span class="feature-mini-icon">📋</span>
+              <div class="feature-mini-text">
+                <strong>Custom Instructions</strong>
+                <code>.github/copilot-instructions.md</code>, <code>.instructions.md</code>, <code>.copilot/</code> config files
+              </div>
+            </div>
+            <div class="feature-mini">
+              <span class="feature-mini-icon">🧩</span>
+              <div class="feature-mini-text">
+                <strong>Skills &amp; Agents</strong>
+                <code>SKILL.md</code> bundles and custom <code>AGENTS.md</code> — domain-specific knowledge packs
+              </div>
+            </div>
+            <div class="feature-mini">
+              <span class="feature-mini-icon">🔧</span>
+              <div class="feature-mini-text">
+                <strong>MCP Servers</strong>
+                External tool servers providing database access, API calls, file ops, and custom data
+              </div>
+            </div>
+            <div class="feature-mini">
+              <span class="feature-mini-icon">🔎</span>
+              <div class="feature-mini-text">
+                <strong>Workspace Indexing</strong>
+                Semantic search with embeddings, symbol graph, and codebase-wide retrieval
+              </div>
+            </div>
+            <div class="feature-mini">
+              <span class="feature-mini-icon">📌</span>
+              <div class="feature-mini-text">
+                <strong>Copilot Spaces</strong>
+                Curated context collections — code, docs, specs organized for specific tasks
+              </div>
+            </div>
+            <div class="feature-mini">
+              <span class="feature-mini-icon">🧠</span>
+              <div class="feature-mini-text">
+                <strong>Copilot Memory</strong>
+                Learned repo-specific facts that persist across sessions for coding agent &amp; code review
+              </div>
+            </div>
+          </div>
+
+          <div class="callout callout-info" style="margin-top:14px;">
+            <span>💡</span>
+            <span>Even a low-quality match from neighboring tabs is better than no context at all. The prompt library includes ALL partial matches to maximize relevance.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Pre-Model Filters -->
+      <div class="card c-red">
+        <div class="card-header">
+          <div class="card-icon">🛡️</div>
+          <h3>Step 3 — Pre-Model Filters</h3>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Before the prompt reaches the LLM, several safety and policy filters are applied.</p>
+          <div class="step-list">
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-red);">1</div>
+              <div class="step-text"><strong>Responsible AI Content Filter</strong> — Blocks harmful, offensive, or inappropriate content from being sent to the model</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-red);">2</div>
+              <div class="step-text"><strong>Content Exclusion Rules</strong> — Organization admins can exclude specific files/paths via policies (e.g., secrets, proprietary code)</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-red);">3</div>
+              <div class="step-text"><strong>Prompt Injection Detection</strong> — Scans for attempts to manipulate the model via adversarial inputs in code or comments</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-red);">4</div>
+              <div class="step-text"><strong>Policy Enforcement</strong> — Enterprise/org policies control which features, models, and capabilities are allowed</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-red);">5</div>
+              <div class="step-text"><strong>Scope Validation</strong> — Ensures prompts are coding-related; blocks non-coding or off-topic queries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Proxy Service -->
+      <div class="card c-purple">
+        <div class="card-header">
+          <div class="card-icon">🔀</div>
+          <h3>Step 4 — Copilot Proxy Service</h3>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">The central routing layer hosted on GitHub/Azure infrastructure.</p>
+          <div class="kv-list">
+            <div class="kv-row">
+              <span class="kv-icon">🔄</span>
+              <div class="kv-content">
+                <div class="kv-key">Model Routing</div>
+                <div class="kv-desc">Routes to the appropriate model based on user selection or automatic assignment (GPT, Sonnet, Gemini, etc.)</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">📊</span>
+              <div class="kv-content">
+                <div class="kv-key">Rate Limiting &amp; Quotas</div>
+                <div class="kv-desc">Manages plan-based usage limits — Free, Pro, Pro+, Business, Enterprise tiers</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">🔐</span>
+              <div class="kv-content">
+                <div class="kv-key">Authentication</div>
+                <div class="kv-desc">Validates GitHub tokens, org membership, license entitlements</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">📡</span>
+              <div class="kv-content">
+                <div class="kv-key">Telemetry &amp; Logging</div>
+                <div class="kv-desc">Tracks acceptance rates, latency, usage patterns — no code stored by default</div>
+              </div>
+            </div>
+            <div class="kv-row">
+              <span class="kv-icon">⚡</span>
+              <div class="kv-content">
+                <div class="kv-key">Caching Layer</div>
+                <div class="kv-desc">Optimal caching ensures neighboring tabs and FIM add zero latency</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: AI Model -->
+      <div class="card c-green wide">
+        <div class="card-header">
+          <div class="card-icon">🧠</div>
+          <h3>Step 5 — AI Language Model</h3>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">The model processes the assembled prompt and generates completions. Multiple models are available — user-selected or auto-routed.</p>
+          
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Provider</th>
+                <th>Best For</th>
+                <th>Tier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag-badge tag-green">GPT-4o</span></td>
+                <td>OpenAI</td>
+                <td>General-purpose coding, chat, inline completions</td>
+                <td>All plans</td>
+              </tr>
+              <tr>
+                <td><span class="tag-badge tag-purple">Claude Sonnet</span></td>
+                <td>Anthropic</td>
+                <td>Complex reasoning, large codebase understanding</td>
+                <td>Pro+ / Biz / Ent</td>
+              </tr>
+              <tr>
+                <td><span class="tag-badge tag-blue">Gemini</span></td>
+                <td>Google</td>
+                <td>Multi-modal, long context windows</td>
+                <td>Pro+ / Biz / Ent</td>
+              </tr>
+              <tr>
+                <td><span class="tag-badge tag-amber">Grok</span></td>
+                <td>xAI</td>
+                <td>Fast code generation, creative solutions</td>
+                <td>Pro+ / Biz / Ent</td>
+              </tr>
+              <tr>
+                <td><span class="tag-badge tag-red">Claude Opus</span></td>
+                <td>Anthropic</td>
+                <td>Deep analysis, architectural decisions</td>
+                <td>Pro+ / Biz / Ent</td>
+              </tr>
+              <tr>
+                <td><span class="tag-badge tag-cyan">BYOK Models</span></td>
+                <td>Your provider</td>
+                <td>Custom: AWS Bedrock, Azure, OpenAI API, etc.</td>
+                <td>Bring Your Own Key</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-tip" style="margin-top:14px;">
+            <span>💡</span>
+            <span>The model generates <strong>n completions</strong> in parallel. Post-model filters then select ≤n to show the user, ranked by relevance and quality.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Post-Model Filters -->
+      <div class="card c-pink">
+        <div class="card-header">
+          <div class="card-icon">🔍</div>
+          <h3>Step 6 — Post-Model Filters</h3>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">After the model generates completions, several checks ensure quality and safety before showing results.</p>
+          <div class="step-list">
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-pink);">1</div>
+              <div class="step-text"><strong>Public Code Matching</strong> — Checks generated code against public GitHub repos. If "block matches" is enabled, matching code is filtered out</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-pink);">2</div>
+              <div class="step-text"><strong>License Detection</strong> — Identifies matching OSS licenses and provides attribution links when matches are found</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-pink);">3</div>
+              <div class="step-text"><strong>Output Content Filter</strong> — Blocks harmful, offensive, or off-topic content in generated responses</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-pink);">4</div>
+              <div class="step-text"><strong>Quality Ranking</strong> — Ranks multiple completions by relevance, correctness, and contextual fit</div>
+            </div>
+            <div class="step-row">
+              <div class="step-num" style="background:var(--color-pink);">5</div>
+              <div class="step-text"><strong>Vulnerability Scanning</strong> — Detects common security issues (hardcoded secrets, SQL injection patterns, etc.)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards 7-12 removed -->
+
+
+
+
+    </div><!-- end cards-grid -->
+
+    <!-- ===== SECTION 3: DETAILED INLINE COMPLETION FLOW ===== -->
+    <div class="section-divider"></div>
+    <div class="section-header">
+      <span class="section-label">Technical Detail</span>
+      <h2>Life of an Inline Completion</h2>
+      <p>From keystroke to ghost text — every step in real-time code suggestion</p>
+    </div>
+
+    <div class="detailed-flow">
+      <div class="flow-diagram">
+        <!-- Layer 1: Inputs -->
+        <div class="flow-layer">
+          <div class="flow-layer-label">INPUT</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-orange);">
+              <span class="flow-item-icon">📝</span>
+              Code Before Cursor (Prefix)
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-amber);">
+              <span class="flow-item-icon">📝</span>
+              Code After Cursor (Suffix)
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-blue);">
+              <span class="flow-item-icon">📑</span>
+              Neighboring Tab Matches
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-purple);">
+              <span class="flow-item-icon">📋</span>
+              Instructions &amp; Config
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-connector"><div class="flow-connector-line"></div></div>
+
+        <!-- Layer 2: Processing -->
+        <div class="flow-layer">
+          <div class="flow-layer-label">BUILD</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-green);">
+              <span class="flow-item-icon">🏗️</span>
+              Prompt Library — Extract, Prioritize, Assemble
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-connector"><div class="flow-connector-line"></div></div>
+
+        <!-- Layer 3: Model -->
+        <div class="flow-layer">
+          <div class="flow-layer-label">MODEL</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-red);">
+              <span class="flow-item-icon">🛡️</span>
+              Pre-Model Filter
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-green); background: rgba(16,185,129,0.08);">
+              <span class="flow-item-icon">🧠</span>
+              LLM — Fill-in-the-Middle Generation
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-pink);">
+              <span class="flow-item-icon">🔍</span>
+              Post-Model Filter
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-connector"><div class="flow-connector-line"></div></div>
+
+        <!-- Layer 4: Output -->
+        <div class="flow-layer">
+          <div class="flow-layer-label">OUTPUT</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-indigo);">
+              <span class="flow-item-icon">✨</span>
+              n Completions Generated → ≤n Shown as Ghost Text
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 4: CHAT/AGENT FLOW ===== -->
+    <div class="section-header">
+      <span class="section-label">Technical Detail</span>
+      <h2>Life of a Chat / Agent Request</h2>
+      <p>Multi-turn conversations and autonomous agent workflows</p>
+    </div>
+
+    <div class="detailed-flow">
+      <div class="flow-diagram">
+        <div class="flow-layer">
+          <div class="flow-layer-label">INPUT</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-orange);">
+              <span class="flow-item-icon">💬</span>
+              User Message / Question
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-blue);">
+              <span class="flow-item-icon">📂</span>
+              #file · #codebase · @workspace
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-purple);">
+              <span class="flow-item-icon">🔧</span>
+              MCP Tools &amp; Skills
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-green);">
+              <span class="flow-item-icon">🧠</span>
+              Conversation History
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-connector"><div class="flow-connector-line"></div></div>
+
+        <div class="flow-layer">
+          <div class="flow-layer-label">ROUTE</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-red);">
+              <span class="flow-item-icon">🛡️</span>
+              Pre-Model Safety &amp; Policy
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-purple);">
+              <span class="flow-item-icon">🔀</span>
+              Proxy → Model Selection
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-green); background: rgba(16,185,129,0.08);">
+              <span class="flow-item-icon">🧠</span>
+              LLM Processing
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-connector"><div class="flow-connector-line"></div></div>
+
+        <div class="flow-layer">
+          <div class="flow-layer-label">POST</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-pink);">
+              <span class="flow-item-icon">🔍</span>
+              Content &amp; Safety Filters
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-pink);">
+              <span class="flow-item-icon">📋</span>
+              Public Code Matching
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-connector"><div class="flow-connector-line"></div></div>
+
+        <div class="flow-layer">
+          <div class="flow-layer-label">OUTPUT</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-cyan);">
+              <span class="flow-item-icon">💬</span>
+              Chat Response
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-blue);">
+              <span class="flow-item-icon">📝</span>
+              Code Edits
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-amber);">
+              <span class="flow-item-icon">🖥️</span>
+              Terminal Commands
+            </div>
+            <div class="flow-item" style="border-left: 3px solid var(--color-green);">
+              <span class="flow-item-icon">🔧</span>
+              Tool Calls (MCP, subagents)
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-connector"><div class="flow-connector-line"></div></div>
+
+        <div class="flow-layer">
+          <div class="flow-layer-label">LOOP</div>
+          <div class="flow-layer-items">
+            <div class="flow-item" style="border-left: 3px solid var(--color-rose); background: rgba(244,63,94,0.06);">
+              <span class="flow-item-icon">🔄</span>
+              Agent Mode: Iterate on errors, run commands, apply fixes → repeat until task complete
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main-container -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="page-footer">
+    <div class="footer-sources">
+      Sources: 
+      <a href="https://docs.github.com/en/copilot" target="_blank">GitHub Copilot Docs</a> · 
+      <a href="https://github.blog/ai-and-ml/github-copilot/" target="_blank">GitHub Blog</a> · 
+      <a href="https://copilot.github.trust.page/" target="_blank">Copilot Trust Center</a>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+      localStorage.setItem('copilot-cheatsheet-theme', html.getAttribute('data-theme'));
+    }
+    // Restore saved theme
+    const savedTheme = localStorage.getItem('copilot-cheatsheet-theme');
+    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Copy code blocks
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.code-block, pre').querySelector('code')?.textContent || btn.closest('pre').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = '✓';
+          setTimeout(() => btn.textContent = '📋', 1500);
+        });
+      });
+    });
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
