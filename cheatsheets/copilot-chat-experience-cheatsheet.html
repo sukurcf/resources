@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Copilot Chat Experience — Cheat Sheet</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --color-basics:      #3B82F6;
+      --color-syntax:      #8B5CF6;
+      --color-data:        #10B981;
+      --color-control:     #F59E0B;
+      --color-functions:   #EC4899;
+      --color-advanced:    #EF4444;
+      --color-tools:       #06B6D4;
+      --color-tips:        #84CC16;
+      --color-examples:    #F97316;
+      --color-reference:   #6366F1;
+
+      --bg-page:           #0F172A;
+      --bg-card:           #1E293B;
+      --bg-code:           #0F172A;
+      --bg-header:         #020617;
+      --text-primary:      #F8FAFC;
+      --text-secondary:    #CBD5E1;
+      --text-muted:        #94A3B8;
+      --text-code:         #E2E8F0;
+
+      --syn-keyword:       #C084FC;
+      --syn-string:        #34D399;
+      --syn-number:        #FB923C;
+      --syn-comment:       #64748B;
+      --syn-function:      #60A5FA;
+      --syn-type:          #F472B6;
+    }
+
+    [data-theme="light"] {
+      --bg-page:           #F8FAFC;
+      --bg-card:           #FFFFFF;
+      --bg-code:           #F1F5F9;
+      --bg-header:         #1E293B;
+      --text-primary:      #0F172A;
+      --text-secondary:    #475569;
+      --text-muted:        #64748B;
+      --text-code:         #334155;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--bg-header);
+      padding: 28px 32px 24px;
+      text-align: center;
+      position: relative;
+      border-bottom: 3px solid var(--color-basics);
+    }
+
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-basics), var(--color-syntax));
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60A5FA, #A78BFA, #F472B6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+
+    header .subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      max-width: 700px;
+      margin: 0 auto 8px;
+    }
+
+    header .meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.15); }
+
+    [data-theme="light"] .theme-toggle {
+      background: rgba(0,0,0,0.06);
+      border-color: rgba(0,0,0,0.15);
+      color: var(--text-secondary);
+    }
+    [data-theme="light"] .theme-toggle:hover {
+      background: rgba(0,0,0,0.12);
+    }
+
+    /* ===== HERO DIAGRAM ===== */
+    .hero-diagram {
+      background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(139,92,246,0.06));
+      border: 1px solid rgba(99,102,241,0.15);
+      border-radius: 16px;
+      padding: 28px 24px;
+      max-width: 1200px;
+      margin: 24px auto 8px;
+    }
+
+    .hero-title {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .prompt-anatomy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .prompt-part {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 14px 18px;
+      text-align: center;
+      min-width: 150px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.2s;
+    }
+    .prompt-part:hover { transform: translateY(-2px); }
+
+    .prompt-part .icon { font-size: 24px; margin-bottom: 6px; }
+    .prompt-part .label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+    .prompt-part .detail {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .prompt-part.slash { border-bottom: 3px solid var(--color-syntax); }
+    .prompt-part.slash .label { color: var(--color-syntax); }
+
+    .prompt-part.context { border-bottom: 3px solid var(--color-data); }
+    .prompt-part.context .label { color: var(--color-data); }
+
+    .prompt-part.participant { border-bottom: 3px solid var(--color-control); }
+    .prompt-part.participant .label { color: var(--color-control); }
+
+    .prompt-part.question { border-bottom: 3px solid var(--color-functions); }
+    .prompt-part.question .label { color: var(--color-functions); }
+
+    .prompt-part.response { border-bottom: 3px solid var(--color-tips); }
+    .prompt-part.response .label { color: var(--color-tips); }
+
+    .prompt-arrow {
+      font-size: 22px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .prompt-example {
+      margin-top: 18px;
+      background: var(--bg-code);
+      border-radius: 10px;
+      padding: 14px 20px;
+      text-align: center;
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: 13px;
+      color: var(--text-code);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .prompt-example .slash-cmd { color: var(--syn-keyword); font-weight: 500; }
+    .prompt-example .ctx-var { color: var(--syn-string); font-weight: 500; }
+    .prompt-example .question-text { color: var(--text-secondary); }
+
+    /* ===== GRID LAYOUT ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 24px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      border-left: 4px solid;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+      overflow: hidden;
+      break-inside: avoid;
+    }
+
+    .card.wide { grid-column: span 2; }
+
+    .card-header {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-icon { font-size: 20px; flex-shrink: 0; }
+
+    .card-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .card-body {
+      padding: 0 18px 18px;
+    }
+
+    /* ===== KEY-VALUE PAIRS ===== */
+    .kv-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .kv-row:last-child { border-bottom: none; }
+
+    .kv-key {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12.5px;
+      color: var(--syn-function);
+      background: rgba(96,165,250,0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .kv-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== TABLES ===== */
+    .ref-table-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .ref-table th {
+      background: rgba(99,102,241,0.12);
+      padding: 9px 12px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ref-table td {
+      padding: 8px 12px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-secondary);
+    }
+
+    .ref-table tr:nth-child(even) td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .ref-table code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      background: rgba(99,102,241,0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--syn-function);
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code-block {
+      margin: 8px 0;
+    }
+    .code-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    pre {
+      background: var(--bg-code);
+      border-radius: 8px;
+      padding: 12px 14px;
+      overflow-x: auto;
+      font-size: 12.5px;
+      line-height: 1.6;
+      border: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    code {
+      font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    p code, li code, td code, span code {
+      background: rgba(99,102,241,0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.15); color: var(--text-primary); }
+
+    /* ===== CALLOUTS ===== */
+    .callout {
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 8px 0;
+      font-size: 13px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .callout-tip {
+      background: rgba(132,204,22,0.08);
+      border: 1px solid rgba(132,204,22,0.2);
+      color: var(--text-secondary);
+    }
+
+    .callout-warn {
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.2);
+      color: var(--text-secondary);
+    }
+
+    .callout-important {
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.2);
+      color: var(--text-secondary);
+    }
+
+    /* ===== FLOW DIAGRAMS ===== */
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+
+    .flow-step {
+      background: var(--bg-code);
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-align: center;
+      min-width: 100px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .flow-step .step-icon { font-size: 20px; margin-bottom: 4px; }
+    .flow-step .step-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .flow-step .step-detail {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .flow-arrow {
+      font-size: 18px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* ===== MODE CARDS ===== */
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .mode-card {
+      background: var(--bg-code);
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.15s;
+    }
+    .mode-card:hover { transform: translateY(-1px); }
+
+    .mode-card .mode-icon { font-size: 20px; }
+    .mode-card .mode-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 4px 0 2px;
+    }
+    .mode-card .mode-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .mode-card .mode-shortcut {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      background: rgba(99,102,241,0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--syn-function);
+    }
+
+    /* ===== CONTEXT VAR BADGES ===== */
+    .ctx-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .ctx-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      background: var(--bg-code);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .ctx-item .ctx-icon { font-size: 16px; flex-shrink: 0; }
+    .ctx-item .ctx-name {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      color: var(--syn-string);
+      font-weight: 500;
+    }
+    .ctx-item .ctx-info {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ctx-item .ctx-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ===== PARTICIPANT CARDS ===== */
+    .participant-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .participant-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: var(--bg-code);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .participant-item .p-icon { font-size: 18px; flex-shrink: 0; }
+    .participant-item .p-name {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12.5px;
+      color: var(--syn-keyword);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .participant-item .p-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== SURFACES VISUAL ===== */
+    .surfaces-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .surface-card {
+      background: var(--bg-code);
+      border-radius: 10px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    .surface-card .s-icon { font-size: 28px; margin-bottom: 6px; }
+    .surface-card .s-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .surface-card .s-shortcut {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--syn-function);
+      margin: 4px 0;
+    }
+    .surface-card .s-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ===== EXAMPLES ===== */
+    .example-block {
+      background: var(--bg-code);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 8px 0;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .example-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .example-prompt {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      color: var(--text-code);
+      line-height: 1.5;
+    }
+
+    .example-prompt .cmd { color: var(--syn-keyword); }
+    .example-prompt .var { color: var(--syn-string); }
+    .example-prompt .txt { color: var(--text-secondary); }
+
+    /* ===== BULLET LISTS ===== */
+    .card-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-body ul li {
+      padding: 5px 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .card-body ul li::before {
+      content: "◉";
+      color: var(--text-muted);
+      font-size: 8px;
+      flex-shrink: 0;
+      position: relative;
+      top: 1px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    footer a {
+      color: var(--color-basics);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    /* ===== PRINT ===== */
+    @media print {
+      body { background: #fff; color: #1a1a1a; }
+      header { background: #1E293B; }
+      .card { break-inside: avoid; border: 1px solid #ddd; box-shadow: none; }
+      .theme-toggle { display: none; }
+      .copy-btn { display: none; }
+      pre { border: 1px solid #e2e8f0; }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 700px) {
+      .card.wide { grid-column: span 1; }
+      .modes-grid, .ctx-grid, .surfaces-grid { grid-template-columns: 1fr; }
+      .prompt-anatomy { flex-direction: column; }
+      .prompt-arrow { transform: rotate(90deg); }
+      header h1 { font-size: 24px; }
+      .theme-toggle { position: static; margin-top: 10px; }
+    }
+
+    @media (min-width: 701px) and (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .card.wide { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💬 Chat Experience in VS Code</h1>
+    <p class="subtitle">
+      The conversational AI panel — use slash commands, context variables (#), 
+      and participants (@) to give Copilot precise context for better answers.
+    </p>
+    <p class="meta">By <a href="https://www.linkedin.com/in/sukumar-p/" style="color:#60A5FA;text-decoration:none;">Sukumar P</a> · March 2026</p>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+
+    <!-- Hero: Anatomy of a Prompt -->
+    <div class="hero-diagram">
+      <div class="hero-title">ANATOMY OF A COPILOT CHAT PROMPT</div>
+      <div class="prompt-anatomy">
+        <div class="prompt-part slash">
+          <div class="icon">/</div>
+          <div class="label">Slash Commands</div>
+          <div class="detail">/explain  /fix  /tests</div>
+          <div class="detail" style="margin-top:2px;font-style:italic;">What to do</div>
+        </div>
+        <div class="prompt-arrow">→</div>
+        <div class="prompt-part context">
+          <div class="icon">#</div>
+          <div class="label">Context Variables</div>
+          <div class="detail">#file  #codebase  #changes</div>
+          <div class="detail" style="margin-top:2px;font-style:italic;">What to include</div>
+        </div>
+        <div class="prompt-arrow">→</div>
+        <div class="prompt-part participant">
+          <div class="icon">@</div>
+          <div class="label">Participants</div>
+          <div class="detail">@workspace  @github</div>
+          <div class="detail" style="margin-top:2px;font-style:italic;">Who to ask</div>
+        </div>
+        <div class="prompt-arrow">→</div>
+        <div class="prompt-part question">
+          <div class="icon">💬</div>
+          <div class="label">Your Question</div>
+          <div class="detail">Natural language prompt</div>
+          <div class="detail" style="margin-top:2px;font-style:italic;">What you want</div>
+        </div>
+        <div class="prompt-arrow">→</div>
+        <div class="prompt-part response">
+          <div class="icon">✨</div>
+          <div class="label">AI Response</div>
+          <div class="detail">Code, explanation, edits</div>
+          <div class="detail" style="margin-top:2px;font-style:italic;">What you get</div>
+        </div>
+      </div>
+      <div class="prompt-example">
+        <span class="slash-cmd">/explain</span>&nbsp;
+        <span class="ctx-var">#file:auth.ts</span>&nbsp;
+        <span class="question-text">"How does the login flow work?"</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- ===== 1. CHAT MODES ===== -->
+    <div class="card" style="border-left-color: var(--color-basics);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(59,130,246,0.15), transparent);">
+        <span class="card-icon">🎛️</span>
+        <h3>Chat Modes</h3>
+      </div>
+      <div class="card-body">
+        <div class="modes-grid">
+          <div class="mode-card">
+            <div class="mode-icon">💬</div>
+            <div class="mode-name">Ask</div>
+            <div class="mode-desc">Read-only Q&A — no code changes to workspace</div>
+          </div>
+          <div class="mode-card">
+            <div class="mode-icon">✏️</div>
+            <div class="mode-name">Edit</div>
+            <div class="mode-desc">Direct code edits — applies changes to files</div>
+          </div>
+          <div class="mode-card">
+            <div class="mode-icon">🤖</div>
+            <div class="mode-name">Agent</div>
+            <div class="mode-desc">Autonomous tool use + multi-file edits + terminal</div>
+          </div>
+          <div class="mode-card">
+            <div class="mode-icon">📋</div>
+            <div class="mode-name">Plan</div>
+            <div class="mode-desc">Create a plan before implementation begins</div>
+          </div>
+        </div>
+        <div class="callout callout-tip" style="margin-top: 12px;">
+          <strong>💡</strong> Agent mode is ideal for multi-step tasks — it can search, edit, run commands, and iterate autonomously.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 2. CHAT SURFACES ===== -->
+    <div class="card" style="border-left-color: var(--color-syntax);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(139,92,246,0.15), transparent);">
+        <span class="card-icon">🖥️</span>
+        <h3>Chat Surfaces</h3>
+      </div>
+      <div class="card-body">
+        <div class="surfaces-grid">
+          <div class="surface-card">
+            <div class="s-icon">📋</div>
+            <div class="s-name">Chat View</div>
+            <div class="s-shortcut">⌃⌘I / Ctrl+Alt+I</div>
+            <div class="s-desc">Multi-turn conversations, agentic workflows, multi-file edits</div>
+          </div>
+          <div class="surface-card">
+            <div class="s-icon">⌨️</div>
+            <div class="s-name">Inline Chat</div>
+            <div class="s-shortcut">⌘I / Ctrl+I</div>
+            <div class="s-desc">In-place code edits and terminal command suggestions</div>
+          </div>
+          <div class="surface-card">
+            <div class="s-icon">⚡</div>
+            <div class="s-name">Quick Chat</div>
+            <div class="s-shortcut">⇧⌥⌘L</div>
+            <div class="s-desc">Quick questions without leaving your current view</div>
+          </div>
+          <div class="surface-card">
+            <div class="s-icon">🖲️</div>
+            <div class="s-name">CLI Chat</div>
+            <div class="s-shortcut">code chat</div>
+            <div class="s-desc">Start chat from outside VS Code via command line</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 3. SLASH COMMANDS (wide) ===== -->
+    <div class="card wide" style="border-left-color: var(--color-reference);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(99,102,241,0.15), transparent);">
+        <span class="card-icon">⚡</span>
+        <h3>Slash Commands — <code style="font-size:13px;">/command</code></h3>
+      </div>
+      <div class="card-body">
+        <div class="ref-table-wrap">
+          <table class="ref-table">
+            <tr>
+              <th>Command</th><th>Action</th>
+              <th>Command</th><th>Action</th>
+            </tr>
+            <tr>
+              <td><code>/explain</code></td><td>Explain selected code</td>
+              <td><code>/fix</code></td><td>Fix problems in code</td>
+            </tr>
+            <tr>
+              <td><code>/tests</code></td><td>Generate unit tests</td>
+              <td><code>/new</code></td><td>Scaffold new project</td>
+            </tr>
+            <tr>
+              <td><code>/clear</code></td><td>New chat session</td>
+              <td><code>/help</code></td><td>Copilot quick reference</td>
+            </tr>
+            <tr>
+              <td><code>/init</code></td><td>Generate instructions file</td>
+              <td><code>/search</code></td><td>Workspace search</td>
+            </tr>
+            <tr>
+              <td><code>/delegate</code></td><td>Send to coding agent <span style="font-size:10px;color:var(--text-muted);">CLI</span></td>
+              <td><code>/compact</code></td><td>Compress context <span style="font-size:10px;color:var(--text-muted);">CLI</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="callout callout-tip" style="margin-top: 10px;">
+          <strong>💡</strong> Type <code>/</code> in the chat input to see all available slash commands. Custom prompt files also appear here as <code>/prompt-name</code>.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 4. CONTEXT VARIABLES ===== -->
+    <div class="card wide" style="border-left-color: var(--color-data);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), transparent);">
+        <span class="card-icon">📂</span>
+        <h3>Context Variables — <code style="font-size:13px;">#</code></h3>
+      </div>
+      <div class="card-body">
+        <div class="ctx-grid">
+          <div class="ctx-item">
+            <span class="ctx-icon">📄</span>
+            <div>
+              <div class="ctx-name">#file</div>
+              <div class="ctx-info">Include file content</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">📁</span>
+            <div>
+              <div class="ctx-name">#folder</div>
+              <div class="ctx-info">Attach folder files</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">🔣</span>
+            <div>
+              <div class="ctx-name">#sym</div>
+              <div class="ctx-info">Reference a code symbol</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">✂️</span>
+            <div>
+              <div class="ctx-name">#selection</div>
+              <div class="ctx-info">Current editor selection</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">📁</span>
+            <div>
+              <div class="ctx-name">#codebase</div>
+              <div class="ctx-info">Full workspace context</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">⚠️</span>
+            <div>
+              <div class="ctx-name">#problems</div>
+              <div class="ctx-info">Errors & warnings</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">📋</span>
+            <div>
+              <div class="ctx-name">#changes</div>
+              <div class="ctx-info">Git changes (diff)</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">🌐</span>
+            <div>
+              <div class="ctx-name">#fetch</div>
+              <div class="ctx-info">Fetch a web page</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">🖥️</span>
+            <div>
+              <div class="ctx-name">#terminalLastCommand</div>
+              <div class="ctx-info">Last terminal output</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">📟</span>
+            <div>
+              <div class="ctx-name">#terminalSelection</div>
+              <div class="ctx-info">Selected terminal text</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">🔍</span>
+            <div>
+              <div class="ctx-name">#usages</div>
+              <div class="ctx-info">References & implementations</div>
+            </div>
+          </div>
+          <div class="ctx-item">
+            <span class="ctx-icon">🧩</span>
+            <div>
+              <div class="ctx-name">#block #class #function</div>
+              <div class="ctx-info">Code scope</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 5. CHAT PARTICIPANTS ===== -->
+    <div class="card" style="border-left-color: var(--color-control);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(245,158,11,0.15), transparent);">
+        <span class="card-icon">👥</span>
+        <h3>Chat Participants — <code style="font-size:13px;">@</code></h3>
+      </div>
+      <div class="card-body">
+        <div class="participant-list">
+          <div class="participant-item">
+            <span class="p-icon">📁</span>
+            <span class="p-name">@workspace</span>
+            <span class="p-desc">Project structure & code</span>
+          </div>
+          <div class="participant-item">
+            <span class="p-icon">🔧</span>
+            <span class="p-name">@vscode</span>
+            <span class="p-desc">VS Code commands & features</span>
+          </div>
+          <div class="participant-item">
+            <span class="p-icon">🖥️</span>
+            <span class="p-name">@terminal</span>
+            <span class="p-desc">Terminal shell context</span>
+          </div>
+          <div class="participant-item">
+            <span class="p-icon">🐙</span>
+            <span class="p-name">@github</span>
+            <span class="p-desc">GitHub-specific skills</span>
+          </div>
+          <div class="participant-item">
+            <span class="p-icon">☁️</span>
+            <span class="p-name">@azure</span>
+            <span class="p-desc">Azure services help</span>
+          </div>
+        </div>
+        <div class="callout callout-tip" style="margin-top: 10px;">
+          <strong>💡</strong> In Agent mode, <code>@workspace</code> context is gathered automatically — no need to type it.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 7. INLINE CHAT WORKFLOW ===== -->
+    <div class="card" style="border-left-color: var(--color-functions);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(236,72,153,0.15), transparent);">
+        <span class="card-icon">✏️</span>
+        <h3>Inline Chat Workflow</h3>
+      </div>
+      <div class="card-body">
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;font-weight:600;">IN EDITOR — ⌘I / Ctrl+I</p>
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-icon">🖱️</div>
+            <div class="step-label">Select Code</div>
+            <div class="step-detail">(optional)</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">💬</div>
+            <div class="step-label">⌘I → Prompt</div>
+            <div class="step-detail">Type your edit</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">📊</div>
+            <div class="step-label">Preview Diff</div>
+            <div class="step-detail">Review inline</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">✅</div>
+            <div class="step-label">Accept</div>
+            <div class="step-detail">or Discard</div>
+          </div>
+        </div>
+
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;margin-top:14px;font-weight:600;">IN TERMINAL — ⌘I</p>
+        <div class="example-block">
+          <div class="example-label">Example</div>
+          <div class="example-prompt">
+            <span class="txt">$</span> <span class="cmd">⌘I</span> → <span class="txt">"Find all .log files &gt; 100MB and delete them"</span><br>
+            <span class="var">→ find . -name "*.log" -size +100M -delete</span>
+          </div>
+        </div>
+
+        <ul style="margin-top: 8px;">
+          <li>Supports context vars & model selection</li>
+          <li>Attach images for UI mockup → code</li>
+          <li>Scoped to active editor or terminal</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== 6. KEYBOARD SHORTCUTS (wide) ===== -->
+    <div class="card wide" style="border-left-color: var(--color-tools);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(6,182,212,0.15), transparent);">
+        <span class="card-icon">⌨️</span>
+        <h3>Keyboard Shortcuts</h3>
+      </div>
+      <div class="card-body">
+        <div class="ref-table-wrap">
+          <table class="ref-table">
+            <tr>
+              <th>Shortcut (Mac)</th><th>Shortcut (Win)</th><th>Action</th>
+            </tr>
+            <tr>
+              <td><code>⌃⌘I</code></td><td><code>Ctrl+Alt+I</code></td><td>Open Chat panel</td>
+            </tr>
+            <tr>
+              <td><code>⌘I</code></td><td><code>Ctrl+I</code></td><td>Inline chat (editor or terminal)</td>
+            </tr>
+            <tr>
+              <td><code>⇧⌥⌘L</code></td><td><code>Shift+Alt+Ctrl+L</code></td><td>Quick Chat</td>
+            </tr>
+            <tr>
+              <td><code>⌘⇧I</code></td><td><code>Ctrl+Shift+I</code></td><td>Toggle secondary sidebar</td>
+            </tr>
+            <tr>
+              <td><code>Tab</code></td><td><code>Tab</code></td><td>Accept inline suggestion</td>
+            </tr>
+            <tr>
+              <td><code>Esc</code></td><td><code>Esc</code></td><td>Dismiss suggestion</td>
+            </tr>
+            <tr>
+              <td><code>Alt+] / Alt+[</code></td><td><code>Alt+] / Alt+[</code></td><td>Cycle alternative suggestions</td>
+            </tr>
+            <tr>
+              <td><code>Ctrl+→</code></td><td><code>Ctrl+→</code></td><td>Accept word by word</td>
+            </tr>
+            <tr>
+              <td><code>⌘Enter</code></td><td><code>Ctrl+Enter</code></td><td>Run suggested terminal command</td>
+            </tr>
+            <tr>
+              <td><code>⌥Enter</code></td><td><code>Alt+Enter</code></td><td>Insert command into terminal</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 8. VISION INPUT ===== -->
+    <div class="card" style="border-left-color: var(--color-examples);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(249,115,22,0.15), transparent);">
+        <span class="card-icon">🖼️</span>
+        <h3>Vision & Image Input</h3>
+      </div>
+      <div class="card-body">
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-icon">🖼️</div>
+            <div class="step-label">UI Mockup</div>
+            <div class="step-detail">Screenshot / image</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">📎</div>
+            <div class="step-label">Attach</div>
+            <div class="step-detail">⌘I + clip image</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">📄</div>
+            <div class="step-label">Generated Code</div>
+            <div class="step-detail">React, HTML, etc.</div>
+          </div>
+        </div>
+        <div class="example-block" style="margin-top: 12px;">
+          <div class="example-label">Example Prompt</div>
+          <div class="example-prompt">
+            <span class="txt">📎 login-mockup.png</span><br>
+            <span class="txt">"Build this login form using React + Tailwind"</span>
+          </div>
+        </div>
+        <ul style="margin-top:8px;">
+          <li>Works in Chat view and Inline Chat</li>
+          <li>Supports screenshots, diagrams, UI wireframes</li>
+          <li>Browser elements can be selected as context <span style="font-size:10px;color:var(--text-muted);">EXPERIMENTAL</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== 11. IMPLICIT CONTEXT ===== -->
+    <div class="card" style="border-left-color: var(--color-advanced);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(239,68,68,0.15), transparent);">
+        <span class="card-icon">🔍</span>
+        <h3>Implicit Context (Auto-Included)</h3>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Active file in the editor is always included</li>
+          <li>Current text selection is sent automatically</li>
+          <li>File name provides language/framework hints</li>
+          <li>In Agent mode, workspace is searched autonomously</li>
+          <li>Open tabs provide additional context signals</li>
+        </ul>
+        <div class="callout callout-warn" style="margin-top: 8px;">
+          <strong>⚠️</strong> Content exclusion rules (org-level) can prevent certain files from being sent to the model.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 10. PROMPT EXAMPLES (wide) ===== -->
+    <div class="card wide" style="border-left-color: var(--color-examples);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(249,115,22,0.15), transparent);">
+        <span class="card-icon">📝</span>
+        <h3>Prompt Examples — Real-World Use Cases</h3>
+      </div>
+      <div class="card-body">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px;">
+          <div class="example-block">
+            <div class="example-label">Explain Code</div>
+            <div class="example-prompt">
+              <span class="cmd">/explain</span> <span class="var">#file:auth.ts</span><br>
+              <span class="txt">"How does the login flow work?"</span>
+            </div>
+          </div>
+          <div class="example-block">
+            <div class="example-label">Fix Build Errors</div>
+            <div class="example-prompt">
+              <span class="cmd">/fix</span> <span class="var">#problems</span><br>
+              <span class="txt">"Fix all errors in the workspace"</span>
+            </div>
+          </div>
+          <div class="example-block">
+            <div class="example-label">Generate Tests</div>
+            <div class="example-prompt">
+              <span class="cmd">/tests</span> <span class="var">#file:utils.py</span><br>
+              <span class="txt">"Add tests for edge cases"</span>
+            </div>
+          </div>
+          <div class="example-block">
+            <div class="example-label">Refactor In-Place</div>
+            <div class="example-prompt">
+              <span class="txt">Select code → </span><span class="cmd">⌘I</span><br>
+              <span class="txt">"Extract into a custom hook"</span>
+            </div>
+          </div>
+          <div class="example-block">
+            <div class="example-label">Ask with Web Context</div>
+            <div class="example-prompt">
+              <span class="var">#fetch:https://api.example.com/docs</span><br>
+              <span class="txt">"How do I authenticate?"</span>
+            </div>
+          </div>
+          <div class="example-block">
+            <div class="example-label">Terminal Help</div>
+            <div class="example-prompt">
+              <span class="cmd">⌘I</span> <span class="txt">in terminal</span><br>
+              <span class="txt">"List top 5 largest files in src"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 12. SESSION MANAGEMENT ===== -->
+    <div class="card" style="border-left-color: var(--color-data);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), transparent);">
+        <span class="card-icon">🗂️</span>
+        <h3>Session Management</h3>
+      </div>
+      <div class="card-body">
+        <div class="kv-row">
+          <span class="kv-key">/clear</span>
+          <span class="kv-desc">Start a fresh chat session</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Checkpoints</span>
+          <span class="kv-desc">Auto-snapshot before each agent action</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Restore</span>
+          <span class="kv-desc">Hover request → revert to previous state</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Fork</span>
+          <span class="kv-desc">Create new branch of conversation</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Edit & Resend</span>
+          <span class="kv-desc">Click previous prompt to edit & re-run</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Parallel</span>
+          <span class="kv-desc">Run multiple sessions via <code>+</code> button</span>
+        </div>
+        <div class="callout callout-tip" style="margin-top: 8px;">
+          <strong>💡</strong> Start a new session for unrelated tasks — avoids context pollution.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 13. CONFIGURE SESSION ===== -->
+    <div class="card" style="border-left-color: var(--color-syntax);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(139,92,246,0.15), transparent);">
+        <span class="card-icon">⚙️</span>
+        <h3>Configure Your Chat Session</h3>
+      </div>
+      <div class="card-body">
+        <div class="kv-row">
+          <span class="kv-key">Session Type</span>
+          <span class="kv-desc">Local, Background (CLI), or Cloud</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Agent</span>
+          <span class="kv-desc">Ask, Edit, Agent, Plan, or custom agents</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Permission</span>
+          <span class="kv-desc">Auto-approve, prompt, or restrict tool use</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-key">Model</span>
+          <span class="kv-desc">GPT-4.1, Sonnet 4.6, Gemini 3.1 Pro, etc.</span>
+        </div>
+        <div class="callout callout-tip" style="margin-top: 8px;">
+          <strong>💡</strong> Auto model selection gives a <strong>10% multiplier discount</strong> and excludes models with multiplier &gt; 1×.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 14. TIPS & BEST PRACTICES ===== -->
+    <div class="card" style="border-left-color: var(--color-tips);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(132,204,22,0.15), transparent);">
+        <span class="card-icon">🧠</span>
+        <h3>Tips & Best Practices</h3>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Be specific</strong> — state language, framework, expected I/O</li>
+          <li><strong>Break down</strong> complex tasks into smaller steps</li>
+          <li><strong>Include expected output</strong> — test cases, criteria</li>
+          <li><strong>Ask AI to ask</strong> clarifying questions first</li>
+          <li><strong>Iterate</strong> — refine with follow-ups, don't rewrite</li>
+          <li><strong>Use <code>/clear</code></strong> for new, unrelated tasks</li>
+          <li><strong>Attach images</strong> for visual context (mockups, errors)</li>
+          <li><strong>Course-correct early</strong> — steer mid-request if needed</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== 15. REVIEW CHANGES ===== -->
+    <div class="card" style="border-left-color: var(--color-control);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(245,158,11,0.15), transparent);">
+        <span class="card-icon">👀</span>
+        <h3>Review & Manage Changes</h3>
+      </div>
+      <div class="card-body">
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-icon">🤖</div>
+            <div class="step-label">Agent Edits</div>
+            <div class="step-detail">Files modified</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">📊</div>
+            <div class="step-label">Inline Diff</div>
+            <div class="step-detail">Review changes</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">✅</div>
+            <div class="step-label">Keep / Undo</div>
+            <div class="step-detail">Per-edit control</div>
+          </div>
+        </div>
+        <ul style="margin-top:10px;">
+          <li><strong>Stage to accept</strong> — staging in Source Control accepts pending edits</li>
+          <li><strong>Checkpoints</strong> — auto-snapshot, restore, or fork from any point</li>
+          <li><strong>File change stats</strong> — lines added/removed per request</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== 16. GOOD vs BAD PROMPTS ===== -->
+    <div class="card" style="border-left-color: var(--color-advanced);">
+      <div class="card-header" style="background: linear-gradient(135deg, rgba(239,68,68,0.15), transparent);">
+        <span class="card-icon">🎯</span>
+        <h3>Good vs Bad Prompts</h3>
+      </div>
+      <div class="card-body">
+        <div class="example-block" style="border-left: 3px solid var(--color-advanced);">
+          <div class="example-label" style="color: var(--color-advanced);">❌ Bad Prompt</div>
+          <div class="example-prompt">
+            <span class="txt">"Make this code better"</span><br>
+            <span style="font-size:11px;color:var(--text-muted);">Vague · no language · no criteria · no expected output</span>
+          </div>
+        </div>
+        <div class="example-block" style="border-left: 3px solid var(--color-tips);">
+          <div class="example-label" style="color: var(--color-tips);">✅ Good Prompt</div>
+          <div class="example-prompt">
+            <span class="txt">"Refactor to reduce O(n²) → O(n log n).</span><br>
+            <span class="txt">Add tests that verify performance."</span><br>
+            <span style="font-size:11px;color:var(--text-muted);">Specific · measurable · includes verification</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Sources: 
+      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Docs — Copilot Chat</a> · 
+      <a href="https://code.visualstudio.com/docs/copilot/chat/inline-chat">Inline Chat</a> · 
+      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat-context">Chat Context</a> · 
+      <a href="https://sukurcf.github.io/resources/github-copilot-cheatsheet.html">GitHub Copilot Workflow Cheatsheet</a>
+    </p>
+    <p style="margin-top: 6px;">Created with GitHub Copilot · March 2026</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    // Copy-to-clipboard for code blocks
+    document.querySelectorAll('pre').forEach(block => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = '📋 Copy';
+      btn.addEventListener('click', () => {
+        const code = block.querySelector('code') || block;
+        navigator.clipboard.writeText(code.textContent).then(() => {
+          btn.textContent = '✅ Copied!';
+          setTimeout(() => btn.textContent = '📋 Copy', 1500);
+        });
+      });
+      block.style.position = 'relative';
+      block.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
