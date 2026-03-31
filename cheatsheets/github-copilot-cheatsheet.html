@@ -70,6 +70,7 @@
       padding: 14px 16px;
       max-width: 1520px;
       margin: 0 auto;
+      scroll-margin-top: 90px;
     }
 
     /* ===== CARD ===== */
@@ -388,8 +389,76 @@
       color: var(--text-primary);
     }
 
+    /* ===== SECTION NAV ===== */
+    .section-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-page);
+      border-bottom: 2px solid var(--accent-cream);
+      padding: 8px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+      max-width: 1520px;
+      margin: 0 auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .section-nav .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      border: 1px solid var(--border-card);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .section-nav .nav-pill:hover {
+      background: var(--accent-warm);
+      border-color: var(--accent-peach);
+      color: var(--text-primary);
+    }
+    .section-nav .nav-pill.active {
+      background: var(--accent-salmon);
+      border-color: var(--accent-salmon);
+      color: white;
+    }
+    .section-nav .nav-pill .pill-num {
+      background: rgba(0,0,0,0.15);
+      color: inherit;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .section-nav .nav-pill.active .pill-num {
+      background: rgba(255,255,255,0.25);
+    }
+    .card.hidden-section {
+      display: none !important;
+    }
+    .grid.filtered-view > .card:not(.hidden-section) {
+      grid-column: 1 / -1 !important;
+    }
+
     /* ===== PRINT ===== */
     @media print {
+      .section-nav { display: none !important; }
+      .card.hidden-section { display: block !important; }
       body { background: white; }
       .page-header { background: var(--bg-header-dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
@@ -458,6 +527,45 @@
     <span style="opacity: 0.5;">·</span>
     <span style="opacity: 0.7;">Sources: GitHub Docs · VS Code Docs · GitHub Blog Changelog</span>
   </div>
+</div>
+
+<div class="section-nav" id="sectionNav">
+  <div class="nav-pill active" data-filter="all" onclick="filterSection('all', this)">📋 All</div>
+  <div class="nav-pill" data-filter="1" onclick="filterSection('1', this)"><span class="pill-num">1</span> Architecture</div>
+  <div class="nav-pill" data-filter="2" onclick="filterSection('2', this)"><span class="pill-num">2</span> Chat</div>
+  <div class="nav-pill" data-filter="3" onclick="filterSection('3', this)"><span class="pill-num">3</span> Completions</div>
+  <div class="nav-pill" data-filter="4" onclick="filterSection('4', this)"><span class="pill-num">4</span> NES</div>
+  <div class="nav-pill" data-filter="5" onclick="filterSection('5', this)"><span class="pill-num">5</span> Inline Chat</div>
+  <div class="nav-pill" data-filter="6" onclick="filterSection('6', this)"><span class="pill-num">6</span> Models</div>
+  <div class="nav-pill" data-filter="7" onclick="filterSection('7', this)"><span class="pill-num">7</span> Instructions</div>
+  <div class="nav-pill" data-filter="8" onclick="filterSection('8', this)"><span class="pill-num">8</span> Instructions.md</div>
+  <div class="nav-pill" data-filter="9" onclick="filterSection('9', this)"><span class="pill-num">9</span> Prompt Files</div>
+  <div class="nav-pill" data-filter="10" onclick="filterSection('10', this)"><span class="pill-num">10</span> Agents</div>
+  <div class="nav-pill" data-filter="11" onclick="filterSection('11', this)"><span class="pill-num">11</span> Skills</div>
+  <div class="nav-pill" data-filter="12" onclick="filterSection('12', this)"><span class="pill-num">12</span> MCP</div>
+  <div class="nav-pill" data-filter="13" onclick="filterSection('13', this)"><span class="pill-num">13</span> Hooks</div>
+  <div class="nav-pill" data-filter="14" onclick="filterSection('14', this)"><span class="pill-num">14</span> GitHub.com</div>
+  <div class="nav-pill" data-filter="15" onclick="filterSection('15', this)"><span class="pill-num">15</span> CLI</div>
+  <div class="nav-pill" data-filter="16" onclick="filterSection('16', this)"><span class="pill-num">16</span> Spaces</div>
+  <div class="nav-pill" data-filter="17" onclick="filterSection('17', this)"><span class="pill-num">17</span> Toolsets</div>
+  <div class="nav-pill" data-filter="18" onclick="filterSection('18', this)"><span class="pill-num">18</span> Exclusion</div>
+  <div class="nav-pill" data-filter="19" onclick="filterSection('19', this)"><span class="pill-num">19</span> Spec-Driven</div>
+  <div class="nav-pill" data-filter="20" onclick="filterSection('20', this)"><span class="pill-num">20</span> File Structure</div>
+  <div class="nav-pill" data-filter="21" onclick="filterSection('21', this)"><span class="pill-num">21</span> 3rd-Party</div>
+  <div class="nav-pill" data-filter="22" onclick="filterSection('22', this)"><span class="pill-num">22</span> Browser</div>
+  <div class="nav-pill" data-filter="23" onclick="filterSection('23', this)"><span class="pill-num">23</span> Checkpoints</div>
+  <div class="nav-pill" data-filter="24" onclick="filterSection('24', this)"><span class="pill-num">24</span> Orchestration</div>
+  <div class="nav-pill" data-filter="25" onclick="filterSection('25', this)"><span class="pill-num">25</span> Prompts</div>
+  <div class="nav-pill" data-filter="26" onclick="filterSection('26', this)"><span class="pill-num">26</span> Smart Actions</div>
+  <div class="nav-pill" data-filter="27" onclick="filterSection('27', this)"><span class="pill-num">27</span> BYOK</div>
+  <div class="nav-pill" data-filter="28" onclick="filterSection('28', this)"><span class="pill-num">28</span> Privacy</div>
+  <div class="nav-pill" data-filter="29" onclick="filterSection('29', this)"><span class="pill-num">29</span> Admin</div>
+  <div class="nav-pill" data-filter="30" onclick="filterSection('30', this)"><span class="pill-num">30</span> Subagents</div>
+  <div class="nav-pill" data-filter="31" onclick="filterSection('31', this)"><span class="pill-num">31</span> Metrics API</div>
+  <div class="nav-pill" data-filter="32" onclick="filterSection('32', this)"><span class="pill-num">32</span> Code Ref</div>
+  <div class="nav-pill" data-filter="33" onclick="filterSection('33', this)"><span class="pill-num">33</span> Autofix</div>
+  <div class="nav-pill" data-filter="34" onclick="filterSection('34', this)"><span class="pill-num">34</span> Debug</div>
+  <div class="nav-pill" data-filter="★" onclick="filterSection('★', this)"><span class="pill-num">★</span> Quick Ref</div>
 </div>
 
 <div class="grid">
@@ -5117,6 +5225,42 @@ Example: validateEmail("invalid") → false</code></div>
 <div class="page-footer">
   <strong>Created with GitHub Copilot</strong> · Sources: docs.github.com/copilot · code.visualstudio.com/docs/copilot · modelcontextprotocol.io · March 2026
 </div>
+
+<script>
+function filterSection(sectionId, pill) {
+  // Update active pill
+  document.querySelectorAll('.section-nav .nav-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+
+  const grid = document.querySelector('.grid');
+  const cards = document.querySelectorAll('.grid > .card');
+
+  if (sectionId === 'all') {
+    cards.forEach(card => card.classList.remove('hidden-section'));
+    grid.classList.remove('filtered-view');
+    return;
+  }
+
+  grid.classList.add('filtered-view');
+
+  cards.forEach(card => {
+    const numEl = card.querySelector('.section-num');
+    if (!numEl) {
+      card.classList.add('hidden-section');
+      return;
+    }
+    const num = numEl.textContent.trim();
+    if (num === sectionId) {
+      card.classList.remove('hidden-section');
+    } else {
+      card.classList.add('hidden-section');
+    }
+  });
+
+  // Scroll grid into view
+  document.querySelector('.grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
 
 </body>
 </html>
