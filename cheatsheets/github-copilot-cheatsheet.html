@@ -600,7 +600,7 @@
   </div>
   <div style="margin-top: 6px; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.10); padding: 4px 14px; border-radius: 8px; font-size: 10px; letter-spacing: 0.3px;">
     <span style="opacity: 0.7;">🕐 Last updated:</span>
-    <strong>25 March 2026 (revised)</strong>
+    <strong>9 June 2026 (revised)</strong>
     <span style="opacity: 0.5;">·</span>
     <span style="opacity: 0.7;">Sources: GitHub Docs · VS Code Docs · GitHub Blog Changelog</span>
   </div>
@@ -642,6 +642,8 @@
   <div class="nav-pill" data-filter="32" onclick="filterSection('32', this)"><span class="pill-num">32</span> Code Ref</div>
   <div class="nav-pill" data-filter="33" onclick="filterSection('33', this)"><span class="pill-num">33</span> Autofix</div>
   <div class="nav-pill" data-filter="34" onclick="filterSection('34', this)"><span class="pill-num">34</span> Debug</div>
+  <div class="nav-pill" data-filter="35" onclick="filterSection('35', this)"><span class="pill-num">35</span> Permissions</div>
+  <div class="nav-pill" data-filter="36" onclick="filterSection('36', this)"><span class="pill-num">36</span> Agent Logs</div>
   <div class="nav-pill" data-filter="★" onclick="filterSection('★', this)"><span class="pill-num">★</span> Quick Ref</div>
 </div>
 
@@ -871,7 +873,7 @@ ext install GitHub.copilot-chat</code></div>
         <!-- At Participants pill -->
         <rect x="380" y="38" width="160" height="52" rx="12" fill="url(#gAt)" filter="url(#shChat)"/>
         <text x="460" y="58" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="11" font-weight="700">@ Participants</text>
-        <text x="460" y="72" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono,monospace" font-size="8">@workspace  @github</text>
+        <text x="460" y="72" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono,monospace" font-size="8">@github  @terminal  @vscode</text>
         <text x="460" y="83" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="7">Who to ask</text>
 
         <!-- Converging arrows into Prompt box -->
@@ -909,11 +911,11 @@ ext install GitHub.copilot-chat</code></div>
         <rect x="570" y="58" width="52" height="20" rx="6" fill="#1a2e4a" stroke="#3B82F6" stroke-width="0.8"/>
         <text x="596" y="72" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">💬 Ask</text>
 
-        <rect x="628" y="58" width="52" height="20" rx="6" fill="#1a2e4a" stroke="#8B5CF6" stroke-width="0.8"/>
-        <text x="654" y="72" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">✏️ Edit</text>
+        <rect x="628" y="58" width="72" height="20" rx="6" fill="#1a2e4a" stroke="#8B5CF6" stroke-width="0.8"/>
+        <text x="664" y="72" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">🪟 Agents</text>
 
-        <rect x="686" y="58" width="58" height="20" rx="6" fill="#1a2e4a" stroke="#10B981" stroke-width="0.8"/>
-        <text x="715" y="72" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">🤖 Agent</text>
+        <rect x="706" y="58" width="48" height="20" rx="6" fill="#1a2e4a" stroke="#10B981" stroke-width="0.8"/>
+        <text x="730" y="72" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">🤖 Agent</text>
 
         <rect x="570" y="84" width="52" height="20" rx="6" fill="#1a2e4a" stroke="#F59E0B" stroke-width="0.8"/>
         <text x="596" y="98" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">📋 Plan</text>
@@ -933,7 +935,10 @@ ext install GitHub.copilot-chat</code></div>
         <tr><td><code>/tests</code></td><td>Generate unit tests</td><td><code>/new</code></td><td>Scaffold new project</td></tr>
         <tr><td><code>/clear</code></td><td>New chat session</td><td><code>/help</code></td><td>Copilot quick reference</td></tr>
         <tr><td><code>/init</code></td><td>Generate instructions</td><td><code>/search</code></td><td>Workspace search</td></tr>
-        <tr><td><code>/delegate</code></td><td>Send to coding agent <span class="tag tag-blue">CLI</span></td><td><code>/compact</code></td><td>Compress context <span class="tag tag-blue">CLI</span></td></tr>
+        <tr><td><code>/doc</code></td><td>Generate code docs</td><td><code>/compact</code></td><td>Compress context</td></tr>
+        <tr><td><code>/plan</code></td><td>Create implementation plan</td><td><code>/setupTests</code></td><td>Setup testing framework</td></tr>
+        <tr><td><code>/troubleshoot</code></td><td>Analyze debug logs</td><td><code>/fork</code></td><td>Fork chat session</td></tr>
+        <tr><td><code>/chronicle</code></td><td>Session history &amp; standup</td><td><code>/yolo</code></td><td>Auto-approve all tools</td></tr>
       </table>
 
       <div style="display: flex; gap: 12px; margin-top: 6px;">
@@ -946,15 +951,14 @@ ext install GitHub.copilot-chat</code></div>
           <div class="kv-row"><span class="kv-key">#changes</span><span class="kv-desc">Git changes (diff)</span></div>
           <div class="kv-row"><span class="kv-key">#fetch</span><span class="kv-desc">Fetch a web page</span></div>
           <div class="kv-row"><span class="kv-key">#terminalLastCommand</span><span class="kv-desc">Last terminal output</span></div>
-          <div class="kv-row"><span class="kv-key">#block #class #function</span><span class="kv-desc">Code scope</span></div>
+          <div class="kv-row"><span class="kv-key">#search/codebase</span><span class="kv-desc">Full workspace search</span></div>
         </div>
         <div style="flex: 1;">
           <div class="mini-heading">Chat Participants (@)</div>
-          <div class="kv-row"><span class="kv-key">@workspace</span><span class="kv-desc">Project structure &amp; code</span></div>
-          <div class="kv-row"><span class="kv-key">@vscode</span><span class="kv-desc">VS Code commands &amp; features</span></div>
+          <div class="kv-row"><span class="kv-key">@github</span><span class="kv-desc">GitHub repos, issues, PRs</span></div>
           <div class="kv-row"><span class="kv-key">@terminal</span><span class="kv-desc">Terminal shell context</span></div>
-          <div class="kv-row"><span class="kv-key">@github</span><span class="kv-desc">GitHub-specific skills</span></div>
-          <div class="kv-row"><span class="kv-key">@azure</span><span class="kv-desc">Azure services help</span></div>
+          <div class="kv-row"><span class="kv-key">@vscode</span><span class="kv-desc">VS Code commands &amp; features</span></div>
+          <div class="callout callout-info" style="margin-top: 4px;"><strong>📌</strong> <code class="inline">@workspace</code> was removed — use <code class="inline">#codebase</code> or <code class="inline">#search/codebase</code> for workspace context instead.</div>
           <div class="mini-heading" style="margin-top: 8px;">Voice Chat <span class="tag tag-purple">VS Code</span></div>
           <ul class="dot-list">
             <li>Install <code class="inline">ms-vscode.vscode-speech</code></li>
@@ -1120,7 +1124,7 @@ ext install GitHub.copilot-chat</code></div>
           <div class="mini-heading">Completions Model</div>
           <ul class="dot-list">
             <li>Change model in settings for inline suggestions</li>
-            <li>Premium models consume premium requests</li>
+            <li>Different models have different per-token costs</li>
             <li>Free plan: 2,000 completions/month</li>
           </ul>
           <div class="callout callout-tip"><strong>💡</strong> Write a descriptive comment first — Copilot uses it as a prompt to generate the function body below.</div>
@@ -1446,10 +1450,10 @@ ext install GitHub.copilot-chat</code></div>
   <div class="card wide">
     <div class="card-header">
       <span class="section-num">6</span>
-      <h3>Model Selection &amp; Premium Requests</h3>
+      <h3>Model Selection &amp; AI Credits</h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> Choose from 20+ AI models. Each model has a premium request multiplier — included models (GPT-4.1, GPT-4o, GPT-5 mini) cost 0×, while advanced models cost 1×–30×. Manage your monthly budget accordingly.</div>
+      <div class="callout callout-info"><strong>What:</strong> Choose from 20+ AI models. Billing is now <strong>usage-based via GitHub AI Credits</strong> (1 credit = $0.01 USD). Each model has per-token pricing — lightweight models cost less, frontier models cost more. Completions &amp; NES remain free and unlimited on paid plans.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
       <svg viewBox="0 0 780 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
@@ -1460,66 +1464,61 @@ ext install GitHub.copilot-chat</code></div>
         <!-- Title -->
         <text x="390" y="20" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">MODEL COST TIERS — PICK THE RIGHT MODEL FOR THE TASK</text>
 
-        <!-- ── Tier columns ── -->
-
-        <!-- Tier: 0× Included (Green) -->
+        <!-- Tier: Lightweight (Green) -->
         <rect x="20" y="34" width="178" height="134" rx="10" fill="#052e16" stroke="#10B981" stroke-width="1.2" filter="url(#shM)"/>
         <rect x="20" y="34" width="178" height="36" rx="10" fill="#065F46"/>
         <rect x="20" y="54" width="178" height="16" fill="#065F46"/>
-        <text x="109" y="52" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="10" font-weight="800">🆓 0× INCLUDED</text>
-        <text x="109" y="66" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7">No premium requests consumed</text>
+        <text x="109" y="52" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="10" font-weight="800">🪶 LIGHTWEIGHT</text>
+        <text x="109" y="66" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7">Low cost per token</text>
 
-        <text x="32" y="88" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-4.1</text>
-        <text x="32" y="101" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-4o</text>
+        <text x="32" y="88" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5 mini</text>
+        <text x="32" y="101" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Raptor mini</text>
         <text x="32" y="114" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5 mini</text>
-        <text x="32" y="127" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Raptor mini</text>
+        <text x="32" y="127" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.4 nano</text>
 
         <rect x="30" y="140" width="158" height="18" rx="5" fill="#064e3b" opacity="0.6"/>
         <text x="109" y="153" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Best for: boilerplate, simple edits</text>
 
-        <!-- Tier: 0.25–0.33× Budget (Blue) -->
+        <!-- Tier: Versatile (Blue) -->
         <rect x="210" y="34" width="178" height="134" rx="10" fill="#0c1e3d" stroke="#3B82F6" stroke-width="1.2" filter="url(#shM)"/>
         <rect x="210" y="34" width="178" height="36" rx="10" fill="#1E3A5F"/>
         <rect x="210" y="54" width="178" height="16" fill="#1E3A5F"/>
-        <text x="299" y="52" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="10" font-weight="800">💰 0.25–0.33×</text>
-        <text x="299" y="66" text-anchor="middle" fill="#93C5FD" font-family="Inter,sans-serif" font-size="7">Budget-friendly premium</text>
+        <text x="299" y="52" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="10" font-weight="800">⚡ VERSATILE</text>
+        <text x="299" y="66" text-anchor="middle" fill="#93C5FD" font-family="Inter,sans-serif" font-size="7">Balanced cost &amp; capability</text>
 
-        <text x="222" y="88" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Grok Code Fast 1</text>
-        <text x="222" y="101" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Claude Haiku 4.5</text>
-        <text x="222" y="114" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 3 Flash</text>
-        <text x="222" y="127" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.1 Codex Mini</text>
+        <text x="222" y="88" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Claude Haiku 4.5</text>
+        <text x="222" y="101" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 3 Flash</text>
+        <text x="222" y="114" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 3.5 Flash</text>
+        <text x="222" y="127" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">MAI-Code-1-Flash</text>
 
         <rect x="220" y="140" width="158" height="18" rx="5" fill="#1e3a5f" opacity="0.6"/>
         <text x="299" y="153" text-anchor="middle" fill="#93C5FD" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Best for: fast iteration, tests</text>
 
-        <!-- Tier: 1× Standard (Amber) -->
+        <!-- Tier: Powerful (Amber) -->
         <rect x="400" y="34" width="178" height="134" rx="10" fill="#291800" stroke="#F59E0B" stroke-width="1.2" filter="url(#shM)"/>
         <rect x="400" y="34" width="178" height="36" rx="10" fill="#78350F"/>
         <rect x="400" y="54" width="178" height="16" fill="#78350F"/>
-        <text x="489" y="52" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="10" font-weight="800">⚡ 1× STANDARD</text>
-        <text x="489" y="66" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7">Full premium request per use</text>
+        <text x="489" y="52" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="10" font-weight="800">🧠 POWERFUL</text>
+        <text x="489" y="66" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7">High capability, higher cost</text>
 
-        <text x="412" y="88" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Sonnet 4 / 4.5 / 4.6</text>
-        <text x="412" y="101" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 2.5/3/3.1 Pro</text>
-        <text x="412" y="114" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.1 / 5.2 / 5.4</text>
-        <text x="412" y="127" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.1 Codex</text>
+        <text x="412" y="88" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.3-Codex</text>
+        <text x="412" y="101" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.4 / GPT-5.5</text>
+        <text x="412" y="114" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 2.5 / 3.1 Pro</text>
+        <text x="412" y="127" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Sonnet 4.5 / 4.6</text>
 
         <rect x="410" y="140" width="158" height="18" rx="5" fill="#78350f" opacity="0.5"/>
         <text x="489" y="153" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Best for: complex refactors, agents</text>
 
-        <!-- Tier: 3–30× Premium (Red) -->
+        <!-- Tier: Frontier (Red) -->
         <rect x="590" y="34" width="170" height="134" rx="10" fill="#2a0a0a" stroke="#EF4444" stroke-width="1.2" filter="url(#shM)"/>
         <rect x="590" y="34" width="170" height="36" rx="10" fill="#7F1D1D"/>
         <rect x="590" y="54" width="170" height="16" fill="#7F1D1D"/>
-        <text x="675" y="52" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="10" font-weight="800">🔥 3–30× PREMIUM</text>
-        <text x="675" y="66" text-anchor="middle" fill="#FECACA" font-family="Inter,sans-serif" font-size="7">High cost — use sparingly</text>
+        <text x="675" y="52" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="10" font-weight="800">🔥 FRONTIER</text>
+        <text x="675" y="66" text-anchor="middle" fill="#FECACA" font-family="Inter,sans-serif" font-size="7">Highest cost — use for critical work</text>
 
-        <text x="602" y="88" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.5</text>
-        <text x="750" y="88" text-anchor="end" fill="#EF4444" font-family="Inter,sans-serif" font-size="8" font-weight="700">3×</text>
-        <text x="602" y="104" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.6</text>
-        <text x="750" y="104" text-anchor="end" fill="#EF4444" font-family="Inter,sans-serif" font-size="8" font-weight="700">3×</text>
-        <text x="602" y="120" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.6 fast</text>
-        <text x="750" y="120" text-anchor="end" fill="#EF4444" font-family="Inter,sans-serif" font-size="8" font-weight="700">30×</text>
+        <text x="602" y="88" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.5 / 4.6</text>
+        <text x="602" y="101" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.7 / 4.8</text>
+        <text x="602" y="114" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.6 fast (preview)</text>
 
         <rect x="600" y="140" width="150" height="18" rx="5" fill="#7f1d1d" opacity="0.5"/>
         <text x="675" y="153" text-anchor="middle" fill="#FECACA" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Best for: architecture, design</text>
@@ -1528,58 +1527,71 @@ ext install GitHub.copilot-chat</code></div>
         <line x1="60" y1="178" x2="720" y2="178" stroke="#475569" stroke-width="1"/>
         <text x="56" y="181" text-anchor="end" fill="#10B981" font-size="8">◀</text>
         <text x="724" y="181" fill="#EF4444" font-size="8">▶</text>
-        <text x="109" y="188" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">FREE</text>
-        <text x="675" y="188" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">EXPENSIVE</text>
-        <text x="390" y="188" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">COST →</text>
+        <text x="109" y="188" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">LOW COST</text>
+        <text x="675" y="188" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">HIGH COST</text>
+        <text x="390" y="188" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">COST PER TOKEN →</text>
       </svg>
 
       <div style="display: flex; gap: 12px;">
         <div style="flex: 1;">
-          <div class="mini-heading">Model Multipliers (Paid Plans)</div>
+          <div class="mini-heading">Model Pricing (USD per 1M tokens)</div>
           <table class="ref-table">
-            <tr><th>Model</th><th>Rate</th></tr>
-            <tr><td>GPT-4.1 / GPT-4o / GPT-5 mini</td><td><span class="tag tag-green">0× included</span></td></tr>
-            <tr><td>Raptor mini</td><td><span class="tag tag-green">0× included</span></td></tr>
-            <tr><td>Grok Code Fast 1</td><td><span class="tag tag-blue">0.25×</span></td></tr>
-            <tr><td>Claude Haiku 4.5 / Gemini 3 Flash</td><td><span class="tag tag-blue">0.33×</span></td></tr>
-            <tr><td>GPT-5.1-Codex-Mini / GPT-5.4 mini</td><td><span class="tag tag-blue">0.33×</span></td></tr>
-            <tr><td>Sonnet 4 / 4.5 / 4.6</td><td><span class="tag tag-amber">1×</span></td></tr>
-            <tr><td>Gemini 2.5 Pro / 3 Pro / 3.1 Pro</td><td><span class="tag tag-amber">1×</span></td></tr>
-            <tr><td>GPT-5.1 / 5.2 / 5.4 + Codex variants</td><td><span class="tag tag-amber">1×</span></td></tr>
-            <tr><td>Claude Opus 4.5 / 4.6</td><td><span class="tag tag-red">3×</span></td></tr>
-            <tr><td>Opus 4.6 fast mode (preview)</td><td><span class="tag tag-red">30×</span></td></tr>
+            <tr><th>Model</th><th>Input</th><th>Cached</th><th>Output</th><th>Tier</th></tr>
+            <tr><td>GPT-5 mini</td><td>$0.25</td><td>$0.025</td><td>$2.00</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>Raptor mini</td><td>$0.25</td><td>$0.025</td><td>$2.00</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>GPT-5.4 mini</td><td>$0.75</td><td>$0.075</td><td>$4.50</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>GPT-5.4 nano</td><td>$0.20</td><td>$0.02</td><td>$1.25</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>Claude Haiku 4.5</td><td>$1.00</td><td>$0.10</td><td>$5.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Gemini 3 Flash</td><td>$0.50</td><td>$0.05</td><td>$3.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Gemini 3.5 Flash</td><td>$1.50</td><td>$0.15</td><td>$9.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>MAI-Code-1-Flash</td><td>$0.75</td><td>$0.075</td><td>$4.50</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Sonnet 4.5 / 4.6</td><td>$3.00</td><td>$0.30</td><td>$15.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-5.3-Codex</td><td>$1.75</td><td>$0.175</td><td>$14.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-5.4</td><td>$2.50</td><td>$0.25</td><td>$15.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-5.5</td><td>$5.00</td><td>$0.50</td><td>$30.00</td><td><span class="tag tag-red">Frontier</span></td></tr>
+            <tr><td>Gemini 2.5 Pro / 3.1 Pro</td><td>$1.25–2.00</td><td>$0.125–0.20</td><td>$10–12</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>Opus 4.5–4.8</td><td>$5.00</td><td>$0.50</td><td>$25.00</td><td><span class="tag tag-red">Frontier</span></td></tr>
           </table>
         </div>
         <div style="flex: 1;">
-          <div class="mini-heading">Plans &amp; Allowances</div>
+          <div class="mini-heading">Plans &amp; AI Credit Allowances</div>
           <table class="ref-table">
-            <tr><th>Plan</th><th>Included</th></tr>
-            <tr><td>Free</td><td>2K completions + 50 premium/mo</td></tr>
-            <tr><td>Pro / Student</td><td>Unlimited + premium allowance</td></tr>
-            <tr><td>Pro+</td><td>Unlimited + higher premium</td></tr>
-            <tr><td>Business</td><td>Unlimited + org premium pool</td></tr>
-            <tr><td>Enterprise</td><td>Unlimited + enterprise premium</td></tr>
+            <tr><th>Plan</th><th>Price</th><th>Credits/mo</th></tr>
+            <tr><td>Free</td><td>$0</td><td>2K completions + limited</td></tr>
+            <tr><td>Student</td><td>$0</td><td>Unlimited completions + limited</td></tr>
+            <tr><td>Pro</td><td>$10/mo</td><td>1,500 (1K base + 500 flex)</td></tr>
+            <tr><td>Pro+</td><td>$39/mo</td><td>7,000 (3.9K base + 3.1K flex)</td></tr>
+            <tr><td>Max</td><td>$100/mo</td><td>20,000 (10K base + 10K flex)</td></tr>
+            <tr><td>Business</td><td>$19/seat</td><td>Pooled per org</td></tr>
+            <tr><td>Enterprise</td><td>$39/seat</td><td>Pooled per enterprise</td></tr>
           </table>
           <div class="callout callout-tip" style="margin-top: 6px;">
-            <strong>💡</strong> Auto model selection gives 10% multiplier discount and excludes models with multipliers greater than 1×.
+            <strong>💡</strong> Auto model selection gives a <strong>10% discount</strong> on model costs in Chat, CLI &amp; cloud agent. 1 AI credit = $0.01 USD.
           </div>
           <div class="callout callout-warn">
-            <strong>⚠️</strong> Unused requests don't carry over. Counters reset on 1st of each month (UTC).
+            <strong>⚠️</strong> Code completions &amp; NES are <strong>free and unlimited</strong> on paid plans — only chat, agent, CLI, Spaces &amp; Spark consume AI credits.
           </div>
+          <div class="mini-heading">Utility Models <span class="tag tag-purple">Background</span></div>
+          <ul class="dot-list">
+            <li>GPT-4o, GPT-4o mini, GPT-4.1 are used internally for background features</li>
+            <li>Cannot be selected in the model picker or disabled</li>
+            <li>Power features like commit messages, code review, search indexing</li>
+          </ul>
           <div class="callout callout-info" style="margin-top: 4px;">
-            <strong>📌</strong> Models are frequently added and deprecated. Multipliers may change. Check <a href="https://docs.github.com/en/copilot/get-started/plans#models" style="color: var(--accent-salmon);">official docs</a> for the latest model list.
+            <strong>📌</strong> Models are frequently added and deprecated. Pricing may change. Check <a href="https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing" style="color: var(--accent-salmon);">official pricing</a> for the latest.
           </div>
         </div>
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
-        <div class="use-case"><strong>Save budget on simple tasks</strong> — use GPT-4.1 (0×) for boilerplate, switch to Sonnet 4.6 (1×) for complex refactors</div>
-        <div class="use-case"><strong>Architecture decisions</strong> — use Opus 4.6 (3×) for design reviews where quality matters more than cost</div>
+        <div class="use-case"><strong>Save credits on simple tasks</strong> — use GPT-5 mini ($0.25/M input) for boilerplate, switch to Sonnet 4.6 ($3/M) for complex refactors</div>
+        <div class="use-case"><strong>Architecture decisions</strong> — use Opus 4.7 ($5/M input) or GPT-5.5 ($5/M) for design reviews where quality matters</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/about-github-copilot/subscription-plans-for-github-copilot" target="_blank">GitHub Docs — Plans &amp; Models</a> &middot;
-        <a href="https://docs.github.com/en/copilot/get-started/plans#models" target="_blank">Model Availability by Plan</a>
+        <a href="https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing" target="_blank">GitHub Docs — Models &amp; Pricing</a> &middot;
+        <a href="https://docs.github.com/en/copilot/get-started/plans" target="_blank">Plans &amp; Model Availability</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals" target="_blank">Usage-Based Billing</a>
       </div>
     </div>
   </div>
@@ -1594,7 +1606,7 @@ ext install GitHub.copilot-chat</code></div>
       <div class="callout callout-info"><strong>What:</strong> Markdown files that automatically inject your coding standards, conventions, and project context into every Copilot request — no need to repeat yourself in prompts.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
-      <svg viewBox="0 0 780 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+      <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
         <defs>
           <filter id="sh7"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/></filter>
           <marker id="arr7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F4A261"/></marker>
@@ -1606,28 +1618,28 @@ ext install GitHub.copilot-chat</code></div>
         <!-- Priority stack: 3 layers (top = highest priority) -->
 
         <!-- Layer 1: Personal (highest) -->
-        <rect x="220" y="34" width="340" height="32" rx="8" fill="#3B1764" stroke="#8B5CF6" stroke-width="1.2" filter="url(#sh7)"/>
-        <text x="240" y="55" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="10" font-weight="800">① PERSONAL</text>
-        <text x="390" y="55" fill="#A78BFA" font-family="Inter,sans-serif" font-size="8">Highest priority</text>
-        <text x="540" y="55" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">~/.copilot/copilot-instructions.md</text>
+        <rect x="220" y="34" width="340" height="40" rx="8" fill="#3B1764" stroke="#8B5CF6" stroke-width="1.2" filter="url(#sh7)"/>
+        <text x="240" y="51" fill="#C4B5FD" font-family="Inter,sans-serif" font-size="10" font-weight="800">① PERSONAL</text>
+        <text x="390" y="51" fill="#A78BFA" font-family="Inter,sans-serif" font-size="8">Highest priority</text>
+        <text x="540" y="67" text-anchor="end" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6.5">~/.copilot/copilot-instructions.md</text>
 
         <!-- Layer 2: Path-specific -->
-        <rect x="220" y="72" width="340" height="32" rx="8" fill="#291800" stroke="#F59E0B" stroke-width="1.2" filter="url(#sh7)"/>
-        <text x="240" y="93" fill="#FDE68A" font-family="Inter,sans-serif" font-size="10" font-weight="800">② PATH-SPECIFIC</text>
-        <text x="402" y="93" fill="#FBBF24" font-family="Inter,sans-serif" font-size="8">Glob-matched rules</text>
-        <text x="540" y="93" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">.github/instructions/*.instructions.md</text>
+        <rect x="220" y="80" width="340" height="40" rx="8" fill="#291800" stroke="#F59E0B" stroke-width="1.2" filter="url(#sh7)"/>
+        <text x="240" y="97" fill="#FDE68A" font-family="Inter,sans-serif" font-size="10" font-weight="800">② PATH-SPECIFIC</text>
+        <text x="402" y="97" fill="#FBBF24" font-family="Inter,sans-serif" font-size="8">Glob-matched rules</text>
+        <text x="540" y="113" text-anchor="end" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6.5">.github/instructions/*.instructions.md</text>
 
         <!-- Layer 3: Repository-wide -->
-        <rect x="220" y="110" width="340" height="32" rx="8" fill="#1E3A5F" stroke="#3B82F6" stroke-width="1.2" filter="url(#sh7)"/>
-        <text x="240" y="131" fill="#93C5FD" font-family="Inter,sans-serif" font-size="10" font-weight="800">③ REPOSITORY</text>
-        <text x="416" y="131" fill="#60A5FA" font-family="Inter,sans-serif" font-size="8">Repo-wide rules</text>
-        <text x="540" y="131" text-anchor="end" fill="#64748B" font-family="JetBrains Mono,monospace" font-size="7">.github/copilot-instructions.md</text>
+        <rect x="220" y="126" width="340" height="40" rx="8" fill="#1E3A5F" stroke="#3B82F6" stroke-width="1.2" filter="url(#sh7)"/>
+        <text x="240" y="143" fill="#93C5FD" font-family="Inter,sans-serif" font-size="10" font-weight="800">③ REPOSITORY</text>
+        <text x="416" y="143" fill="#60A5FA" font-family="Inter,sans-serif" font-size="8">Repo-wide rules</text>
+        <text x="540" y="159" text-anchor="end" fill="#94A3B8" font-family="JetBrains Mono,monospace" font-size="6.5">.github/copilot-instructions.md</text>
 
         <!-- Priority arrow on the left -->
-        <line x1="200" y1="42" x2="200" y2="140" stroke="#F4A261" stroke-width="1.5"/>
-        <polygon points="194,139 200,147 206,139" fill="#F4A261"/>
+        <line x1="200" y1="42" x2="200" y2="160" stroke="#F4A261" stroke-width="1.5"/>
+        <polygon points="194,159 200,167 206,159" fill="#F4A261"/>
         <text x="196" y="42" text-anchor="end" fill="#F4A261" font-family="Inter,sans-serif" font-size="7" font-weight="700">HIGH</text>
-        <text x="196" y="152" text-anchor="end" fill="#F4A261" font-family="Inter,sans-serif" font-size="7" font-weight="700">LOW</text>
+        <text x="196" y="175" text-anchor="end" fill="#F4A261" font-family="Inter,sans-serif" font-size="7" font-weight="700">LOW</text>
 
         <!-- Right side: Always-on files -->
         <text x="670" y="42" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="8" font-weight="700" letter-spacing="0.5">ALWAYS-ON FILES</text>
@@ -1642,7 +1654,7 @@ ext install GitHub.copilot-chat</code></div>
         <text x="675" y="116" text-anchor="middle" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="7.5" font-weight="500">CLAUDE.md</text>
 
         <!-- Bottom: task-specific -->
-        <text x="390" y="155" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7">Task-specific: <tspan fill="#F4A261" font-weight="600">commitMessageGeneration</tspan> · <tspan fill="#F4A261" font-weight="600">reviewSelection</tspan> · <tspan fill="#F4A261" font-weight="600">pullRequestDescription</tspan> · Generate with <tspan fill="#F4A261" font-weight="600">/init</tspan></text>
+        <text x="390" y="195" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7">Task-specific: <tspan fill="#F4A261" font-weight="600">commitMessageGeneration</tspan> · <tspan fill="#F4A261" font-weight="600">reviewSelection</tspan> · <tspan fill="#F4A261" font-weight="600">pullRequestDescription</tspan> · Generate with <tspan fill="#F4A261" font-weight="600">/init</tspan></text>
       </svg>
 
       <div style="display: flex; gap: 12px; margin-top: 4px;">
@@ -1867,7 +1879,7 @@ applyTo: '**/*.py'
 description: 'Create React form'
 agent: agent
 tools: ['editFiles', 'search']
-model: GPT-5.2
+model: GPT-5.4
 ---
 Generate a React form component
 with validation for ${input:fields}</code></div>
@@ -2527,7 +2539,7 @@ Use factory mocks for fixtures</code></div>
         <li>Delegate tasks from VS Code, CLI, or github.com</li>
         <li>Use <code class="inline">/delegate</code> in chat or @cli in terminal</li>
         <li>Creates PRs autonomously in cloud</li>
-        <li>Uses premium requests (1× per session × model)</li>
+        <li>Consumes AI credits based on model &amp; token usage</li>
         <li>Follow up with steering comments</li>
       </ul>
       <div class="mini-heading">PR &amp; Issue Features</div>
@@ -2630,7 +2642,7 @@ Use factory mocks for fixtures</code></div>
             <tr><td><code>/model</code></td><td>Switch AI model</td></tr>
             <tr><td><code>/compact</code></td><td>Compress conversation context</td></tr>
             <tr><td><code>/context</code></td><td>View token usage breakdown</td></tr>
-            <tr><td><code>/usage</code></td><td>Session stats (premium reqs, duration, LOC)</td></tr>
+            <tr><td><code>/usage</code></td><td>Session stats (AI credits, duration, LOC)</td></tr>
             <tr><td><code>/agent</code></td><td>Select a custom agent</td></tr>
             <tr><td><code>/mcp</code></td><td>List MCP servers; <code>/mcp add</code> to add</td></tr>
             <tr><td><code>/resume</code></td><td>Resume a previous session</td></tr>
@@ -2639,6 +2651,11 @@ Use factory mocks for fixtures</code></div>
             <tr><td><code>/login</code></td><td>Authenticate with GitHub</td></tr>
             <tr><td><code>/feedback</code></td><td>Submit feedback, bugs, features</td></tr>
             <tr><td><code>/allow-all</code></td><td>Auto-approve all tools this session</td></tr>
+            <tr><td><code>/every</code></td><td>Schedule recurring prompt (e.g. <code>/every 1h run tests</code>)</td></tr>
+            <tr><td><code>/after</code></td><td>Schedule one-shot prompt after delay</td></tr>
+            <tr><td><code>/sandbox</code></td><td>Enable local sandboxing (<code>/sandbox enable</code>)</td></tr>
+            <tr><td><code>/share</code></td><td>Share session transcript or export context</td></tr>
+            <tr><td><code>/chronicle</code></td><td>Session history, standup reports &amp; usage tips</td></tr>
           </table>
         </div>
         <div style="flex: 1;">
@@ -2660,6 +2677,8 @@ Use factory mocks for fixtures</code></div>
           <div class="kv-row"><span class="kv-key">--allow-tool='shell(git)'</span><span class="kv-desc">Allow specific tool</span></div>
           <div class="kv-row"><span class="kv-key">--deny-tool='shell(rm)'</span><span class="kv-desc">Block specific tool</span></div>
           <div class="kv-row"><span class="kv-key">--model name</span><span class="kv-desc">Set model from CLI</span></div>
+          <div class="kv-row"><span class="kv-key">--cloud</span><span class="kv-desc">Run in cloud sandbox</span></div>
+          <div class="kv-row"><span class="kv-key">--yolo</span><span class="kv-desc">Auto-approve all tools (alias for --allow-all-tools)</span></div>
           <div class="mini-heading">Built-in Subagents</div>
           <div class="kv-row"><span class="kv-key">Explore</span><span class="kv-desc">Quick codebase analysis</span></div>
           <div class="kv-row"><span class="kv-key">Task</span><span class="kv-desc">Run tests/builds, brief summaries</span></div>
@@ -2708,7 +2727,7 @@ Use factory mocks for fixtures</code></div>
         <text x="24" y="76" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ Shared project context</text>
         <text x="24" y="89" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ github.com/copilot/spaces</text>
         <rect x="24" y="94" width="90" height="10" rx="3" fill="#1a2740" stroke="#3B82F6" stroke-width="0.5"/>
-        <text x="69" y="102" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="6">1× premium/request</text>
+        <text x="69" y="102" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="6">AI credits per use</text>
 
         <!-- ── Right: Spark ── -->
         <rect x="196" y="12" width="172" height="96" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1" filter="url(#shSp)"/>
@@ -2721,19 +2740,19 @@ Use factory mocks for fixtures</code></div>
         <text x="208" y="76" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ Live micro web app in seconds</text>
         <text x="208" y="89" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ github.com/spark</text>
         <rect x="208" y="94" width="90" height="10" rx="3" fill="#291800" stroke="#F59E0B" stroke-width="0.5"/>
-        <text x="253" y="102" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6">4× premium/prompt</text>
+        <text x="253" y="102" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6">AI credits per prompt</text>
       </svg>
 
       <ul class="dot-list">
         <li>Curate knowledge for project context</li>
         <li>Attach docs, code, files to a space</li>
         <li>Access at github.com/copilot/spaces</li>
-        <li>Uses premium requests (1× model rate)</li>
+        <li>Consumes AI credits based on token usage</li>
       </ul>
       <div class="mini-heading">Copilot Spark</div>
       <ul class="dot-list">
         <li>Natural language → micro web apps</li>
-        <li>4 premium requests per prompt</li>
+        <li>Consumes AI credits per prompt</li>
         <li>Access at github.com/spark</li>
       </ul>
       <div class="use-cases">
@@ -3164,7 +3183,7 @@ Use factory mocks for fixtures</code></div>
         <text x="697" y="57" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">🔀 Opens PR</text>
 
         <rect x="460" y="70" width="278" height="16" rx="4" fill="#0F172A" stroke="#F59E0B" stroke-width="0.5"/>
-        <text x="599" y="81" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6.5">Cost: 1 premium request per prompt (Actions minutes for native agent only)</text>
+        <text x="599" y="81" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6.5">Cost: AI credits per prompt (Actions minutes for native agent only)</text>
 
         <!-- Bottom: Where to use -->
         <text x="390" y="106" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="0.5">AVAILABLE FROM</text>
@@ -3219,7 +3238,7 @@ Use factory mocks for fixtures</code></div>
           </div>
           <div class="mini-heading">Cost &amp; Billing</div>
           <ul class="dot-list">
-            <li>Each prompt consumes <strong>1 premium request</strong></li>
+            <li>Each prompt consumes <strong>AI credits</strong> based on model &amp; tokens</li>
             <li><strong>GitHub Actions minutes</strong> apply to the native Copilot coding agent, not third-party agents</li>
             <li>Same repo access permissions as built-in agent</li>
           </ul>
@@ -3938,7 +3957,7 @@ Example: validateEmail("invalid") → false</code></div>
         <rect x="380" y="30" width="380" height="56" rx="10" fill="#0F172A" stroke="#10B981" stroke-width="1" filter="url(#shBk)"/>
         <rect x="380" y="30" width="380" height="20" rx="10" fill="url(#gBk3)"/>
         <rect x="380" y="42" width="380" height="8" fill="url(#gBk3)"/>
-        <text x="570" y="44" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">🏢 Enterprise BYOK — Business / Enterprise <tspan fill="#6EE7B7" font-size="7">(Preview)</tspan></text>
+        <text x="570" y="44" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">🏢 Enterprise BYOK — Business / Enterprise <tspan fill="#6EE7B7" font-size="7">(GA)</tspan></text>
 
         <text x="392" y="64" fill="#34D399" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Admin connects key in org/enterprise settings · Centralized model management</text>
         <text x="392" y="76" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7">Billed by provider, not GitHub quotas · Streaming &amp; Responses API supported</text>
@@ -3986,7 +4005,7 @@ Example: validateEmail("invalid") → false</code></div>
           </div>
         </div>
         <div style="flex: 1;">
-          <div class="mini-heading">Enterprise BYOK (Business/Enterprise) <span class="tag tag-green">Preview</span></div>
+          <div class="mini-heading">Enterprise BYOK (Business/Enterprise) <span class="tag tag-green">GA</span></div>
           <ul class="dot-list">
             <li>Org/Enterprise settings → connect API key → manage model access</li>
             <li>Enterprise admins control which orgs can use which models</li>
@@ -4211,7 +4230,7 @@ Example: validateEmail("invalid") → false</code></div>
         <text x="690" y="42" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7" font-weight="700">ADMIN TOOLS</text>
         <text x="690" y="54" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="5.5">📊 Usage analytics</text>
         <text x="690" y="64" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="5.5">📋 Audit logs</text>
-        <text x="690" y="74" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="5.5">💰 Premium request tracking</text>
+        <text x="690" y="74" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="5.5">💰 AI credit tracking</text>
 
         <!-- Bottom: policy pills -->
         <text x="390" y="94" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="0.5">CONFIGURABLE POLICIES</text>
@@ -4265,7 +4284,7 @@ Example: validateEmail("invalid") → false</code></div>
           <div class="mini-heading">Usage Analytics</div>
           <ul class="dot-list">
             <li>Dashboard: acceptance rates, active users, languages</li>
-            <li>Premium request consumption by user/team</li>
+            <li>AI credit consumption by user/team</li>
             <li>Breakdown by feature (chat, completions, agent)</li>
             <li>Export data via API for custom reporting</li>
           </ul>
@@ -4287,7 +4306,7 @@ Example: validateEmail("invalid") → false</code></div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
         <div class="use-case"><strong>Rollout strategy</strong> — enable Copilot for a pilot team, review usage analytics for 30 days, then expand to the full org</div>
-        <div class="use-case"><strong>Model governance</strong> — disable Opus 4.6 (30× cost) org-wide, allow only 0×–1× models to control premium request spend</div>
+        <div class="use-case"><strong>Model governance</strong> — restrict high-cost frontier models org-wide to control AI credit spend</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
@@ -5038,10 +5057,10 @@ Example: validateEmail("invalid") → false</code></div>
   <div class="card wide">
     <div class="card-header">
       <span class="section-num">34</span>
-      <h3>Chat Debug View &amp; Agent Debug Logs <span class="tag tag-purple">VS Code</span></h3>
+      <h3>Chat Debug View <span class="tag tag-purple">VS Code</span></h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> Two complementary debugging tools built into VS Code that let you inspect <em>exactly</em> what Copilot sees — the full system prompt, loaded instructions/skills, context files, tool call I/O, token usage, and raw LLM responses. Essential for debugging why Copilot ignores files, skips tools, or produces unexpected output.</div>
+      <div class="callout callout-info"><strong>What:</strong> The Chat Debug View shows raw LLM request/response payloads — system prompt, user prompt, context, and tool I/O. For the full Agent Debug Log panel with event timeline, flow charts, and cache explorer, see Section 36.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
       <svg viewBox="0 0 780 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
@@ -5232,6 +5251,172 @@ Example: validateEmail("invalid") → false</code></div>
         <span class="src-title">📚 Sources:</span>
         <a href="https://code.visualstudio.com/docs/copilot/chat/chat-debug-view" target="_blank">VS Code Docs — Debug Chat Interactions</a> &middot;
         <a href="https://code.visualstudio.com/docs/copilot/troubleshooting" target="_blank">Troubleshoot AI in VS Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 35. PERMISSION LEVELS ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">35</span>
+      <h3>Permission Levels &amp; Approvals <span class="tag tag-purple">VS Code</span></h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Control how much autonomy agents have — from approving every tool call to fully autonomous operation. Permission levels sit on top of finer-grained tool, URL, terminal, and sandbox controls.</div>
+
+      <!-- ===== INFOGRAPHIC ===== -->
+      <svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
+        <defs>
+          <linearGradient id="gPl1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#2563EB"/></linearGradient>
+          <linearGradient id="gPl2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
+          <linearGradient id="gPl3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#DC2626"/></linearGradient>
+          <filter id="shPl"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter>
+        </defs>
+
+        <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="800" letter-spacing="0.5">PERMISSION LEVELS — CONTROL AGENT AUTONOMY</text>
+
+        <!-- Level 1: Default Approvals -->
+        <rect x="20" y="30" width="230" height="56" rx="10" fill="url(#gPl1)" filter="url(#shPl)"/>
+        <text x="135" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">🛡️ Default Approvals</text>
+        <text x="135" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Uses your configured approval settings.</text>
+        <text x="135" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Tools show confirmation before running.</text>
+
+        <!-- Level 2: Bypass Approvals -->
+        <rect x="270" y="30" width="230" height="56" rx="10" fill="url(#gPl2)" filter="url(#shPl)"/>
+        <text x="385" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">⚡ Bypass Approvals</text>
+        <text x="385" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Auto-approves all tool calls.</text>
+        <text x="385" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Still asks clarifying questions.</text>
+
+        <!-- Level 3: Autopilot -->
+        <rect x="520" y="30" width="240" height="56" rx="10" fill="url(#gPl3)" filter="url(#shPl)"/>
+        <text x="640" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">🚀 Autopilot</text>
+        <text x="640" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Fully autonomous — auto-approves all tools,</text>
+        <text x="640" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">auto-responds to questions, auto-retries errors.</text>
+
+        <!-- Autonomy arrow -->
+        <line x1="40" y1="100" x2="740" y2="100" stroke="#475569" stroke-width="1"/>
+        <text x="36" y="103" text-anchor="end" fill="#3B82F6" font-size="8">◀</text>
+        <text x="744" y="103" fill="#EF4444" font-size="8">▶</text>
+        <text x="135" y="112" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">SAFE</text>
+        <text x="640" y="112" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">AUTONOMOUS</text>
+        <text x="390" y="112" text-anchor="middle" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5" font-weight="600">AGENT AUTONOMY →</text>
+
+        <text x="390" y="126" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="7">Configure default: <tspan fill="#FBBF24" font-weight="600">chat.permissions.default</tspan>  ·  Change per session anytime  ·  Change anytime via permissions dropdown in chat input</text>
+      </svg>
+
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Permission Levels</div>
+          <table class="ref-table">
+            <tr><th>Level</th><th>Tool Approval</th><th>Questions</th></tr>
+            <tr><td><strong>Default Approvals</strong></td><td>Shows confirmation dialog</td><td>Agent asks you</td></tr>
+            <tr><td><strong>Bypass Approvals</strong></td><td>Auto-approved silently</td><td>Agent asks you</td></tr>
+            <tr><td><strong>Autopilot</strong></td><td>Auto-approved silently</td><td>Agent auto-responds</td></tr>
+          </table>
+          <div class="mini-heading">Autopilot Behavior</div>
+          <ul class="dot-list">
+            <li><strong>Continuous iteration</strong> — keeps working until task is complete</li>
+            <li><strong>Auto-approve all tools</strong> — no confirmation dialogs</li>
+            <li><strong>Auto-retry on errors</strong> — recovers without asking</li>
+            <li><strong>Auto-respond to questions</strong> — never stalls waiting for input</li>
+          </ul>
+          <div class="callout callout-warn">
+            <strong>⚠️</strong> Bypass &amp; Autopilot bypass <strong>all</strong> approval prompts including destructive actions (file edits, terminal commands, external calls). Use only if you understand the security implications.
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Fine-Grained Controls</div>
+          <table class="ref-table">
+            <tr><th>Control</th><th>Setting</th></tr>
+            <tr><td><strong>Tool approval</strong></td><td><code>chat.tools.eligibleForAutoApproval</code></td></tr>
+            <tr><td><strong>URL approval</strong></td><td><code>chat.tools.urls.autoApprove</code></td></tr>
+            <tr><td><strong>Terminal commands</strong></td><td><code>chat.tools.terminal.autoApprove</code></td></tr>
+            <tr><td><strong>Sandboxing</strong></td><td><code>chat.agent.sandbox.enabled</code></td></tr>
+          </table>
+          <div class="mini-heading">Sandbox Modes</div>
+          <div class="kv-row"><span class="kv-key">off</span><span class="kv-desc">No sandboxing (default)</span></div>
+          <div class="kv-row"><span class="kv-key">on</span><span class="kv-desc">Full isolation (file system + network)</span></div>
+          <div class="kv-row"><span class="kv-key">allowNetwork</span><span class="kv-desc">File system isolation only</span></div>
+          <div class="mini-heading">URL Approval Flow</div>
+          <ul class="dot-list">
+            <li><strong>Pre-approval</strong> — approves the request to the URL</li>
+            <li><strong>Post-approval</strong> — reviews fetched content before adding to context</li>
+            <li>Pattern-based auto-approval via <code class="inline">chat.tools.urls.autoApprove</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Safe exploration</strong> — use Default Approvals when working with unfamiliar code or MCP servers</div>
+        <div class="use-case"><strong>Trusted automation</strong> — use Autopilot for well-defined tasks in trusted repos with sandbox enabled for safety</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/agents/approvals" target="_blank">VS Code Docs — Approvals &amp; Permissions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 36. AGENT DEBUG LOGS ====== -->
+  <div class="card wide">
+    <div class="card-header">
+      <span class="section-num">36</span>
+      <h3>Agent Debug Logs &amp; Chat Debug View <span class="tag tag-purple">VS Code Preview</span></h3>
+    </div>
+    <div class="card-body">
+      <div class="callout callout-info"><strong>What:</strong> Two complementary tools to inspect exactly what Copilot sees — the Agent Debug Log panel shows a chronological event timeline with 4 views (Logs, Summary, Flow Chart, Cache Explorer), while the Chat Debug View shows raw LLM request/response payloads.</div>
+
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="mini-heading">Agent Debug Log Panel <span class="tag tag-purple">Preview</span></div>
+          <div class="kv-row"><span class="kv-key">Enable</span><span class="kv-desc"><code class="inline">github.copilot.chat.agentDebugLog.fileLogging.enabled</code></span></div>
+          <div class="kv-row"><span class="kv-key">Open</span><span class="kv-desc">Chat ⋯ → Show Agent Debug Logs</span></div>
+          <div class="mini-heading">4 Views</div>
+          <table class="ref-table">
+            <tr><th>View</th><th>What It Shows</th></tr>
+            <tr><td><strong>Logs</strong></td><td>Chronological events — LLM requests, tool calls, discovery, errors. Filter by type. Flat or tree view grouped by subagent.</td></tr>
+            <tr><td><strong>Summary</strong></td><td>Aggregate stats — total tool calls, token usage, error count, duration.</td></tr>
+            <tr><td><strong>Flow Chart</strong></td><td>Visual agent ↔ subagent interaction graph. Pan, zoom, click nodes for details.</td></tr>
+            <tr><td><strong>Cache Explorer</strong></td><td>Side-by-side diff of consecutive model requests. Shows cache hit %, divergence point, and prompt signature.</td></tr>
+          </table>
+          <div class="mini-heading">Key Features</div>
+          <ul class="dot-list">
+            <li><strong>Attach to chat</strong> — sparkle icon → ask AI about its own session</li>
+            <li><strong>Export/Import</strong> — OTLP JSON format for offline sharing</li>
+            <li><strong>Historical sessions</strong> — logs persisted locally on disk</li>
+            <li><strong>/troubleshoot</strong> — ask AI directly about debug logs</li>
+          </ul>
+        </div>
+        <div style="flex: 1;">
+          <div class="mini-heading">Chat Debug View (Raw Data)</div>
+          <div class="kv-row"><span class="kv-key">Open</span><span class="kv-desc">Chat ⋯ → Show Chat Debug View</span></div>
+          <table class="ref-table">
+            <tr><th>Section</th><th>What to Check</th></tr>
+            <tr><td><strong>System Prompt</strong></td><td>Verify custom instructions, agent descriptions, skills loaded</td></tr>
+            <tr><td><strong>User Prompt</strong></td><td>Confirm #mentions resolved, variables filled</td></tr>
+            <tr><td><strong>Context</strong></td><td>Check expected files included, context window not full</td></tr>
+            <tr><td><strong>Response</strong></td><td>Raw model output including reasoning</td></tr>
+            <tr><td><strong>Tool Responses</strong></td><td>Input/output for each tool call (debug MCP)</td></tr>
+          </table>
+          <div class="mini-heading">Common Troubleshooting</div>
+          <table class="ref-table">
+            <tr><th>Problem</th><th>Where to Look</th></tr>
+            <tr><td>AI ignores workspace files</td><td>Agent Logs → Discovery events + Chat Debug → Context</td></tr>
+            <tr><td>MCP tool not invoked</td><td>Agent Logs → Tool Calls + Chat Debug → System Prompt</td></tr>
+            <tr><td>Response truncated</td><td>Agent Logs → LLM Requests → token usage</td></tr>
+            <tr><td>Instructions missing</td><td>Agent Logs → Discovery events + Chat Debug → System Prompt</td></tr>
+            <tr><td>Cache misses</td><td>Cache Explorer → divergence point in prompt signature</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="use-cases">
+        <div class="uc-title">Use Cases</div>
+        <div class="use-case"><strong>Debug custom agent</strong> — open Flow Chart → visualize parent → subagent → tool call sequence → identify where the chain breaks</div>
+        <div class="use-case"><strong>Optimize token costs</strong> — Cache Explorer → find divergence points causing cache misses → restructure instructions to improve cache hit rate</div>
+      </div>
+      <div class="sources">
+        <span class="src-title">📚 Sources:</span>
+        <a href="https://code.visualstudio.com/docs/agents/agent-troubleshooting/chat-debug-view" target="_blank">VS Code Docs — Debug Chat Interactions</a>
       </div>
     </div>
   </div>
