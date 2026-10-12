@@ -600,7 +600,7 @@
   </div>
   <div style="margin-top: 6px; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.10); padding: 4px 14px; border-radius: 8px; font-size: 10px; letter-spacing: 0.3px;">
     <span style="opacity: 0.7;">🕐 Last updated:</span>
-    <strong>24 August 2026 (revised)</strong>
+    <strong>12 October 2026 (revised)</strong>
     <span style="opacity: 0.5;">·</span>
     <span style="opacity: 0.7;">Sources: GitHub Docs · VS Code Docs · GitHub Blog Changelog</span>
   </div>
@@ -841,7 +841,7 @@ ext install GitHub.copilot-chat</code></div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/get-started/features" target="_blank">GitHub Docs — Copilot Features</a>
+        <a href="https://docs.github.com/en/copilot/get-started/about-github-copilot" target="_blank">GitHub Docs — Copilot Features</a>
       </div>
     </div>
   </div>
@@ -926,7 +926,7 @@ ext install GitHub.copilot-chat</code></div>
         <text x="596" y="72" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">💬 Ask</text>
 
         <rect x="628" y="58" width="72" height="20" rx="6" fill="#1a2e4a" stroke="#8B5CF6" stroke-width="0.8"/>
-        <text x="664" y="72" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">🪟 Agents</text>
+        <text x="664" y="72" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">🚀 Autopilot</text>
 
         <rect x="706" y="58" width="48" height="20" rx="6" fill="#1a2e4a" stroke="#10B981" stroke-width="0.8"/>
         <text x="730" y="72" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">🤖 Agent</text>
@@ -948,18 +948,18 @@ ext install GitHub.copilot-chat</code></div>
         <tr><td><code>/explain</code></td><td>Explain selected code</td><td><code>/fix</code></td><td>Fix problems in code</td></tr>
         <tr><td><code>/tests</code></td><td>Generate unit tests</td><td><code>/new</code></td><td>Scaffold new project</td></tr>
         <tr><td><code>/clear</code></td><td>New chat session</td><td><code>/help</code></td><td>Copilot quick reference</td></tr>
-        <tr><td><code>/init</code></td><td>Generate instructions</td><td><code>/search</code></td><td>Workspace search</td></tr>
+        <tr><td><code>/init</code></td><td>Generate instructions</td><td><code>@vscode /search</code></td><td>Generate a Search view query</td></tr>
         <tr><td><code>/doc</code></td><td>Generate code docs</td><td><code>/compact</code></td><td>Compress context</td></tr>
         <tr><td><code>/plan</code></td><td>Create implementation plan</td><td><code>/setupTests</code></td><td>Setup testing framework</td></tr>
         <tr><td><code>/troubleshoot</code></td><td>Analyze debug logs</td><td><code>/fork</code></td><td>Fork chat session</td></tr>
-        <tr><td><code>/debug</code></td><td>Open Chat Debug view</td><td><code>/fixTestFailure</code></td><td>Help fix failing tests</td></tr>
-        <tr><td><code>/newNotebook</code></td><td>Scaffold a notebook</td><td><code>/startDebugging</code></td><td>Generate a launch configuration</td></tr>
+        <tr><td><code>/debug</code></td><td>Open Chat Debug view</td><td><code>/rename</code></td><td>Rename a local chat</td></tr>
+        <tr><td><code>/newNotebook</code></td><td>Scaffold a notebook</td><td><code>/models</code></td><td>Open the model picker</td></tr>
         <tr><td><code>/agents</code></td><td>Configure custom agents</td><td><code>/hooks</code></td><td>Configure hooks</td></tr>
         <tr><td><code>/instructions</code></td><td>Configure instructions</td><td><code>/prompts</code></td><td>Configure prompt files</td></tr>
         <tr><td><code>/skills</code></td><td>Configure skills</td><td><code>/create-prompt</code></td><td>Generate a prompt file</td></tr>
-        <tr><td><code>/create-instruction</code></td><td>Generate an instruction file</td><td><code>/create-skill</code></td><td>Generate a skill</td></tr>
+        <tr><td><code>/create-instructions</code></td><td>Generate instruction files</td><td><code>/create-skill</code></td><td>Generate a skill</td></tr>
         <tr><td><code>/create-agent</code></td><td>Generate a custom agent</td><td><code>/create-hook</code></td><td>Generate a hook</td></tr>
-        <tr><td><code>/chronicle</code></td><td>CLI or custom skill; not universal in VS Code</td><td><code>/yolo</code></td><td>Global auto-approval where supported</td></tr>
+        <tr><td><code>/tools</code></td><td>Configure tools for a local chat</td><td><code>/sandbox-policy</code></td><td>Inspect the effective sandbox policy (Agent Host)</td></tr>
       </table>
 
       <div style="display: flex; gap: 12px; margin-top: 6px;">
@@ -1496,8 +1496,8 @@ ext install GitHub.copilot-chat</code></div>
         <text x="109" y="52" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="10" font-weight="800">🪶 LIGHTWEIGHT</text>
         <text x="109" y="66" text-anchor="middle" fill="#6EE7B7" font-family="Inter,sans-serif" font-size="7">Low cost per token</text>
 
-        <text x="32" y="88" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5 mini</text>
-        <text x="32" y="101" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.4 mini</text>
+        <text x="32" y="88" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-6 Luna</text>
+        <text x="32" y="101" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Claude Haiku 5.5</text>
         <text x="32" y="114" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.6 Luna</text>
         <text x="32" y="127" fill="#34D399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">MAI-Code-1.1-Flash</text>
 
@@ -1511,10 +1511,10 @@ ext install GitHub.copilot-chat</code></div>
         <text x="299" y="52" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="10" font-weight="800">⚡ VERSATILE</text>
         <text x="299" y="66" text-anchor="middle" fill="#93C5FD" font-family="Inter,sans-serif" font-size="7">Balanced cost &amp; capability</text>
 
-        <text x="222" y="88" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Claude Haiku 4.5</text>
-        <text x="222" y="101" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 3.6 / 3.7 Flash</text>
-        <text x="222" y="114" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Raptor mini</text>
-        <text x="222" y="127" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Grok 4.5 / 4.6</text>
+        <text x="222" y="88" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Claude Sonnet 5.5</text>
+        <text x="222" y="101" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 3.8 Flash</text>
+        <text x="222" y="114" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.6 Terra</text>
+        <text x="222" y="127" fill="#60A5FA" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Grok 4.6 / 4.7</text>
 
         <rect x="220" y="140" width="158" height="18" rx="5" fill="#1e3a5f" opacity="0.6"/>
         <text x="299" y="153" text-anchor="middle" fill="#93C5FD" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Best for: fast iteration, tests</text>
@@ -1527,9 +1527,9 @@ ext install GitHub.copilot-chat</code></div>
         <text x="489" y="66" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7">High capability, higher cost</text>
 
         <text x="412" y="88" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.3-Codex</text>
-        <text x="412" y="101" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-5.4 / GPT-5.5</text>
-        <text x="412" y="114" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Gemini 3.1 Pro (preview)</text>
-        <text x="412" y="127" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Kimi K3 · Sonnet 4.6</text>
+        <text x="412" y="101" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-6 Sol / GPT-5.6 Sol</text>
+        <text x="412" y="114" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-6.1 Sol</text>
+        <text x="412" y="127" fill="#FBBF24" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Kimi K3 · Opus 4.8</text>
 
         <rect x="410" y="140" width="158" height="18" rx="5" fill="#78350f" opacity="0.5"/>
         <text x="489" y="153" text-anchor="middle" fill="#FDE68A" font-family="Inter,sans-serif" font-size="7.5" font-weight="600">Best for: complex reasoning, agents</text>
@@ -1541,8 +1541,8 @@ ext install GitHub.copilot-chat</code></div>
         <text x="675" y="52" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="10" font-weight="800">🔥 HIGHER COST</text>
         <text x="675" y="66" text-anchor="middle" fill="#FECACA" font-family="Inter,sans-serif" font-size="7">Higher per-token cost</text>
 
-        <text x="602" y="88" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.7 / 4.8</text>
-        <text x="602" y="101" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 5 · Fable 5</text>
+        <text x="602" y="88" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 5.5 / Opus 5</text>
+        <text x="602" y="101" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">GPT-6 Astra · Fable 5.1</text>
         <text x="602" y="114" fill="#FCA5A5" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">Opus 4.8 fast (preview)</text>
 
         <rect x="600" y="140" width="150" height="18" rx="5" fill="#7f1d1d" opacity="0.5"/>
@@ -1562,31 +1562,42 @@ ext install GitHub.copilot-chat</code></div>
           <div class="mini-heading">Model Pricing (USD per 1M tokens; current representative rates)</div>
           <table class="ref-table">
             <tr><th>Model</th><th>Input</th><th>Cached</th><th>Write</th><th>Output</th><th>Tier</th></tr>
-            <tr><td>GPT-5 mini</td><td>$0.25</td><td>$0.025</td><td>&mdash;</td><td>$2.00</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>GPT-5 mini <em>(retires 19 Oct 2026)</em></td><td>$0.25</td><td>$0.025</td><td>&mdash;</td><td>$2.00</td><td><span class="tag tag-green">Lightweight</span></td></tr>
             <tr><td>GPT-5.3-Codex</td><td>$1.75</td><td>$0.175</td><td>&mdash;</td><td>$14.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
-            <tr><td>GPT-5.4 (&le;272K)</td><td>$2.50</td><td>$0.25</td><td>&mdash;</td><td>$15.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
-            <tr><td>GPT-5.4 (long)</td><td>$5.00</td><td>$0.50</td><td>&mdash;</td><td>$22.50</td><td><span class="tag tag-blue">Versatile</span></td></tr>
-            <tr><td>GPT-5.4 mini</td><td>$0.75</td><td>$0.075</td><td>&mdash;</td><td>$4.50</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>GPT-5.4 (&le;272K) <em>(retires 19 Oct 2026)</em></td><td>$2.50</td><td>$0.25</td><td>&mdash;</td><td>$15.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>GPT-5.4 (long) <em>(retires 19 Oct 2026)</em></td><td>$5.00</td><td>$0.50</td><td>&mdash;</td><td>$22.50</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>GPT-5.4 mini <em>(retires 19 Oct 2026)</em></td><td>$0.75</td><td>$0.075</td><td>&mdash;</td><td>$4.50</td><td><span class="tag tag-green">Lightweight</span></td></tr>
             <tr><td>GPT-5.4 nano*</td><td>$0.20</td><td>$0.02</td><td>&mdash;</td><td>$1.25</td><td><span class="tag tag-green">Lightweight</span></td></tr>
-            <tr><td>GPT-5.5 (&le;272K)</td><td>$5.00</td><td>$0.50</td><td>&mdash;</td><td>$30.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
-            <tr><td>GPT-5.5 (long)</td><td>$10.00</td><td>$1.00</td><td>&mdash;</td><td>$45.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-5.5 (&le;272K) <em>(retires 19 Oct 2026)</em></td><td>$5.00</td><td>$0.50</td><td>&mdash;</td><td>$30.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-5.5 (long) <em>(retires 19 Oct 2026)</em></td><td>$10.00</td><td>$1.00</td><td>&mdash;</td><td>$45.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
             <tr><td>GPT-5.6 Luna (&le;200K)</td><td>$0.20</td><td>$0.02</td><td>$0.25</td><td>$1.20</td><td><span class="tag tag-green">Lightweight</span></td></tr>
-            <tr><td>GPT-5.6 Sol (&le;272K)</td><td>$2.00</td><td>$0.20</td><td>$2.50</td><td>$10.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-5.6 Sol (&le;272K)</td><td>$4.00</td><td>$0.40</td><td>$5.00</td><td>$20.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
             <tr><td>GPT-5.6 Terra (&le;272K)</td><td>$2.00</td><td>$0.20</td><td>$2.50</td><td>$12.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>GPT-6 Astra (&le;272K)</td><td>$10.00</td><td>$1.00</td><td>$12.50</td><td>$50.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-6 Sol (&le;272K)</td><td>$2.00</td><td>$0.20</td><td>$2.50</td><td>$10.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-6.1 Sol (&le;272K)</td><td>$2.00</td><td>$0.10</td><td>$2.50</td><td>$10.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
+            <tr><td>GPT-6 Luna (&le;272K)</td><td>$0.10</td><td>$0.01</td><td>$0.125</td><td>$0.50</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>Claude Haiku 5.5 (&le;100K)</td><td>$0.10</td><td>$0.01</td><td>$0.125</td><td>$0.50</td><td><span class="tag tag-green">Lightweight</span></td></tr>
             <tr><td>Claude Haiku 4.5</td><td>$1.00</td><td>$0.10</td><td>$1.25</td><td>$5.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
-            <tr><td>Claude Sonnet 4.6</td><td>$3.00</td><td>$0.30</td><td>$3.75</td><td>$15.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Claude Sonnet 5.5</td><td>$2.00</td><td>$0.10</td><td>$2.50</td><td>$10.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Claude Sonnet 5</td><td>$2.00</td><td>$0.20</td><td>$2.50</td><td>$10.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Claude Sonnet 4.6 <em>(annual individual plans only)</em></td><td>$3.00</td><td>$0.30</td><td>$3.75</td><td>$15.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Claude Opus 5.5</td><td>$4.00</td><td>$0.20</td><td>$5.00</td><td>$20.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
             <tr><td>Claude Opus 4.8 / 5</td><td>$5.00</td><td>$0.50</td><td>$6.25</td><td>$25.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
             <tr><td>Claude Opus 4.8 fast*</td><td>$10.00</td><td>$1.00</td><td>$12.50</td><td>$50.00</td><td><span class="tag tag-red">Higher cost</span></td></tr>
             <tr><td>Claude Fable 5*</td><td>$10.00</td><td>$1.00</td><td>$12.50</td><td>$50.00</td><td><span class="tag tag-red">Higher cost</span></td></tr>
-            <tr><td>Gemini 3.1 Pro (&le;200K)</td><td>$2.00</td><td>$0.20</td><td>&mdash;</td><td>$12.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
-            <tr><td>Gemini 3.1 Pro (long)</td><td>$4.00</td><td>$0.40</td><td>&mdash;</td><td>$18.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
-            <tr><td>Gemini 3.5 Flash</td><td>$1.50</td><td>$0.15</td><td>&mdash;</td><td>$9.00</td><td><span class="tag tag-green">Lightweight</span></td></tr>
-            <tr><td>Gemini 3.6 / 3.7 Flash</td><td>$0.75</td><td>$0.075</td><td>&mdash;</td><td>$3.75</td><td><span class="tag tag-blue">Versatile</span></td></tr>
-            <tr><td>Raptor mini</td><td>$0.25</td><td>$0.025</td><td>&mdash;</td><td>$2.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
-            <tr><td>MAI-Code-1-Flash</td><td>$0.75</td><td>$0.075</td><td>&mdash;</td><td>$4.50</td><td><span class="tag tag-green">Lightweight</span></td></tr>
+            <tr><td>Claude Fable 5.1</td><td>$10.00</td><td>$0.25</td><td>$12.50</td><td>$50.00</td><td><span class="tag tag-red">Higher cost</span></td></tr>
+            
+            
+            
+            <tr><td>Gemini 3.8 Flash</td><td>$0.75</td><td>$0.075</td><td>&mdash;</td><td>$3.75</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Gemini 3.7 Flash <em>(retires 19 Oct 2026)</em></td><td>$0.75</td><td>$0.075</td><td>&mdash;</td><td>$3.75</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            
+            
             <tr><td>MAI-Code-1.1-Flash</td><td>$0.20</td><td>$0.02</td><td>&mdash;</td><td>$1.20</td><td><span class="tag tag-green">Lightweight</span></td></tr>
-            <tr><td>Grok 4.5 / 4.6 (&le;200K)</td><td>$2.00</td><td>$0.50</td><td>&mdash;</td><td>$6.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
-            <tr><td>Kimi K2.7 Code</td><td>$0.95</td><td>$0.19</td><td>&mdash;</td><td>$4.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Grok 4.6 / 4.7 (&le;200K)</td><td>$2.00</td><td>$0.50</td><td>&mdash;</td><td>$6.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            <tr><td>Grok 4.5 (&le;200K) <em>(retires 19 Oct 2026)</em></td><td>$2.00</td><td>$0.50</td><td>&mdash;</td><td>$6.00</td><td><span class="tag tag-blue">Versatile</span></td></tr>
+            
             <tr><td>Kimi K3</td><td>$3.00</td><td>$0.30</td><td>&mdash;</td><td>$15.00</td><td><span class="tag tag-amber">Powerful</span></td></tr>
           </table>
           <div class="callout callout-info"><strong>*</strong> GPT-5.4 nano is currently limited to the Codex VS Code extension and is not available in Copilot Chat. Long-context tiers and promotional rates are shown in the official pricing table.</div>
@@ -1607,7 +1618,7 @@ ext install GitHub.copilot-chat</code></div>
             <strong>💡</strong> Paid plans receive a <strong>10% discount</strong> when Auto model selection is used in Chat, CLI, the Copilot app, or cloud agent. 1 AI credit = $0.01 USD.
           </div>
           <div class="callout callout-warn">
-            <strong>⚠️</strong> Code completions &amp; NES are <strong>not billed in AI credits</strong> and are unlimited on paid plans. Chat, CLI, cloud agent, Spaces, Spark, third-party agents, and code review use usage-based billing; cloud agent and code review can also consume GitHub Actions minutes.
+            <strong>⚠️</strong> Code completions &amp; NES are <strong>not billed in AI credits</strong> and are unlimited on paid plans. Chat, CLI, cloud agent, Spaces, third-party agents, and code review use usage-based billing; cloud agent and code review can also consume GitHub Actions minutes.
           </div>
           <div class="mini-heading">Utility Models <span class="tag tag-purple">Background</span></div>
           <ul class="dot-list">
@@ -1622,14 +1633,14 @@ ext install GitHub.copilot-chat</code></div>
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
-        <div class="use-case"><strong>Save credits on simple tasks</strong> — use GPT-5 mini ($0.25/M input) for boilerplate, switch to Sonnet 4.6 ($3/M) for complex refactors</div>
-        <div class="use-case"><strong>Architecture decisions</strong> — use Opus 4.7 ($5/M input) or GPT-5.5 ($5/M default input) for design reviews where quality matters</div>
+        <div class="use-case"><strong>Save credits on simple tasks</strong> — use GPT-6 Luna ($0.10/M input) for boilerplate, switch to Claude Sonnet 5.5 ($2/M) for complex refactors</div>
+        <div class="use-case"><strong>Architecture decisions</strong> — use Claude Opus 5.5 ($4/M input) or GPT-6 Sol ($2/M input) for design reviews where quality matters</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
         <a href="https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing" target="_blank">GitHub Docs — Models &amp; Pricing</a> &middot;
         <a href="https://docs.github.com/en/copilot/get-started/plans" target="_blank">Plans &amp; Model Availability</a> &middot;
-        <a href="https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals" target="_blank">Usage-Based Billing</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing" target="_blank">Usage-Based Billing</a> &middot;
         <a href="https://docs.github.com/en/copilot/reference/ai-models/supported-models" target="_blank">Supported Models</a>
       </div>
     </div>
@@ -1720,7 +1731,7 @@ ext install GitHub.copilot-chat</code></div>
           <div class="mini-heading">Generate Instructions</div>
           <ul class="dot-list">
             <li><code class="inline">/init</code> — generate or update workspace instructions</li>
-            <li><code class="inline">/create-instruction</code> — generate a targeted instruction file</li>
+            <li><code class="inline">/create-instructions</code> — generate a targeted instruction file</li>
             <li>Chat debug view → verify loaded files</li>
           </ul>
         </div>
@@ -1830,7 +1841,7 @@ applyTo: '**/*.py'
           <div class="kv-row"><span class="kv-key">Claude fmt</span><span class="kv-desc">.claude/rules/ <span class="tag tag-amber">Claude-specific</span></span></div>
           <div class="kv-row"><span class="kv-key">User</span><span class="kv-desc">~/.copilot/instructions/ (also ~/.claude/rules/)</span></div>
           <div class="callout callout-tip">
-            <strong>💡</strong> Type <code class="inline">/instructions</code> to configure files, or <code class="inline">/create-instruction</code> to generate one. Without <code class="inline">applyTo</code>, a file is not applied automatically.
+            <strong>💡</strong> Type <code class="inline">/instructions</code> to configure files, or <code class="inline">/create-instructions</code> to generate one. Without <code class="inline">applyTo</code>, a file is not applied automatically.
           </div>
         </div>
       </div>
@@ -1921,7 +1932,7 @@ applyTo: '**/*.py'
 description: 'Create React form'
 agent: agent
 tools: ['edit', 'search']
-model: GPT-5.4 (copilot)
+model: GPT-5.6 Sol (copilot)
 ---
 Generate a React form component
 with validation for ${input:fields}</code></div>
@@ -1975,8 +1986,8 @@ with validation for ${input:fields}</code></div>
         <text x="75" y="74" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="6.5">Read-only Q&amp;A</text>
 
         <rect x="140" y="46" width="110" height="36" rx="8" fill="url(#gM10b)" filter="url(#sh10)"/>
-        <text x="195" y="62" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">✏️ Edit</text>
-        <text x="195" y="74" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="6.5">Direct code edits</text>
+        <text x="195" y="62" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">🚀 Autopilot</text>
+        <text x="195" y="74" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="6.5">Auto-approves tools</text>
 
         <rect x="20" y="90" width="110" height="36" rx="8" fill="url(#gM10c)" filter="url(#sh10)"/>
         <text x="75" y="106" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="700">🤖 Agent</text>
@@ -2033,7 +2044,7 @@ with validation for ${input:fields}</code></div>
           <table class="ref-table">
             <tr><th>Mode</th><th>Purpose</th></tr>
             <tr><td><strong>Ask</strong></td><td>Read-only Q&amp;A, no code changes</td></tr>
-            <tr><td><strong>Edit</strong></td><td>Direct code edits</td></tr>
+            <tr><td><strong>Autopilot</strong></td><td>Agent mode that auto-approves tools and works until the task is complete</td></tr>
             <tr><td><strong>Agent</strong></td><td>Autonomous tool use + edits</td></tr>
             <tr><td><strong>Plan</strong></td><td>Create plan before implementation</td></tr>
           </table>
@@ -2041,7 +2052,7 @@ with validation for ${input:fields}</code></div>
           <div class="code-block"><code>---
 description: 'Security reviewer'
 tools: ['search', 'read']
-model: Claude Sonnet 4.6 (copilot)
+model: Claude Sonnet 5.5 (copilot)
 agents: ['*']
 handoffs:
   - label: Fix issues
@@ -2099,7 +2110,7 @@ Review code for OWASP Top 10...</code></div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
         <a href="https://code.visualstudio.com/docs/agent-customization/custom-agents" target="_blank">VS Code Docs — Custom Agents</a> &middot;
-        <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents" target="_blank">GitHub Docs — Creating Custom Agents</a>
+        <a href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/create-custom-agents" target="_blank">GitHub Docs — Creating Custom Agents</a>
       </div>
     </div>
   </div>
@@ -2485,6 +2496,11 @@ Use factory mocks for fixtures</code></div>
     }]
   }
 }</code></div>
+          <div class="mini-heading">Local hook locations (VS Code)</div>
+          <div class="kv-row"><span class="kv-key">.github/hooks/*.json</span><span class="kv-desc">Workspace hooks</span></div>
+          <div class="kv-row"><span class="kv-key">~/.copilot/hooks/*.json</span><span class="kv-desc">User hooks across Local sessions</span></div>
+          <div class="kv-row"><span class="kv-key">hooks in .agent.md</span><span class="kv-desc">Runs only while that custom agent is active (Preview)</span></div>
+          <div class="kv-row"><span class="kv-key">.claude/settings.json</span><span class="kv-desc">Claude format; requires chat.useClaudeHooks (off by default)</span></div>
           <div class="mini-heading">Exit Codes</div>
           <div class="kv-row"><span class="kv-key">0</span><span class="kv-desc">Success → parse stdout JSON output</span></div>
           <div class="kv-row"><span class="kv-key">Exit 2</span><span class="kv-desc">Blocking error; behavior is event-specific</span></div>
@@ -2517,7 +2533,7 @@ Use factory mocks for fixtures</code></div>
       <h3>Copilot on GitHub.com</h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> GitHub.com Copilot features include Copilot cloud agent, Copilot code review, pull-request summaries, issue workflows, and CodeQL Autofix. Cloud agent is distinct from Agent mode in an IDE and works in an ephemeral GitHub Actions-powered environment.</div>
+      <div class="callout callout-info"><strong>What:</strong> GitHub.com Copilot features include Copilot cloud agent, Copilot code review, pull-request summaries, issue workflows, and CodeQL Autofix. Cloud agent (formerly Copilot coding agent) is distinct from Agent mode in an IDE and works in an ephemeral GitHub Actions-powered environment. GitHub plans to relaunch Copilot Chat on github.com, Copilot Chat in GitHub Mobile, and cloud agent as one experience and one policy no earlier than 28 Sep 2026.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
       <svg viewBox="0 0 380 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
@@ -2603,7 +2619,7 @@ Use factory mocks for fixtures</code></div>
       <div class="mini-heading">Customize Agent Environment</div>
       <ul class="dot-list">
         <li>Use <code class="inline">copilot-setup-steps.yml</code> (GitHub Actions workflow)</li>
-        <li>MCP servers for coding agent</li>
+        <li>MCP servers for cloud agent</li>
         <li>Preinstall dependencies, choose supported runners, and configure secrets/variables</li>
         <li>Deep research, planning, and iteration before a PR are available on GitHub.com; other integrations may create a PR directly</li>
       </ul>
@@ -2614,8 +2630,8 @@ Use factory mocks for fixtures</code></div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent" target="_blank">GitHub Docs — Copilot Cloud Agent</a> &middot;
-        <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review" target="_blank">Code Review</a>
+        <a href="https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-on-github" target="_blank">GitHub Docs — Copilot Cloud Agent</a> &middot;
+        <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-code-review" target="_blank">Code Review</a>
       </div>
     </div>
   </div>
@@ -2627,7 +2643,7 @@ Use factory mocks for fixtures</code></div>
       <h3>Copilot CLI — Terminal AI Agent</h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> GitHub Copilot CLI is an AI coding agent in your terminal with interactive and programmatic interfaces, plan and autopilot modes, custom agents, MCP, hooks, skills, memory, and GitHub workflows. The current reference lists Claude Sonnet 4.6 as the default model.</div>
+      <div class="callout callout-info"><strong>What:</strong> GitHub Copilot CLI is an AI coding agent in your terminal with interactive and programmatic interfaces, plan and autopilot modes, custom agents, MCP, hooks, skills, memory, and GitHub workflows. Choose models with /model or --model; the models you can use depend on your plan and policies.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
       <svg viewBox="0 0 780 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
@@ -2699,6 +2715,10 @@ Use factory mocks for fixtures</code></div>
             <tr><td><code>/research</code></td><td>Run deep research</td></tr>
             <tr><td><code>/review</code></td><td>Review code changes</td></tr>
             <tr><td><code>/security-review</code></td><td>Run a focused security review</td></tr>
+            <tr><td><code>/delegate</code></td><td>Hand a task to the cloud agent</td></tr>
+            <tr><td><code>/remote</code></td><td>Steer this session from GitHub.com or GitHub Mobile</td></tr>
+            <tr><td><code>/plugins</code></td><td>Manage plugins</td></tr>
+            <tr><td><code>/skills</code></td><td>Manage skills</td></tr>
             <tr><td><code>/fleet</code></td><td>Run subagents in parallel</td></tr>
             <tr><td><code>/mcp</code></td><td>List MCP servers; <code>/mcp add</code> to add</td></tr>
             <tr><td><code>/resume</code></td><td>Resume a previous session</td></tr>
@@ -2721,7 +2741,7 @@ Use factory mocks for fixtures</code></div>
             <tr><th>Key / Syntax</th><th>Action</th></tr>
             <tr><td><strong>Shift+Tab</strong></td><td>Cycle interactive / plan / autopilot modes</td></tr>
             <tr><td><strong>Ctrl+T</strong></td><td>Show/hide model reasoning</td></tr>
-            <tr><td><strong>Esc</strong></td><td>Stop current operation</td></tr>
+            <tr><td><strong>Esc Esc</strong></td><td>Stop the current operation while Copilot is thinking (press Esc twice within half a second)</td></tr>
             <tr><td><code>@path/to/file</code></td><td>Include file as context</td></tr>
             <tr><td><code>!git status</code></td><td>Run shell command directly</td></tr>
           </table>
@@ -2741,6 +2761,7 @@ Use factory mocks for fixtures</code></div>
           <div class="kv-row"><span class="kv-key">--max-autopilot-continues</span><span class="kv-desc">Limit autopilot continuation steps</span></div>
           <div class="kv-row"><span class="kv-key">--remote</span><span class="kv-desc">Enable remote steering/export</span></div>
           <div class="kv-row"><span class="kv-key">--acp</span><span class="kv-desc">Run as an Agent Client Protocol server</span></div>
+          <div class="kv-row"><span class="kv-key">--effort LEVEL</span><span class="kv-desc">Reasoning effort: low, medium, high, xhigh, or max</span></div>
           <div class="mini-heading">Built-in Subagents</div>
           <div class="kv-row"><span class="kv-key">explore</span><span class="kv-desc">Quick codebase analysis</span></div>
           <div class="kv-row"><span class="kv-key">task</span><span class="kv-desc">Run tests/builds, brief summaries</span></div>
@@ -2748,7 +2769,7 @@ Use factory mocks for fixtures</code></div>
           <div class="kv-row"><span class="kv-key">general-purpose</span><span class="kv-desc">General-purpose subagent</span></div>
           <div class="kv-row"><span class="kv-key">research</span><span class="kv-desc">Deep research tasks</span></div>
           <div class="kv-row"><span class="kv-key">rubber-duck</span><span class="kv-desc">Constructive second opinion</span></div>
-          <div class="kv-row"><span class="kv-key">security-review</span><span class="kv-desc">Focused security review</span></div>
+          
         </div>
       </div>
       <div class="use-cases">
@@ -2758,7 +2779,7 @@ Use factory mocks for fixtures</code></div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli" target="_blank">GitHub Docs — Copilot CLI</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli" target="_blank">GitHub Docs — Copilot CLI</a> &middot;
         <a href="https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference" target="_blank">CLI Command Reference</a> &middot;
         <a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli" target="_blank">CLI Installation</a>
       </div>
@@ -2769,10 +2790,10 @@ Use factory mocks for fixtures</code></div>
   <div class="card">
     <div class="card-header">
       <span class="section-num">16</span>
-      <h3>Spaces &amp; Spark</h3>
+      <h3>Spaces &amp; Spark (retired)</h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> <strong>Copilot Spaces</strong> are curated knowledge collections for project context. <strong>GitHub Spark</strong> uses natural language to build and deploy full-stack web applications and is in public preview.</div>
+      <div class="callout callout-info"><strong>What:</strong> <strong>Copilot Spaces</strong> are curated knowledge collections for project context. <strong>GitHub Spark</strong> is retired on github.com: new apps stopped on 4 Aug 2026, and access ended on 31 Aug 2026.</div>
 
       <!-- ===== INFOGRAPHIC ===== -->
       <svg viewBox="0 0 380 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin:10px 0 6px;border-radius:10px;background:#1E293B;">
@@ -2799,14 +2820,14 @@ Use factory mocks for fixtures</code></div>
         <rect x="196" y="12" width="172" height="96" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1" filter="url(#shSp)"/>
         <rect x="196" y="12" width="172" height="22" rx="10" fill="url(#gSp2)"/>
         <rect x="196" y="24" width="172" height="10" fill="url(#gSp2)"/>
-        <text x="282" y="27" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">⚡ Copilot Spark</text>
+        <text x="282" y="27" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="9" font-weight="800">⚠️ Spark retired</text>
 
-        <text x="208" y="50" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7" font-weight="600">Natural language → web apps</text>
-        <text x="208" y="63" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">💬 "Build a dashboard for..."</text>
-        <text x="208" y="76" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ Live micro web app in seconds</text>
-        <text x="208" y="89" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ github.com/spark</text>
+        <text x="208" y="50" fill="#FBBF24" font-family="Inter,sans-serif" font-size="7" font-weight="600">New apps stopped 4 Aug 2026</text>
+        <text x="208" y="63" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">Access ended 31 Aug 2026</text>
+        <text x="208" y="76" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ Export apps before access ended</text>
+        <text x="208" y="89" fill="#94A3B8" font-family="Inter,sans-serif" font-size="6.5">→ Deployed apps keep running</text>
         <rect x="208" y="94" width="90" height="10" rx="3" fill="#291800" stroke="#F59E0B" stroke-width="0.5"/>
-        <text x="253" y="102" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6">AI credits per prompt</text>
+        <text x="253" y="102" text-anchor="middle" fill="#FBBF24" font-family="Inter,sans-serif" font-size="6">Retired</text>
       </svg>
 
       <ul class="dot-list">
@@ -2815,21 +2836,21 @@ Use factory mocks for fixtures</code></div>
         <li>Access at github.com/copilot/spaces</li>
         <li>Consumes AI credits based on token usage</li>
       </ul>
-      <div class="mini-heading">Copilot Spark</div>
+      <div class="mini-heading">Spark retirement</div>
       <ul class="dot-list">
-        <li>Natural language → micro web apps</li>
-        <li>Consumes AI credits per prompt</li>
-        <li>Access at github.com/spark</li>
+        <li>New apps stopped 4 Aug 2026; access ended 31 Aug 2026</li>
+        <li>Deployed apps keep running after retirement</li>
+        <li>Apps that call llm() stop working: GitHub Models retired 30 Jul 2026</li>
       </ul>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
         <div class="use-case"><strong>Spaces: shared context</strong> — collect repository docs, code, and files → ask focused questions with the same curated context</div>
-        <div class="use-case"><strong>Spark: quick prototype</strong> — "Build a dashboard showing my GitHub repo stats" → preview and refine a full-stack web app</div>
+        <div class="use-case"><strong>Spark app that calls llm()</strong> — replace the call with your own inference provider and key before relying on AI features</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
         <a href="https://docs.github.com/en/copilot/concepts/context/spaces" target="_blank">GitHub Docs — Spaces</a> &middot;
-        <a href="https://docs.github.com/en/copilot/tutorials/spark/build-apps-with-spark" target="_blank">Copilot Spark</a>
+        <a href="https://github.blog/changelog/2026-08-04-upcoming-deprecation-of-github-spark-on-github-com/" target="_blank">Spark retirement notice</a>
       </div>
     </div>
   </div>
@@ -2977,10 +2998,10 @@ Use factory mocks for fixtures</code></div>
         <text x="302" y="54" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="7" font-weight="600">⌨️ Completions</text>
 
         <rect x="234" y="64" width="136" height="18" rx="5" fill="#0F172A" stroke="#3B82F6" stroke-width="0.6"/>
-        <text x="302" y="76" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7" font-weight="600">💬 Chat &amp; Inline Chat</text>
+        <text x="302" y="76" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="7" font-weight="600">💬 Chat · Inline · App &amp; CLI</text>
 
         <rect x="234" y="86" width="136" height="18" rx="5" fill="#2a0a0a" stroke="#EF4444" stroke-width="0.6"/>
-        <text x="302" y="98" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="7" font-weight="600">🚫 NOT: Agent / Edit / CLI</text>
+        <text x="302" y="98" text-anchor="middle" fill="#FCA5A5" font-family="Inter,sans-serif" font-size="7" font-weight="600">🚫 NOT: IDE Agent / Edit mode</text>
 
         <!-- Caveat: requires plan badge -->
         <rect x="234" y="110" width="136" height="14" rx="4" fill="#291800" stroke="#F59E0B" stroke-width="0.5"/>
@@ -2992,11 +3013,11 @@ Use factory mocks for fixtures</code></div>
         <li>Prevents content from being sent to model</li>
         <li>Configurable in GitHub org settings</li>
         <li>Supports glob patterns for paths</li>
-        <li>Applies to supported IDE completions and Chat/Ask surfaces</li>
+        <li>Applies to IDE completions and Chat/Ask surfaces, and to the Copilot app and CLI (GA 2 Sep 2026)</li>
         <li>Requires <strong>Business or Enterprise</strong> plan</li>
       </ul>
       <div class="callout callout-warn">
-        <strong>⚠️</strong> Content exclusion is <strong>not supported</strong> in IDE Edit/Agent mode or Copilot CLI. Do not assume it protects cloud-agent or other agentic workflows. Public-code blocking is also not guaranteed on CLI/cloud-agent surfaces; review their references and logs.
+        <strong>⚠️</strong> Content exclusion is <strong>not supported</strong> in IDE Edit/Agent mode. The Copilot app and CLI respect it (GA 2 Sep 2026), but older docs say the CLI does not, so verify on your surface. Do not assume it protects cloud-agent or other agentic workflows. Public-code blocking is also not guaranteed on CLI/cloud-agent surfaces; review their references and logs.
       </div>
       <div class="mini-heading">Common Exclusions</div>
       <div class="kv-row"><span class="kv-key">.env / .env.*</span><span class="kv-desc">Environment variables &amp; secrets</span></div>
@@ -3011,7 +3032,7 @@ Use factory mocks for fixtures</code></div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/context/content-exclusion" target="_blank">GitHub Docs — Content Exclusion</a>
+        <a href="https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/content-exclusion" target="_blank">GitHub Docs — Content Exclusion</a>
       </div>
     </div>
   </div>
@@ -3084,7 +3105,7 @@ Use factory mocks for fixtures</code></div>
       </svg>
 
       <div class="mini-heading">Popular Frameworks</div>
-      <div class="kv-row"><span class="kv-key">spec-kit</span><span class="kv-desc">GitHub community project for spec-driven development; not a built-in Copilot feature</span></div>
+      <div class="kv-row"><span class="kv-key">spec-kit</span><span class="kv-desc">GitHub open-source project (github/spec-kit) for spec-driven development; not a built-in Copilot feature</span></div>
       <div class="kv-row"><span class="kv-key">OpenSpec</span><span class="kv-desc">Fission AI spec framework</span></div>
       <div class="kv-row"><span class="kv-key">BMAD</span><span class="kv-desc">BMAD methodology</span></div>
       <div class="kv-row"><span class="kv-key">GSD</span><span class="kv-desc">Get-shit-done framework</span></div>
@@ -3283,13 +3304,13 @@ Use factory mocks for fixtures</code></div>
             <tr><td><strong>Claude</strong></td><td>Anthropic</td><td><span class="tag tag-purple">Preview</span></td></tr>
             <tr><td><strong>Codex</strong></td><td>OpenAI</td><td><span class="tag tag-purple">Preview</span></td></tr>
           </table>
-          <div class="callout callout-info" style="margin-top: 4px;"><strong>📌</strong> Copilot coding agent is the <strong>first-party</strong> (native) agent — see Section 14. Third-party agents work alongside it.</div>
+          <div class="callout callout-info" style="margin-top: 4px;"><strong>📌</strong> Copilot cloud agent (formerly Copilot coding agent) is the <strong>first-party</strong> (native) agent — see Section 14. Third-party agents work alongside it.</div>
           <div class="mini-heading">Where to Use</div>
           <ul class="dot-list">
             <li><strong>Agents tab</strong> — github.com/copilot/agents</li>
             <li><strong>Issues</strong> — assign the agent to an issue</li>
             <li><strong>PRs</strong> — mention <code class="inline">@AGENT_NAME</code> in a comment</li>
-            <li><strong>VS Code</strong> — new session → select agent type</li>
+            <li><strong>VS Code</strong> — choose the Claude or Codex session target</li>
             <li><strong>GitHub Mobile</strong> — start agent session from Home</li>
           </ul>
         </div>
@@ -3312,7 +3333,7 @@ Use factory mocks for fixtures</code></div>
           </ul>
           <div class="mini-heading">Enable for Your Org</div>
           <ul class="dot-list">
-            <li>Org Settings → Copilot → Coding agent → Partner agents</li>
+            <li>Org Settings → Copilot → Policies → "Enabling or disabling third-party coding agents"</li>
             <li>Available on all paid plans: Pro, Pro+, Max, Business, and Enterprise</li>
             <li>Org admins toggle each agent independently</li>
           </ul>
@@ -3323,12 +3344,12 @@ Use factory mocks for fixtures</code></div>
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
-        <div class="use-case"><strong>Compare agent output</strong> — assign the same issue to Claude and Codex → compare their PRs with Copilot coding agent's PR and merge the best one</div>
+        <div class="use-case"><strong>Compare agent output</strong> — assign the same issue to Claude and Codex → compare their PRs with Copilot cloud agent's PR and merge the best one</div>
         <div class="use-case"><strong>Parallel workstreams</strong> — assign backend refactor to Codex while Claude handles frontend tests — both open PRs simultaneously</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/agents/about-third-party-agents" target="_blank">GitHub Docs — Third-Party Agents</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/agents/about-third-party-coding-agents" target="_blank">GitHub Docs — Third-Party Agents</a> &middot;
         <a href="https://docs.github.com/en/copilot/concepts/agents/anthropic-claude" target="_blank">Anthropic Claude</a> &middot;
         <a href="https://docs.github.com/en/copilot/concepts/agents/openai-codex" target="_blank">OpenAI Codex</a>
       </div>
@@ -3442,7 +3463,7 @@ Use factory mocks for fixtures</code></div>
         <div style="flex: 1;">
           <div class="mini-heading">Enable Browser Tools</div>
           <ul class="dot-list">
-            <li>Set <code class="inline">workbench.browser.enableChatTools</code> to <code class="inline">true</code></li>
+            <li>Check that <code class="inline">workbench.browser.enableChatTools</code> is <code class="inline">true</code> (on by default)</li>
             <li>Open Chat → Agent mode → Tools picker</li>
             <li>Enable all tools under <strong>Built-in &gt; Browser</strong></li>
           </ul>
@@ -3683,13 +3704,13 @@ Use factory mocks for fixtures</code></div>
 
         <!-- 3 parallel agent pills -->
         <rect x="656" y="42" width="96" height="14" rx="4" fill="#1a2740" stroke="#3B82F6" stroke-width="0.5"/>
-        <text x="704" y="52" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="6" font-weight="600">🧠 GPT-5.4</text>
+        <text x="704" y="52" text-anchor="middle" fill="#60A5FA" font-family="Inter,sans-serif" font-size="6" font-weight="600">🧠 GPT-5.6 Sol</text>
 
         <rect x="656" y="60" width="96" height="14" rx="4" fill="#1a2740" stroke="#8B5CF6" stroke-width="0.5"/>
-        <text x="704" y="70" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="6" font-weight="600">🧠 Sonnet 4.6</text>
+        <text x="704" y="70" text-anchor="middle" fill="#A78BFA" font-family="Inter,sans-serif" font-size="6" font-weight="600">🧠 Sonnet 5.5</text>
 
         <rect x="656" y="78" width="96" height="14" rx="4" fill="#1a2740" stroke="#10B981" stroke-width="0.5"/>
-        <text x="704" y="88" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="6" font-weight="600">🧠 Gemini 3.1 Pro</text>
+        <text x="704" y="88" text-anchor="middle" fill="#34D399" font-family="Inter,sans-serif" font-size="6" font-weight="600">🧠 Gemini 3.8 Flash</text>
 
         <!-- Results converge label -->
         <text x="704" y="102" text-anchor="middle" fill="#64748B" font-family="Inter,sans-serif" font-size="5.5">↓ compare results ↓</text>
@@ -3753,7 +3774,7 @@ Use factory mocks for fixtures</code></div>
         <div class="uc-title">Use Cases</div>
         <div class="use-case"><strong>Plan → Build → Ship</strong> — Plan agent designs architecture, hand off to CLI for implementation, then cloud agent opens the PR for team review</div>
         <div class="use-case"><strong>Parallel features</strong> — run 3 local sessions: one for API endpoints, one for UI components, one for tests — all working simultaneously</div>
-        <div class="use-case"><strong>TODO delegation</strong> — add <code class="inline">// TODO: add input validation</code> in code → right-click → assign to Copilot coding agent → agent creates a PR</div>
+        <div class="use-case"><strong>TODO delegation</strong> — add <code class="inline">// TODO: add input validation</code> in code → right-click → assign to Copilot cloud agent → agent creates a PR</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
@@ -4084,7 +4105,7 @@ Example: validateEmail("invalid") → false</code></div>
             <li>Org/Enterprise settings → connect API key → manage model access</li>
             <li>Enterprise admins control which orgs can use which models</li>
           </ul>
-          <div class="kv-row"><span class="kv-key">Providers</span><span class="kv-desc">OpenAI, Anthropic, Google AI Studio, MS Foundry, AWS Bedrock, xAI, OpenAI-compat</span></div>
+          <div class="kv-row"><span class="kv-key">Providers</span><span class="kv-desc">OpenAI, Anthropic, Google AI Studio, Microsoft Foundry, AWS Bedrock, xAI, OpenAI-compat</span></div>
           <div class="kv-row"><span class="kv-key">Billing</span><span class="kv-desc">Billed by your provider, not GitHub quotas</span></div>
           <div class="kv-row"><span class="kv-key">Context window</span><span class="kv-desc">Admins can set max context window</span></div>
           <div class="kv-row"><span class="kv-key">Streaming</span><span class="kv-desc">Streaming responses supported</span></div>
@@ -4103,7 +4124,7 @@ Example: validateEmail("invalid") → false</code></div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
         <a href="https://code.visualstudio.com/docs/agent-customization/language-models" target="_blank">VS Code Docs — Language Models</a> &middot;
-        <a href="https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/use-your-own-api-keys" target="_blank">GitHub Docs — Enterprise Custom Models</a>
+        <a href="https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/enable-custom-models" target="_blank">GitHub Docs — Enterprise Custom Models</a>
       </div>
     </div>
   </div>
@@ -4211,10 +4232,10 @@ Example: validateEmail("invalid") → false</code></div>
           <table class="ref-table">
             <tr><th>What</th><th>Behavior</th></tr>
             <tr><td>Prompts, outputs, and context</td><td>Retention depends on surface, plan, and model provider; do not promise zero retention</td></tr>
-            <tr><td>Training on interactions</td><td>Business/Enterprise: not used for training; individual plans: may be used unless opted out</td></tr>
+            <tr><td>Training on interactions</td><td>Business/Enterprise: not used for training; individual plans (Free, Pro, Pro+): may be used unless opted out (since 24 Apr 2026)</td></tr>
             <tr><td>Telemetry</td><td>Individual users can control telemetry; richer usage metrics require IDE telemetry</td></tr>
             <tr><td>Model hosting</td><td>Provider agreements and data handling differ by model; see model-hosting documentation</td></tr>
-            <tr><td>Claude Fable 5</td><td>Anthropic retains prompts and outputs for safety classifiers</td></tr>
+            <tr><td>Claude Fable 5 and 5.1</td><td>Anthropic retains prompts and outputs by default for safety classifiers. Enterprises can request zero data retention through the end of 2026 under a time-bound exemption.</td></tr>
           </table>
           <div class="mini-heading">Responsible AI Filters</div>
           <ul class="dot-list">
@@ -4355,6 +4376,8 @@ Example: validateEmail("invalid") → false</code></div>
             <li>Organization owners manage seats and organization-scoped settings</li>
             <li>When users have multiple licenses, conflict rules depend on the policy and billing scope</li>
             <li>An individual plan is canceled when a Business/Enterprise seat is assigned</li>
+            <li>Global model policy (rolling out through 1 Sep 2026): models you have not configured follow the default policy; explicit choices are kept</li>
+            <li>From 1 Oct 2026, Business and Enterprise seats are charged upfront for card or PayPal billing (announced 28 Aug 2026)</li>
           </ul>
         </div>
         <div style="flex: 1;">
@@ -4374,7 +4397,7 @@ Example: validateEmail("invalid") → false</code></div>
           </ul>
           <div class="mini-heading">Settings Path</div>
           <div class="kv-row"><span class="kv-key">Org</span><span class="kv-desc">Settings → Copilot → Policies / Models</span></div>
-          <div class="kv-row"><span class="kv-key">Enterprise</span><span class="kv-desc">Enterprise Settings → Copilot → Policies</span></div>
+          <div class="kv-row"><span class="kv-key">Enterprise</span><span class="kv-desc">Enterprise settings → AI controls → Copilot</span></div>
           <div class="callout callout-tip">
             <strong>💡</strong> An enterprise policy can enforce a value or allow organizations to decide. Check the policy-conflict rules before documenting a blanket override.
           </div>
@@ -4389,7 +4412,7 @@ Example: validateEmail("invalid") → false</code></div>
         <span class="src-title">📚 Sources:</span>
         <a href="https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies" target="_blank">GitHub Docs — Org Policies</a> &middot;
         <a href="https://docs.github.com/en/copilot/reference/copilot-usage-metrics" target="_blank">Usage Metrics</a> &middot;
-        <a href="https://docs.github.com/en/copilot/concepts/policies" target="_blank">Policy Conflicts</a>
+        <a href="https://docs.github.com/en/copilot/concepts/enterprise/policies" target="_blank">Policy Conflicts</a>
       </div>
     </div>
   </div>
@@ -4681,7 +4704,7 @@ Example: validateEmail("invalid") → false</code></div>
             <li>Organization-level visibility can use a custom role with the metrics permission</li>
           </ul>
           <div class="callout callout-warn">
-            <strong>⚠️</strong> Do not use the old direct daily-array example for new integrations. Use the current <strong>Copilot usage metrics report</strong> endpoints and read the downloaded NDJSON/schema for the selected report.
+            <strong>⚠️</strong> The legacy Copilot Metrics API sunset on 2 Apr 2026, and the User-level Feature Engagement and Direct Data Access APIs sunset on 2 Mar 2026. Do not use the old direct daily-array example for new integrations. Use the current <strong>Copilot usage metrics report</strong> endpoints and read the downloaded NDJSON/schema for the selected report.
           </div>
         </div>
       </div>
@@ -4878,8 +4901,8 @@ by report type; use the current API reference rather than hardcoding this exampl
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/how-tos/get-code-suggestions/find-matching-code" target="_blank">GitHub Docs — Finding Matching Code</a> &middot;
-        <a href="https://docs.github.com/en/copilot/concepts/completions/code-referencing" target="_blank">Code Referencing Concepts</a>
+        <a href="https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/copilot-for-common-tasks/find-matching-code" target="_blank">GitHub Docs — Finding Matching Code</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-in-ides" target="_blank">Code Referencing Concepts</a>
       </div>
     </div>
   </div>
@@ -5341,23 +5364,23 @@ by report type; use the current API reference rather than hardcoding this exampl
 
         <text x="390" y="18" text-anchor="middle" fill="#F8FAFC" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="800" letter-spacing="0.5">PERMISSION LEVELS — CONTROL AGENT AUTONOMY</text>
 
-        <!-- Level 1: Default Approvals -->
+        <!-- Level 1: Manual permissions -->
         <rect x="20" y="30" width="230" height="56" rx="10" fill="url(#gPl1)" filter="url(#shPl)"/>
-        <text x="135" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">🛡️ Default Approvals</text>
-        <text x="135" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Uses your configured approval settings.</text>
+        <text x="135" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">🛡️ Manual permissions</text>
+        <text x="135" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Uses your tool, URL, and terminal approval settings.</text>
         <text x="135" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Tools show confirmation before running.</text>
 
-        <!-- Level 2: Assisted Permissions -->
+        <!-- Level 2: Assisted permissions -->
         <rect x="270" y="30" width="230" height="56" rx="10" fill="url(#gPl2)" filter="url(#shPl)"/>
-        <text x="385" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">⚡ Assisted Permissions</text>
-        <text x="385" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">LLM judge evaluates tool-call risk.</text>
-        <text x="385" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Agent Host only; may ask you.</text>
+        <text x="385" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">⚡ Assisted permissions</text>
+        <text x="385" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">LLM judge assesses each tool call.</text>
+        <text x="385" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Agent Host sessions only.</text>
 
-        <!-- Level 3: Bypass Approvals -->
+        <!-- Level 3: Allow all -->
         <rect x="520" y="30" width="240" height="56" rx="10" fill="url(#gPl3)" filter="url(#shPl)"/>
-        <text x="640" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">⚡ Bypass Approvals</text>
-        <text x="640" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Auto-approves all tool calls.</text>
-        <text x="640" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Still asks clarifying questions.</text>
+        <text x="640" y="50" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="10" font-weight="700">⚡ Allow all</text>
+        <text x="640" y="64" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Inter,sans-serif" font-size="7">Runs all tool calls without confirmation.</text>
+        <text x="640" y="76" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-size="7">Sandbox still applies to terminal commands.</text>
 
         <!-- Autonomy arrow -->
         <line x1="40" y1="100" x2="740" y2="100" stroke="#475569" stroke-width="1"/>
@@ -5375,9 +5398,9 @@ by report type; use the current API reference rather than hardcoding this exampl
           <div class="mini-heading">Permission Levels &amp; Agent Mode</div>
           <table class="ref-table">
             <tr><th>Level / mode</th><th>Tool Approval</th><th>Questions</th></tr>
-            <tr><td><strong>Default Approvals</strong></td><td>Uses configured approval settings</td><td>Agent asks you</td></tr>
+            <tr><td><strong>Manual permissions</strong> (default)</td><td>Uses tool, URL, and terminal approval settings</td><td>Agent asks you</td></tr>
             <tr><td><strong>Assisted permissions</strong></td><td>LLM judge evaluates risk; may show dialog</td><td>Agent asks you</td></tr>
-            <tr><td><strong>Bypass Approvals</strong></td><td>Auto-approved, except managed rules</td><td>Agent asks you</td></tr>
+            <tr><td><strong>Allow all</strong></td><td>Runs all tool calls without confirmation, except managed rules</td><td>Agent asks you</td></tr>
             <tr><td><strong>Autopilot</strong></td><td>Agent mode; auto-approves tools</td><td>Agent auto-responds</td></tr>
           </table>
           <div class="mini-heading">Autopilot Behavior</div>
@@ -5388,7 +5411,7 @@ by report type; use the current API reference rather than hardcoding this exampl
             <li><strong>Auto-respond to questions</strong> — never stalls waiting for input</li>
           </ul>
           <div class="callout callout-warn">
-            <strong>⚠️</strong> Bypass Approvals and Autopilot skip manual approval prompts and override session-level fine-grained settings for eligible operations. Organization-managed rules can still require approval or block operations, including destructive actions.
+            <strong>⚠️</strong> Allow all and Autopilot skip manual approval prompts and override session-level fine-grained settings for eligible operations. Organization-managed rules can still require approval or block operations, including destructive actions.
           </div>
         </div>
         <div style="flex: 1;">
@@ -5414,7 +5437,7 @@ by report type; use the current API reference rather than hardcoding this exampl
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
-        <div class="use-case"><strong>Safe exploration</strong> — use Default Approvals when working with unfamiliar code or MCP servers</div>
+        <div class="use-case"><strong>Safe exploration</strong> — use Manual permissions when working with unfamiliar code or MCP servers</div>
         <div class="use-case"><strong>Trusted automation</strong> — use Autopilot for well-defined tasks in trusted repos with sandbox enabled for safety</div>
       </div>
       <div class="sources">
@@ -5503,7 +5526,7 @@ by report type; use the current API reference rather than hardcoding this exampl
             <tr><th>Type</th><th>Scope and behavior</th></tr>
             <tr><td><strong>Repository facts</strong></td><td>Conventions, architecture, build commands, and project rules; citations are checked against the current branch before use.</td></tr>
             <tr><td><strong>User preferences</strong></td><td>Personal interaction and coding preferences; available only in that user's later Copilot interactions.</td></tr>
-            <tr><td><strong>Feature surfaces</strong></td><td>Cloud agent, code review, and CLI. Code review uses repository facts only; CLI uses facts plus the initiating user's preferences.</td></tr>
+            <tr><td><strong>Feature surfaces</strong></td><td>Cloud agent, code review, CLI, and agentic autofix. Code review uses repository facts only; CLI uses facts plus the initiating user's preferences.</td></tr>
           </table>
         </div>
         <div style="flex: 1;">
@@ -5556,18 +5579,19 @@ by report type; use the current API reference rather than hardcoding this exampl
             <tr><td><strong>GitHub integration</strong></td><td>Browse issues, manage pull requests, inspect CI, and search repositories.</td></tr>
             <tr><td><strong>Chats and canvases</strong></td><td>Scope ideas without a dedicated branch, or collaborate on agent-driven interfaces.</td></tr>
             <tr><td><strong>Usage</strong></td><td>Model interactions consume AI credits; use the app's model and mode choices deliberately.</td></tr>
+            <tr><td><strong>Recent updates</strong></td><td>Local sandboxing (23 Sep 2026), OpenTelemetry (22 Sep 2026), and dynamic workflows (1 Oct 2026).</td></tr>
           </table>
         </div>
       </div>
       <div class="use-cases">
         <div class="uc-title">Use Cases</div>
         <div class="use-case"><strong>Coordinate parallel fixes</strong> — isolate unrelated issues into separate branches and review each result in one workspace</div>
-        <div class="use-case"><strong>Move a CLI session to a desktop workflow</strong> — use <code class="inline">/app</code> in Copilot CLI to open the current session in the app</div>
+        <div class="use-case"><strong>Move work to a desktop workflow</strong> — run <code class="inline">copilot app</code> from the terminal to open the Copilot app for parallel worktrees, pull requests, and CI</div>
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/agents/github-copilot-app" target="_blank">GitHub Docs — GitHub Copilot app</a> &middot;
-        <a href="https://docs.github.com/en/copilot/how-tos/github-copilot-app/getting-started" target="_blank">Getting started</a>
+        <a href="https://docs.github.com/en/copilot/concepts/copilot-surfaces/github-copilot-app" target="_blank">GitHub Docs — GitHub Copilot app</a> &middot;
+        <a href="https://docs.github.com/en/copilot/get-started/quickstart-copilot-app" target="_blank">Getting started</a>
       </div>
     </div>
   </div>
@@ -5579,7 +5603,7 @@ by report type; use the current API reference rather than hardcoding this exampl
       <h3>Copilot Automations <span class="tag tag-blue">Cloud Agent</span></h3>
     </div>
     <div class="card-body">
-      <div class="callout callout-info"><strong>What:</strong> Automations run Copilot cloud agent automatically on a schedule or in response to repository events. They are available for private and internal repositories when cloud agent and the required organization policies are enabled; public repositories are not supported.</div>
+      <div class="callout callout-info"><strong>What:</strong> Automations run Copilot cloud agent automatically on a schedule or in response to repository events. They are available for private and internal repositories when cloud agent and the required organization policies are enabled; public repositories are not supported. VS Code also has Automations (preview) for scheduled prompts in the Agents window.</div>
       <div style="display: flex; gap: 12px;">
         <div style="flex: 1;">
           <div class="mini-heading">Triggers</div>
@@ -5671,8 +5695,8 @@ by report type; use the current API reference rather than hardcoding this exampl
           <table class="ref-table">
             <tr><th>Control</th><th>Current behavior</th></tr>
             <tr><td><strong>Model</strong></td><td>Model switching is not supported. Code review uses a purpose-built model and prompt mix; Copilot Chat model policy does not control it.</td></tr>
-            <tr><td><strong>Effort</strong></td><td><strong>Lite</strong> is the default targeted review; <strong>Balanced</strong> performs deeper analysis and uses more AI credits.</td></tr>
-            <tr><td><strong>Review status</strong></td><td>Copilot always leaves a Comment review, not Approve or Request changes, so it does not satisfy required human approvals.</td></tr>
+            <tr><td><strong>Effort</strong></td><td><strong>Balanced</strong> is the default. It routes pull requests to a higher-reasoning model for deeper analysis and uses more AI credits. <strong>Lite</strong> gives fast, targeted feedback.</td></tr>
+            <tr><td><strong>Review status</strong></td><td>Copilot leaves Comment reviews by default, and they do not count toward required approvals. Admins can enable Copilot approvals (public preview, since 1 Sep 2026). An approval then counts toward required approvals and is dismissed when new commits are pushed.</td></tr>
             <tr><td><strong>Automatic review</strong></td><td>Repositories can review new pull requests, new pushes, and optionally draft pull requests.</td></tr>
           </table>
         </div>
@@ -5695,7 +5719,7 @@ by report type; use the current API reference rather than hardcoding this exampl
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
         <a href="https://docs.github.com/en/copilot/concepts/agents/code-review" target="_blank">GitHub Docs — About Copilot code review</a> &middot;
-        <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review" target="_blank">Use Copilot code review</a>
+        <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-code-review" target="_blank">Use Copilot code review</a>
       </div>
     </div>
   </div>
@@ -5737,7 +5761,7 @@ by report type; use the current API reference rather than hardcoding this exampl
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-environment" target="_blank">GitHub Docs — Configure the development environment</a> &middot;
+        <a href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment" target="_blank">GitHub Docs — Configure the development environment</a> &middot;
         <a href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-the-firewall" target="_blank">Firewall rules</a> &middot;
         <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations" target="_blank">Cloud-agent risks and mitigations</a>
       </div>
@@ -5797,10 +5821,10 @@ by report type; use the current API reference rather than hardcoding this exampl
       <table class="ref-table">
         <tr><th>Model family</th><th>Current hosting and retention notes</th></tr>
         <tr><td><strong>OpenAI</strong></td><td>Hosted by OpenAI and GitHub Azure infrastructure; GitHub maintains a zero-data-retention agreement with OpenAI.</td></tr>
-        <tr><td><strong>Anthropic</strong></td><td>Hosted through AWS, Anthropic, and Google Cloud depending on the deployment. Claude Fable 5 is an explicit exception: Anthropic retains prompts and outputs for safety classifiers.</td></tr>
+        <tr><td><strong>Anthropic</strong></td><td>Hosted through AWS, Anthropic, and Google Cloud depending on the deployment. Claude Fable 5 and 5.1 are an exception: Anthropic retains prompts and outputs by default for safety classifiers. Enterprises can request zero data retention through the end of 2026 under a time-bound exemption.</td></tr>
         <tr><td><strong>Google</strong></td><td>Hosted on Google Cloud; Google states that prompts and responses are not used to train its models, with prompt caching used for service quality and latency.</td></tr>
         <tr><td><strong>xAI</strong></td><td>Operates under a zero-data-retention API policy; content exists temporarily in memory to process the request.</td></tr>
-        <tr><td><strong>Microsoft</strong></td><td>MAI models are hosted on Azure in GitHub's tenant. Individual subscribers can opt out of model training; Business and Enterprise customer data is not used to train models.</td></tr>
+        <tr><td><strong>Microsoft</strong></td><td>MAI models are hosted on Azure in GitHub's tenant. MAI-Code-1-Flash was deprecated on 10 Sep 2026; MAI-Code-1.1-Flash is current. Individual subscribers can opt out of model training; Business and Enterprise customer data is not used to train models.</td></tr>
         <tr><td><strong>Open-weight models</strong></td><td>Kimi models are hosted by GitHub-managed infrastructure and providers; prompts and completions are not sent to Moonshot AI, the original developer.</td></tr>
         <tr><td><strong>Inline suggestions</strong></td><td>Hosting differs by plan; Business and Enterprise inline models are hosted on Azure, while Free and Student models are hosted on Fireworks AI.</td></tr>
       </table>
@@ -5866,6 +5890,7 @@ by report type; use the current API reference rather than hardcoding this exampl
             <li>Use lighter models for simple edits and higher-capability models for complex reasoning. Long context and higher reasoning use more credits.</li>
             <li>Copilot CLI supports a per-response soft limit with <code class="inline">--max-ai-credits</code> or <code class="inline">/limits set max-ai-credits VALUE</code>.</li>
             <li>Included credits reset monthly and do not carry over. Additional usage requires a budget and can be capped.</li>
+            <li>Individual user budgets can have an expiration date (since 1 Sep 2026); budget increase requests are generally available (since 16 Sep 2026).</li>
           </ul>
         </div>
         <div style="flex: 1;">
@@ -5887,9 +5912,9 @@ by report type; use the current API reference rather than hardcoding this exampl
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals" target="_blank">Individual usage-based billing</a> &middot;
-        <a href="https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises" target="_blank">Organization and enterprise billing</a> &middot;
-        <a href="https://docs.github.com/en/copilot/concepts/billing/budgets-for-usage-based-billing" target="_blank">Budget controls</a>
+        <a href="https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing" target="_blank">Individual usage-based billing</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/billing-and-usage/organizations-and-enterprises/billing" target="_blank">Organization and enterprise billing</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/billing-and-usage/organizations-and-enterprises/budgets" target="_blank">Budget controls</a>
       </div>
     </div>
   </div>
@@ -5909,7 +5934,7 @@ by report type; use the current API reference rather than hardcoding this exampl
             <tr><th>View</th><th>Question it answers</th></tr>
             <tr><td><strong>Usage metrics</strong></td><td>How are users engaging across supported IDE, CLI, and agent-app activity?</td></tr>
             <tr><td><strong>Code generation</strong></td><td>How much code is suggested, added, or deleted, and by which features?</td></tr>
-            <tr><td><strong>Impact</strong></td><td>How do adoption cohorts relate to pull-request output and time to merge?</td></tr>
+            <tr><td><strong>Impact</strong></td><td>How do adoption cohorts and feature engagement relate to pull-request output and time to merge?</td></tr>
             <tr><td><strong>NDJSON export</strong></td><td>How can raw metrics be stored or joined in a custom BI pipeline?</td></tr>
           </table>
         </div>
@@ -5931,7 +5956,7 @@ by report type; use the current API reference rather than hardcoding this exampl
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/copilot-usage-metrics/copilot-metrics" target="_blank">GitHub Docs — Copilot usage metrics</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/billing-and-usage/copilot-usage-metrics/copilot-metrics" target="_blank">GitHub Docs — Copilot usage metrics</a> &middot;
         <a href="https://docs.github.com/en/copilot/reference/copilot-usage-metrics" target="_blank">Usage metrics reference</a> &middot;
         <a href="https://docs.github.com/en/rest/copilot/copilot-usage-metrics" target="_blank">REST API endpoints</a>
       </div>
@@ -5981,8 +6006,8 @@ by report type; use the current API reference rather than hardcoding this exampl
           <div class="mini-heading">Plugin and Intelligence Surface</div>
           <table class="ref-table">
             <tr><th>Surface</th><th>Useful commands</th></tr>
-            <tr><td><strong>Plugins</strong></td><td><code>/plugins</code>, <code>/plugins install SOURCE</code>, <code>/plugins list</code>, and marketplace add/browse/update commands.</td></tr>
-            <tr><td><strong>Skills</strong></td><td><code>/skills</code> or <code>copilot plugins install --skill</code>; install personal or project skills from a file, URL, or directory.</td></tr>
+            <tr><td><strong>Plugins</strong></td><td><code>copilot plugin</code> (singular is canonical; <code>copilot plugins</code> is legacy), <code>/plugins</code>, <code>/plugins install SOURCE</code>, <code>/plugins list</code>, and marketplace add/browse/update commands.</td></tr>
+            <tr><td><strong>Skills</strong></td><td><code>/skills</code> or <code>copilot skill</code>; install personal or project skills from a file, URL, or directory.</td></tr>
             <tr><td><strong>MCP</strong></td><td><code>/mcp</code> or <code>copilot mcp</code>; configure local stdio or remote HTTP/SSE servers with tool filters.</td></tr>
             <tr><td><strong>LSP</strong></td><td><code>/lsp show|test|reload|logs</code>; add precise definitions, references, and rename intelligence.</td></tr>
             <tr><td><strong>Extensions</strong></td><td>Package tools and slash commands with the SDK; manage them through the CLI extension commands.</td></tr>
@@ -5994,6 +6019,7 @@ by report type; use the current API reference rather than hardcoding this exampl
             <li><code>--remote</code> or <code>/remote on</code> can expose a session to GitHub.com and GitHub Mobile when remote sessions are available on the account.</li>
             <li><code>--remote-export</code> allows read-only export without enabling remote control.</li>
             <li>Local sandboxing controls filesystem and network access for commands and local servers; it does not run the Copilot model offline.</li>
+            <li>Copilot CLI can discover local models for /model (added 7 Oct 2026).</li>
             <li>BYOK can route requests to a supported provider with your key, but the provider still needs network connectivity and its own terms apply.</li>
             <li>Review plugin, extension, MCP, and LSP code before enabling repository-controlled components.</li>
           </ul>
@@ -6038,7 +6064,7 @@ by report type; use the current API reference rather than hardcoding this exampl
       </div>
       <div class="sources">
         <span class="src-title">📚 Sources:</span>
-        <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent" target="_blank">GitHub Docs — About Copilot cloud agent</a> &middot;
+        <a href="https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-on-github" target="_blank">GitHub Docs — About Copilot cloud agent</a> &middot;
         <a href="https://docs.github.com/en/copilot/concepts/tools/about-copilot-integrations" target="_blank">Copilot integrations</a> &middot;
         <a href="https://docs.github.com/en/copilot/concepts/agents/copilot-cli" target="_blank">Copilot CLI concepts</a>
       </div>
@@ -6059,6 +6085,8 @@ by report type; use the current API reference rather than hardcoding this exampl
           <table class="ref-table">
             <tr><th>Shortcut</th><th>Action</th></tr>
             <tr><td><strong>⌃⌘I</strong> / <strong>Ctrl+Alt+I</strong></td><td>Open Chat panel</td></tr>
+            <tr><td><strong>⌘N</strong> / <strong>Ctrl+N</strong></td><td>Start a new chat</td></tr>
+            <tr><td><strong>⇧⌥⌘L</strong> / <strong>Ctrl+Shift+Alt+L</strong></td><td>Open Quick Chat</td></tr>
             <tr><td><strong>⌘I</strong> / <strong>Ctrl+I</strong></td><td>Inline chat</td></tr>
             <tr><td><strong>⌘⇧I</strong></td><td>Toggle secondary sidebar</td></tr>
             <tr><td><strong>Tab</strong></td><td>Accept suggestion</td></tr>
@@ -6109,7 +6137,7 @@ by report type; use the current API reference rather than hardcoding this exampl
 </div>
 
 <div class="page-footer">
-  <strong>Created with GitHub Copilot</strong> · Sources: docs.github.com/copilot · code.visualstudio.com/docs · modelcontextprotocol.io · 24 August 2026
+  <strong>Created with GitHub Copilot</strong> · Sources: docs.github.com/copilot · code.visualstudio.com/docs · modelcontextprotocol.io · 12 October 2026
   <div class="footer-social">
     <a href="https://www.youtube.com/@tec_in_sec" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
